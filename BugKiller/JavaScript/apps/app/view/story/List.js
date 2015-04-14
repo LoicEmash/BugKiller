@@ -104,10 +104,10 @@ Ext.define("BugKiller.view.story.List", {
                         border: true,
                         store: 'VStory',
                         columns: [
-                            {text: 'Id', dataIndex: 'id', width: 200},
-                            {text: 'Produit', dataIndex: 'bkStoryProd', width: 200},
-                            {text: 'Application', dataIndex: 'bkStoryApp', width: 200},
-                            {text: 'Raporteur', dataIndex: 'bkUserName', width: 200},
+                            {text: 'Id', dataIndex: 'id', width: 60},
+                            {text: 'Produit', dataIndex: 'bkStoryProd', minWidth: 120},
+                            {text: 'Application', dataIndex: 'bkStoryApp', minWidth: 120},
+                            {text: 'Raporteur', dataIndex: 'bkUserName', minWidth: 120},
                             {text: 'Date de création', dataIndex: 'bkStoryDc', renderer: Ext.util.Format.dateRenderer('d/m/Y H:i'), width: 140},
                             {text: 'Etat', dataIndex: 'bkPostState', renderer: function (val, meta, record, rowIndex) {
 
