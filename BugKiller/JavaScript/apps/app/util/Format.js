@@ -6,14 +6,17 @@
 Ext.define('BugKiller.util.Format', {
     singleton: true,
     keyValueRenderer: function(keyValues) {
-       return function (value, metadata, record, rowIndex, colIndex, store)
+       var fn = function (value, metadata, record, rowIndex, colIndex, store)
        {
-           if (keyValues.value === undefined)
+           
+           if (keyValues[value] === undefined)
            {return value; }
            else
-           { return keyValues.value;}
+           { return keyValues[value];}
           
        }
+      
+       return fn;
     }
 });
 

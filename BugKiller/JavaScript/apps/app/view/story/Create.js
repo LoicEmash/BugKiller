@@ -66,23 +66,7 @@ Ext.define("BugKiller.view.story.Create", {
                         border: true,
                         collapseDirection :'bottom'
                     }
-                    /*
-                     {
-                     xtype: 'panel',
-                     layout: {
-                     type: 'hbox',
-                     align: 'stretch'
-                     },
-                     items: [
-                     {
-                     xtype: 'label',
-                     width: 80,
-                     text: 'Fichiers : ',
-                     margin: 4
-                     },
-                     
-                     ]
-                     }*/
+                    
 
 
                 ]

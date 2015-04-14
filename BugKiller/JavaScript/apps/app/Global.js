@@ -8,6 +8,7 @@ Ext.define('BugKiller.Global', {
     userMail: '',
     userPassword: '',
     userId: null,
+    userClient: null,
     userIsAdmin: false,
     
     workflow: {

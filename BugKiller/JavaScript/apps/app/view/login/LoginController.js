@@ -16,9 +16,9 @@ Ext.define('BugKiller.view.login.LoginController', {
         if (Ext.String.isDefined(viewModel.data.mail) && Ext.String.isDefined(viewModel.data.password))
         {
             this.authenticate(viewModel.data.mail, viewModel.data.password,
-                    function (resultMail, resultPassword, resultName, resultId,isAdmin) {
+                    function (resultMail, resultPassword, resultName, resultId,isAdmin,client) {
 
-                        me.fireViewEvent('authenticated', resultMail, resultPassword, resultName, resultId,isAdmin);
+                        me.fireViewEvent('authenticated', resultMail, resultPassword, resultName, resultId,isAdmin,client);
 
                     },
                     function (errorMessage) {
@@ -55,18 +55,24 @@ Ext.define('BugKiller.view.login.LoginController', {
                         property: 'password',
                         value: password
                     }, true);
-
+                    store.getProxy().setNeedestParentTables(['BkClient']);
                     store.load({
                         scope: this,
                         callback: function (records, operation, success) {
                             var loggedSuccessfull = false;
                             var isAdmin = false;
+                            var client = null;
                             if (success === true)
                             {
                                 if (records.length === 1)
                                 {
                                     var record = records[0];
-                                    
+                                    console.log(record);
+                                    if (record.getBkClient() !== null)
+                                    {
+                                        var clientRecord = record.getBkClient();
+                                        client = clientRecord.get('nom');                                        
+                                    }
                                     var mail = record.get('mail');
                                   
                                     for (var i = 0 ; i < redmineUserRecords.length;i++)
@@ -90,7 +96,7 @@ Ext.define('BugKiller.view.login.LoginController', {
                                 var name = store.getAt(0).get('name');
                                 var id = store.getAt(0).get('id');
                                
-                                callbackSuccess(mail, password, name, id,isAdmin);
+                                callbackSuccess(mail, password, name, id,isAdmin,client);
                             }
 
                         }
@@ -111,9 +117,9 @@ Ext.define('BugKiller.view.login.LoginController', {
         var password = viewModel.data.password;
         var md5Password = BugKiller.util.Crypto.md5(password);
         this.authenticate(mail, md5Password,
-                function (resultMail, resultPassword, resultName, resultId,isAdmin) {
+                function (resultMail, resultPassword, resultName, resultId,isAdmin,client) {
                     console.log(isAdmin);
-                    me.fireViewEvent('authenticated', resultMail, resultPassword, resultName, resultId,isAdmin);
+                    me.fireViewEvent('authenticated', resultMail, resultPassword, resultName, resultId,isAdmin,client);
                     view.enable();
                 },
                 function (errorMessage) {

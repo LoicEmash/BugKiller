@@ -38,6 +38,7 @@ Ext.define("BugKiller.view.story.List", {
                                 fieldLabel: 'Produit',
                                 margin: 4,
                                 displayField: 'name',
+                                queryMode: 'local',
                                 reference: 'comboProduct',
                                 enableKeyEvents: true,
                                 width: 200,
@@ -55,6 +56,7 @@ Ext.define("BugKiller.view.story.List", {
                             {
                                 xtype: 'combo',
                                 fieldLabel: 'Application',
+                                queryMode: 'local',
                                 enableKeyEvents: true,
                                 margin: 4,
                                 displayField: 'name',
@@ -131,37 +133,8 @@ Ext.define("BugKiller.view.story.List", {
                             {text: 'Sévérité', dataIndex: 'bkStorySev', renderer: BugKiller.util.Format.keyValueRenderer(BugKiller.Locale.severityValues)},
                             {text: 'Priorité', dataIndex: 'bkStoryPrio', renderer: BugKiller.util.Format.keyValueRenderer(BugKiller.Locale.priorityValues)},
                             {text: 'Reproductible', dataIndex: 'bkStoryRepro', renderer: BugKiller.util.Format.keyValueRenderer(BugKiller.Locale.reproductibilityValues)},
-                            /*
-                             
-                             
-                             { text: 'Etat', renderer: function (val, meta, record, rowIndex) {
-                             record.bkPosts().sort('dc', 'DESC');
-                             var lastPost = record.bkPosts().getAt(0);
-                             if (lastPost !== null)
-                             {
-                             var state = lastPost.get('state');
-                             if (BugKiller.Locale.stateValues[state] !== undefined)
-                             {return  BugKiller.Locale.stateValues[state];}
-                             else
-                             {return state;}
-                             
-                             }
-                             else
-                             {
-                             return null;
-                             }
-                             
-                             }
-                             },
-                             {text: 'Titre', dataIndex: 'title', flex: 1},
-                             {text: 'Messages', width: 80, renderer: function (val, meta, record, rowIndex) {
-                             return record.bkPosts().getCount();                                    
-                             }
-                             },
-                             {text: 'Sévérité', dataIndex: 'sev', renderer: BugKiller.util.Format.keyValueRenderer(BugKiller.Locale.severityValues)},
-                             {text: 'Priorité', dataIndex: 'prio', renderer: BugKiller.util.Format.keyValueRenderer(BugKiller.Locale.priorityValues)},
-                             {text: 'Reproductible', dataIndex: 'repro', renderer: BugKiller.util.Format.keyValueRenderer(BugKiller.Locale.reproductibilityValues)},
-                             */
+                             {text: 'Délai réponse', dataIndex: 'replyDelay'},
+                            {text: 'Délai éxécution', dataIndex: 'resolveDelay'},
 
 
                         ],

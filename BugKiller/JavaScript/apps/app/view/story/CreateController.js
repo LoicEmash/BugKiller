@@ -106,8 +106,7 @@ Ext.define('BugKiller.view.story.CreateController', {
         post.save({
             callback: function (recordPost, operation) {
                 if (operation.wasSuccessful()) {
-                    me.getView().unmask();
-                    var postId = recordPost.get('id');
+                    me.getView().unmask();                   
                     me.updateFirstPostFiles.call(me, storyId)
                 }
             }
@@ -158,5 +157,5 @@ Ext.define('BugKiller.view.story.CreateController', {
         viewModel.set('storyReproductibility', 'yes');
         viewModel.set('storyTitle', null);
 
-    },
+    }
 });

@@ -176,6 +176,15 @@ namespace MigrationBoosterKiller
                     }
                 }
                 writer.WriteLine("update bk.bk_user set mail='loic.lecuyer@egis.fr',password='70e92d4fbe843ce266bc6f1f2d643526' where mail='l.lecuyer@emash.fr';");
+                writer.WriteLine("update bk.bk_story set sev = 'minor' where sev='mineur';");
+                writer.WriteLine("update bk.bk_story set sev = 'minor' where sev='mineure';");
+                writer.WriteLine("update bk.bk_story set sev = 'major' where sev='majeure';");
+                writer.WriteLine("update bk.bk_story set sev = 'critical' where sev='bloquante';");
+                writer.WriteLine("update bk.bk_story set sev = 'minor' where sev='information';");
+                writer.WriteLine("update bk.bk_story set prio = 'minor' where prio='lente';");
+                writer.WriteLine("update bk.bk_story set prio = 'major' where prio='normale';");
+                writer.WriteLine("update bk.bk_story set prio = 'critical' where prio='urgente';");
+                
                 writer.Flush();
 
                 

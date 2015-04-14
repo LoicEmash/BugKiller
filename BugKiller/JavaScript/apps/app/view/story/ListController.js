@@ -96,20 +96,9 @@ Ext.define('BugKiller.view.story.ListController', {
         store.clearFilter();
         store.addFilter(function (item)
         {
-            var isBugKillerProject = false;
-            if (item.data.custom_fields !== undefined)
-            {
-                for (var i = 0; i < item.data.custom_fields.length; i++)
-                {
-                    if (item.data.custom_fields[i].name === 'ShowAsBugKillerProject')
-                    {
-                        isBugKillerProject = item.data.custom_fields[i].value === '1';
-                    }
-                }
-            }
+            
 
-
-            if (item.data.parent !== undefined && isBugKillerProject)
+            if (item.data.parent !== undefined)
             {
                 if (item.data.parent.name === newValue)
                 {

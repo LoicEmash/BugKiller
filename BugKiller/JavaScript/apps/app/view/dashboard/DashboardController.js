@@ -4,7 +4,10 @@ Ext.define('BugKiller.view.dashboard.DashboardController', {
     requires:[
        
     ],   
-    
+    onCloseClick : function()
+    {
+        BugKiller.getApplication().fireEvent('userUnlogged')
+    },
     onStoryEditingCancel : function()
     {
         var panelStoryEdit =this.lookupReference('panelStoryEdit');  

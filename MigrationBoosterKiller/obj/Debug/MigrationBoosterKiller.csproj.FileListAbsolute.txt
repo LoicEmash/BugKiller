@@ -33,3 +33,6 @@ C:\Users\loic\Documents\GIT\MigrationBoosterKiller\bin\Debug\fi\Npgsql.resources
 C:\Users\loic\Documents\GIT\MigrationBoosterKiller\bin\Debug\fr\Npgsql.resources.dll
 C:\Users\loic\Documents\GIT\MigrationBoosterKiller\bin\Debug\ja\Npgsql.resources.dll
 C:\Users\loic\Documents\GIT\MigrationBoosterKiller\bin\Debug\zh-CN\Npgsql.resources.dll
+C:\Users\Champ\Documents\GitHub\BugKiller\MigrationBoosterKiller\bin\Debug\MigrationBoosterKiller.exe.config
+C:\Users\Champ\Documents\GitHub\BugKiller\MigrationBoosterKiller\obj\Debug\MigrationBoosterKiller.exe
+C:\Users\Champ\Documents\GitHub\BugKiller\MigrationBoosterKiller\obj\Debug\MigrationBoosterKiller.pdb

@@ -19,6 +19,10 @@ Ext.define("BugKiller.view.dashboard.Dashboard", {
         type: 'vbox',
         align: 'stretch'
     },
+     tools: [{ 
+       
+        handler: 'onCloseClick'
+    }],
     initComponent: function () {
         var storyStore = Ext.create('Ext.data.Store', {model: 'BugKiller.model.BkStory', remoteFilter: true, remoteSort: true});
         storyStore.getProxy().setNeedestChildTables("BkPost");
