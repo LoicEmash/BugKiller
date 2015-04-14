@@ -1,0 +1,40 @@
+bug_killer_data_read:
+    path:     /Data/{table}
+    defaults: { _controller: BugKillerDataBundle:Data:read }
+    requirements:
+        _method:  GET
+bug_killer_data_create:
+    path:     /Data/{table}
+    defaults: { _controller: BugKillerDataBundle:Data:create }
+    requirements:
+        _method:  POST
+bug_killer_data_update:
+    path:     /Data/{table}
+    defaults: { _controller: BugKillerDataBundle:Data:update }
+    requirements:
+        _method:  PUT
+bug_killer_data_delete:
+    path:     /Data/{table}
+    defaults: { _controller: BugKillerDataBundle:Data:delete }
+    requirements:
+        _method:  DELETE
+bug_killer_file_create:
+    path:     /File/{table}
+    defaults: { _controller: BugKillerDataBundle:File:create }
+    requirements:
+        _method:  POST
+bug_killer_file_read:
+    path:     /File/{table}/{id}
+    defaults: { _controller: BugKillerDataBundle:File:read }
+    requirements:
+        _method:  GET
+bug_killer_file_read_thumb:
+    path:     /FileThumb/{table}/{id}/{size}
+    defaults: { _controller: BugKillerDataBundle:File:readThumb }
+    requirements:
+        _method:  GET
+bug_killer_file_zip:
+    path:     /FileZip/{table}/{idList}/{fileName}
+    defaults: { _controller: BugKillerDataBundle:File:readZip }
+    requirements:
+        _method:  GET
