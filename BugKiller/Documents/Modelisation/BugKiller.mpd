@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{2B7DBC4A-83CE-448F-8898-72FBFA25E2FF}" Label="" LastModificationDate="1429014833" Name="BugKiller" Objects="93" Symbols="11" Target="ORACLE Version 11g" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{2B7DBC4A-83CE-448F-8898-72FBFA25E2FF}" Label="" LastModificationDate="1429020873" Name="BugKiller" Objects="93" Symbols="11" Target="ORACLE Version 11g" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -4258,7 +4258,7 @@ DAT 1427981571</a:History>
 <a:Code>BK_V_STORY</a:Code>
 <a:CreationDate>1428930063</a:CreationDate>
 <a:Creator>loic</a:Creator>
-<a:ModificationDate>1429014833</a:ModificationDate>
+<a:ModificationDate>1429020873</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <a:View.SQLQuery>select  
 bk_story.id as id,
@@ -4295,7 +4295,7 @@ select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.
 
 
 from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in (&#39;open&#39;,&#39;delivery&#39;,&#39;answer&#39;,&#39;watch&#39;) order by id asc limit 1) dd) as reply_delay
-from bk.bk_story order by bk_post__count desc</a:View.SQLQuery>
+from bk.bk_story</a:View.SQLQuery>
 <a:TaggedSQLQuery>select  
 bk_story.id as id,
 bk_story.bk_user__id as bk_user__id,
@@ -4331,7 +4331,7 @@ select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.
 
 
 from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in (&#39;open&#39;,&#39;delivery&#39;,&#39;answer&#39;,&#39;watch&#39;) order by id asc limit 1) dd) as reply_delay
-from bk.bk_story order by bk_post__count desc</a:TaggedSQLQuery>
+from bk.bk_story</a:TaggedSQLQuery>
 <a:UserDefinedSQL>1</a:UserDefinedSQL>
 <c:Columns>
 <o:ViewColumn Id="o81">
