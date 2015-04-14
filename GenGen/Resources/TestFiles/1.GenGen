@@ -1,0 +1,413 @@
+<?xml version="1.0"?>
+<Project xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OracleDeleteCreate>
+    <SqlFile>C:\Users\loic\Documents\GIT\GenGen\OracleDeleteCreate.sql</SqlFile>
+  </OracleDeleteCreate>
+  <PostgreCreate>
+    <SqlFile>C:\Users\loic\Documents\GIT\GenGen\PostgreCreate.sql</SqlFile>
+  </PostgreCreate>
+  <PostgreDelete>
+    <SqlFile>C:\Users\loic\Documents\GIT\GenGen\PostgreSupression.sql</SqlFile>
+  </PostgreDelete>
+  <PostgreDeleteCreate>
+    <SqlFile>C:\Users\loic\Documents\GIT\GenGen\PostgreSupressionCreation.sql</SqlFile>
+  </PostgreDeleteCreate>
+  <Revisions>
+    <Revision>
+      <Number>2</Number>
+      <ModuleSchemas />
+      <MetierSchemas>
+        <DbSchema>
+          <Id>test__o2</Id>
+          <Rules />
+          <ModuleSchemaDeploy />
+          <ModuleSchemaDeployAll>true</ModuleSchemaDeployAll>
+          <Tables>
+            <DbTable>
+              <Id>test__o12</Id>
+              <ColumnId>
+                <Id>test__o33</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>test__o12</TableId>
+                <Name>id</Name>
+                <DisplayName>test_bis__id</DisplayName>
+              </ColumnId>
+              <Name>test_bis</Name>
+              <DisplayName>test_bis</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>test__o11</Id>
+              <ColumnBool>
+                <Id>test__o13</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valbool</Name>
+                <DisplayName>test_typedb__valbool</DisplayName>
+              </ColumnBool>
+              <ColumnDate>
+                <Id>test__o14</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valdate</Name>
+                <DisplayName>test_typedb__valdate</DisplayName>
+              </ColumnDate>
+              <ColumnDate>
+                <Id>test__o15</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valtime</Name>
+                <DisplayName>test_typedb__valtime</DisplayName>
+              </ColumnDate>
+              <ColumnGeom>
+                <Id>test__o16</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valgeom</Name>
+                <DisplayName>test_typedb__valgeom</DisplayName>
+              </ColumnGeom>
+              <ColumnId>
+                <Id>test__o17</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>id</Name>
+                <DisplayName>test_typedb__id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>test__o18</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>test_bis__id</Name>
+                <DisplayName>test_bis__id</DisplayName>
+              </ColumnId>
+              <ColumnLongText>
+                <Id>test__o19</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>vallongtext</Name>
+                <DisplayName>test_typedb__vallongtext</DisplayName>
+              </ColumnLongText>
+              <DbColumnNumeric>
+                <Id>test__o20</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valint</Name>
+                <DisplayName>test_typedb__valint</DisplayName>
+                <Precision>6</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <DbColumnNumeric>
+                <Id>test__o21</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valfloat</Name>
+                <DisplayName>test_typedb__valfloat</DisplayName>
+                <Precision>6</Precision>
+                <Scale>2</Scale>
+              </DbColumnNumeric>
+              <ColumnPr>
+                <Id>test__o22</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valpr</Name>
+                <DisplayName>test_typedb__valpr</DisplayName>
+              </ColumnPr>
+              <ColumnText>
+                <Id>test__o23</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valtext</Name>
+                <DisplayName>test_typedb__valtext</DisplayName>
+                <MaxLength>145</MaxLength>
+              </ColumnText>
+              <ColumnImage>
+                <Id>test__o24</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valimage</Name>
+                <DisplayName>test_typedb__valimage</DisplayName>
+              </ColumnImage>
+              <ColumnFile>
+                <Id>test__o25</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valifile</Name>
+                <DisplayName>test_typedb__valifile</DisplayName>
+              </ColumnFile>
+              <Name>test_typedb</Name>
+              <DisplayName>test des types de base de données</DisplayName>
+            </DbTable>
+          </Tables>
+          <DbConstraintPrimaries>
+            <DbConstraintPrimary>
+              <Id>test__o27</Id>
+              <TableId>test__o11</TableId>
+              <ColumnIds>
+                <string>test__o17</string>
+              </ColumnIds>
+              <Name>test_typedb_pk</Name>
+              <DisplayName>Clé primaire table test des types de base de données</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>test__o35</Id>
+              <TableId>test__o12</TableId>
+              <ColumnIds>
+                <string>test__o33</string>
+              </ColumnIds>
+              <Name>test_bis_pk</Name>
+              <DisplayName>Clé primaire table test_bis</DisplayName>
+            </DbConstraintPrimary>
+          </DbConstraintPrimaries>
+          <DbConstraintUniques>
+            <DbConstraintUnique>
+              <Id>test__o31</Id>
+              <TableId>test__o11</TableId>
+              <ColumnIds>
+                <string>test__o20</string>
+              </ColumnIds>
+              <Name>test_typedb_uk</Name>
+              <DisplayName>Clé unique table test des types de base de données</DisplayName>
+            </DbConstraintUnique>
+          </DbConstraintUniques>
+          <DbConstraintForeigns>
+            <DbConstraintForeign>
+              <Id>test__o9</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>test_test_bis_fk</Name>
+              <DisplayName>test_test_bis_fk</DisplayName>
+              <ParentTableId>test__o12</ParentTableId>
+              <ChildTableId>test__o11</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o37</Id>
+                  <ParentColumnId>test__o33</ParentColumnId>
+                  <ChildColumnId>test__o18</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+          </DbConstraintForeigns>
+          <Name>test</Name>
+          <DisplayName>test</DisplayName>
+          <MajorVersion>1</MajorVersion>
+          <MinorVersion>0</MinorVersion>
+          <RevisionVersion>0</RevisionVersion>
+          <IsModule>false</IsModule>
+        </DbSchema>
+      </MetierSchemas>
+      <ResultSchemas>
+        <DbSchema>
+          <Id>test__o2</Id>
+          <Rules />
+          <ModuleSchemaDeploy />
+          <ModuleSchemaDeployAll>true</ModuleSchemaDeployAll>
+          <Tables>
+            <DbTable>
+              <Id>test__o12</Id>
+              <ColumnId>
+                <Id>test__o33</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>test__o12</TableId>
+                <Name>id</Name>
+                <DisplayName>test_bis__id</DisplayName>
+              </ColumnId>
+              <Name>test_bis</Name>
+              <DisplayName>test_bis</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>test__o11</Id>
+              <ColumnBool>
+                <Id>test__o13</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valbool</Name>
+                <DisplayName>test_typedb__valbool</DisplayName>
+              </ColumnBool>
+              <ColumnDate>
+                <Id>test__o14</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valdate</Name>
+                <DisplayName>test_typedb__valdate</DisplayName>
+              </ColumnDate>
+              <ColumnDate>
+                <Id>test__o15</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valtime</Name>
+                <DisplayName>test_typedb__valtime</DisplayName>
+              </ColumnDate>
+              <ColumnGeom>
+                <Id>test__o16</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valgeom</Name>
+                <DisplayName>test_typedb__valgeom</DisplayName>
+              </ColumnGeom>
+              <ColumnId>
+                <Id>test__o17</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>id</Name>
+                <DisplayName>test_typedb__id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>test__o18</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>test_bis__id</Name>
+                <DisplayName>test_bis__id</DisplayName>
+              </ColumnId>
+              <ColumnLongText>
+                <Id>test__o19</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>vallongtext</Name>
+                <DisplayName>test_typedb__vallongtext</DisplayName>
+              </ColumnLongText>
+              <DbColumnNumeric>
+                <Id>test__o20</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valint</Name>
+                <DisplayName>test_typedb__valint</DisplayName>
+                <Precision>6</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <DbColumnNumeric>
+                <Id>test__o21</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valfloat</Name>
+                <DisplayName>test_typedb__valfloat</DisplayName>
+                <Precision>6</Precision>
+                <Scale>2</Scale>
+              </DbColumnNumeric>
+              <ColumnPr>
+                <Id>test__o22</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valpr</Name>
+                <DisplayName>test_typedb__valpr</DisplayName>
+              </ColumnPr>
+              <ColumnText>
+                <Id>test__o23</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valtext</Name>
+                <DisplayName>test_typedb__valtext</DisplayName>
+                <MaxLength>145</MaxLength>
+              </ColumnText>
+              <ColumnImage>
+                <Id>test__o24</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valimage</Name>
+                <DisplayName>test_typedb__valimage</DisplayName>
+              </ColumnImage>
+              <ColumnFile>
+                <Id>test__o25</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>test__o11</TableId>
+                <Name>valifile</Name>
+                <DisplayName>test_typedb__valifile</DisplayName>
+              </ColumnFile>
+              <Name>test_typedb</Name>
+              <DisplayName>test des types de base de données</DisplayName>
+            </DbTable>
+          </Tables>
+          <DbConstraintPrimaries>
+            <DbConstraintPrimary>
+              <Id>test__o27</Id>
+              <TableId>test__o11</TableId>
+              <ColumnIds>
+                <string>test__o17</string>
+              </ColumnIds>
+              <Name>test_typedb_pk</Name>
+              <DisplayName>Clé primaire table test des types de base de données</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>test__o35</Id>
+              <TableId>test__o12</TableId>
+              <ColumnIds>
+                <string>test__o33</string>
+              </ColumnIds>
+              <Name>test_bis_pk</Name>
+              <DisplayName>Clé primaire table test_bis</DisplayName>
+            </DbConstraintPrimary>
+          </DbConstraintPrimaries>
+          <DbConstraintUniques>
+            <DbConstraintUnique>
+              <Id>test__o31</Id>
+              <TableId>test__o11</TableId>
+              <ColumnIds>
+                <string>test__o20</string>
+              </ColumnIds>
+              <Name>test_typedb_uk</Name>
+              <DisplayName>Clé unique table test des types de base de données</DisplayName>
+            </DbConstraintUnique>
+          </DbConstraintUniques>
+          <DbConstraintForeigns>
+            <DbConstraintForeign>
+              <Id>test__o9</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>test_test_bis_fk</Name>
+              <DisplayName>test_test_bis_fk</DisplayName>
+              <ParentTableId>test__o12</ParentTableId>
+              <ChildTableId>test__o11</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o37</Id>
+                  <ParentColumnId>test__o33</ParentColumnId>
+                  <ChildColumnId>test__o18</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+          </DbConstraintForeigns>
+          <Name>test</Name>
+          <DisplayName>test</DisplayName>
+          <MajorVersion>1</MajorVersion>
+          <MinorVersion>0</MinorVersion>
+          <RevisionVersion>0</RevisionVersion>
+          <IsModule>false</IsModule>
+        </DbSchema>
+      </ResultSchemas>
+    </Revision>
+    <Revision>
+      <Number>1</Number>
+      <ModuleSchemas />
+      <MetierSchemas />
+      <ResultSchemas />
+    </Revision>
+  </Revisions>
+</Project>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenGenApp", "GenGenApp\GenGenApp.csproj", "{D557A7F2-D290-42FA-9C65-27E7B7B247CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenGenLib", "GenGenLib\GenGenLib.csproj", "{CF66DEC0-9AB6-4F76-9B10-0CF985EAD1EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenGenCmd", "GenGenCmd\GenGenCmd.csproj", "{AC083A6F-1A44-4625-9AA1-574F7BDA1367}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D557A7F2-D290-42FA-9C65-27E7B7B247CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D557A7F2-D290-42FA-9C65-27E7B7B247CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D557A7F2-D290-42FA-9C65-27E7B7B247CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D557A7F2-D290-42FA-9C65-27E7B7B247CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF66DEC0-9AB6-4F76-9B10-0CF985EAD1EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF66DEC0-9AB6-4F76-9B10-0CF985EAD1EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF66DEC0-9AB6-4F76-9B10-0CF985EAD1EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF66DEC0-9AB6-4F76-9B10-0CF985EAD1EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC083A6F-1A44-4625-9AA1-574F7BDA1367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC083A6F-1A44-4625-9AA1-574F7BDA1367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC083A6F-1A44-4625-9AA1-574F7BDA1367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC083A6F-1A44-4625-9AA1-574F7BDA1367}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
