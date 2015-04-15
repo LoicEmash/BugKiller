@@ -38,3 +38,8 @@ bug_killer_file_zip:
     defaults: { _controller: BugKillerDataBundle:File:readZip }
     requirements:
         _method:  GET
+bug_killer_file_mail:
+    path:     /Mail/{to}
+    defaults: { _controller: BugKillerDataBundle:Mail:send }
+    requirements:
+        _method:  POST

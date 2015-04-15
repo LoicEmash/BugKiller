@@ -5,7 +5,8 @@ Ext.define('BugKiller.view.account.AccountModel', {
         mail: '',
         password:'',
         name:'',
-        firstName:''
+        firstName:'',
+        client :''
     }
 
 });

@@ -21,6 +21,16 @@ Ext.define("BugKiller.view.account.Account", {
                 },
                 border: true,
                 items: [
+                     {
+                        xtype: 'textfield',
+                        reference: 'txtClient',
+                        fieldLabel: 'Client',                    
+                        allowBlank: false,
+                        margin: 4,
+                        bind: {
+                            value: '{client}'
+                        }
+                    },
                     {
                         xtype: 'textfield',
                         reference: 'txtName',
