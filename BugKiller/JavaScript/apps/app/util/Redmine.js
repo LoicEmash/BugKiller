@@ -6,11 +6,21 @@ Ext.define('BugKiller.util.Redmine', {
     ],
     singleton: true,
     projects: [],
-    groups: [],
+    
     allowedProjects: [],
     allowedProducts: [],
     allowedApplications: [],
     memberships: [],
+    /*
+     * 
+     * Configuration des client objet format : 
+     * {
+     *      name:'',
+     *      replyDelay:8,
+     *      executionDelay:10
+     * }
+     */
+    clients : [],
     load: function (successCallback, failureCallback)
     {
         BugKiller.util.Redmine.projects = [];
@@ -18,8 +28,10 @@ Ext.define('BugKiller.util.Redmine', {
         BugKiller.util.Redmine.allowedProjects = [];
         BugKiller.util.Redmine.allowedProducts = [];
         BugKiller.util.Redmine.allowedApplications = [];
-        BugKiller.util.Redmine.groups = [];
+        BugKiller.util.Redmine.clients = [];
         BugKiller.util.Redmine.loadGroups(function () {
+            console.log('clients');
+            console.log(BugKiller.util.Redmine.clients);
             BugKiller.util.Redmine.loadProjects(function () {
                 //console.log(BugKiller.util.Redmine.projects);
                 BugKiller.util.Redmine.loadProjectMemberships(0, function () {
@@ -61,7 +73,26 @@ Ext.define('BugKiller.util.Redmine', {
                 {
                     for (var i = 0; i < records.length; i++)
                     {
-                        BugKiller.util.Redmine.groups.push(records[i]);
+                        var record = records[i];
+                        if (record.data.custom_fields !== undefined)
+                        {
+                            var client = {};
+                            client.name = record.data.name;
+                            for (var j = 0 ; j < record.data.custom_fields.length;j++)
+                            {
+                                var customField = record.data.custom_fields[j];
+                                if (customField.name === 'BugKillerDelaiReponseHeure')
+                                {
+                                    client.replyDelay = customField.value * 1;
+                                }
+                                if (customField.name === 'BugKillerDelaiExecutionJour')
+                                {
+                                    client.executionDelay = customField.value * 24;
+                                }
+                            }
+                            BugKiller.util.Redmine.clients.push(client);
+                        }
+                        
                     }
                     successCallback();
                 }
