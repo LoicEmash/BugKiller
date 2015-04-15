@@ -97,6 +97,7 @@ Ext.define('BugKiller.view.dashboard.DashboardController', {
     {
         this.hideAllPanel();
         var panelUserList = this.lookupReference('panelUserList');
+        panelUserList.getController().loadData();
         panelUserList.show();
     },
     onDashboardComeBack : function()

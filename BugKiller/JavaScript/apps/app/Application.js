@@ -12,7 +12,8 @@ Ext.define('BugKiller.Application', {
         'BugKiller.store.RedmineUser',
         'BugKiller.store.Story',
         'BugKiller.store.Post',
-        'BugKiller.store.Client'
+        'BugKiller.store.Client',
+        'BugKiller.store.User'
     ],
     stores: [
         'RedmineProduct',
@@ -21,7 +22,8 @@ Ext.define('BugKiller.Application', {
         'VStory',
         'Story',
         'Post',
-        'Client'
+        'Client',
+        'User'
         // TODO: add global / shared stores here
     ],
     launch: function () {

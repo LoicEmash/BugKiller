@@ -82,7 +82,7 @@ Ext.define("BugKiller.view.client.List", {
                         text: 'Nouveau client',
                         handler: 'onCreateClient'
 
-                    },
+                    }
                 ]
             }
         ];
