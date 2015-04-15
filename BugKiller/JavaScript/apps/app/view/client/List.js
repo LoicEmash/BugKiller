@@ -14,6 +14,7 @@ Ext.define("BugKiller.view.client.List", {
     layout: {
         type: 'vbox',
         align: 'stretch'
+
     },
     border: true,
     initComponent: function ()
@@ -35,7 +36,7 @@ Ext.define("BugKiller.view.client.List", {
                         text: 'Modifier',
                         width: 100,
                         items: [{
-                                icon: 'resources/icons/table_edit.png', 
+                                icon: 'resources/icons/table_edit.png',
                                 tooltip: 'Modifier',
                                 text: 'Modifier',
                                 handler: 'onEditClient'
@@ -46,14 +47,16 @@ Ext.define("BugKiller.view.client.List", {
                         text: 'Supprimer',
                         width: 100,
                         items: [{
-                                 icon: 'resources/icons/table_delete.png', 
+                                icon: 'resources/icons/table_delete.png',
                                 tooltip: 'Supprimer',
                                 text: 'Supprimer',
                                 handler: 'onDeleteClient'
                             }]
                     }
 
-                ]
+                ], listeners: {
+                    celldblclick: 'onGridCellDoubleClick'
+                }
             },
             {
                 xtype: 'toolbar',
@@ -69,7 +72,17 @@ Ext.define("BugKiller.view.client.List", {
                         margin: 4,
                         text: 'Retour à la liste',
                         handler: 'onCancelButtonClick'
-                    }
+                    },
+                    {
+                        xtype: 'button',
+                        iconCls: 'icon-create',
+                        width: 200,
+                        height: 48,
+                        margin: 4,
+                        text: 'Nouveau client',
+                        handler: 'onCreateClient'
+
+                    },
                 ]
             }
         ];
