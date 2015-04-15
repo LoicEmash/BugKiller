@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{2B7DBC4A-83CE-448F-8898-72FBFA25E2FF}" Label="" LastModificationDate="1429096375" Name="BugKiller" Objects="94" Symbols="11" Target="ORACLE Version 11g" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{2B7DBC4A-83CE-448F-8898-72FBFA25E2FF}" Label="" LastModificationDate="1429105543" Name="BugKiller" Objects="96" Symbols="11" Target="ORACLE Version 11g" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,10 +12,10 @@
 <a:Code>BK</a:Code>
 <a:CreationDate>1427981566</a:CreationDate>
 <a:Creator>loic</a:Creator>
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <a:History>ORG {D9DAF6BB-4C58-4DD8-9DE8-C9D9D93B8F55}
-DAT 1428938457
+DAT 1429105532
 DLD {18A94574-74F2-4A93-8F7F-15C83FBE025F}
 DLD {07C6A7A7-5531-496D-BD71-F8C4431C6B7A}
 DLD {0BA4B5AA-E8A5-4BE1-8535-34D4E1A4AC60}
@@ -2563,12 +2563,12 @@ PhysOpts=</a:ModelOptionsText>
 </c:GeneratedModels>
 <c:GenerationOrigins>
 <o:Shortcut Id="o4">
-<a:ObjectID>C97862E8-F127-443E-A1FB-5B54BBE8BC55</a:ObjectID>
+<a:ObjectID>114F753B-7501-4176-B3F5-18A04C2666B2</a:ObjectID>
 <a:Name>BugKiller</a:Name>
 <a:Code>BK</a:Code>
-<a:CreationDate>1428938457</a:CreationDate>
+<a:CreationDate>1429105532</a:CreationDate>
 <a:Creator>loic</a:Creator>
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <a:TargetStereotype/>
 <a:TargetID>D9DAF6BB-4C58-4DD8-9DE8-C9D9D93B8F55</a:TargetID>
@@ -3200,7 +3200,7 @@ Shadow=0
 <a:PaperSource>7</a:PaperSource>
 <c:Symbols>
 <o:ReferenceSymbol Id="o7">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:Rect>((-23256,23359), (-1298,23809))</a:Rect>
 <a:ListOfPoints>((-1298,23584),(-23256,23584))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
@@ -3221,7 +3221,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o11">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:Rect>((-1523,6172), (-1073,23584))</a:Rect>
 <a:ListOfPoints>((-1298,6172),(-1298,23584))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
@@ -3242,7 +3242,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o14">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:Rect>((-23850,6172), (-1298,23074))</a:Rect>
 <a:ListOfPoints>((-1298,6172),(-23850,6172),(-23850,23074))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
@@ -3263,7 +3263,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o16">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:Rect>((-21900,21596), (-21231,38605))</a:Rect>
 <a:ListOfPoints>((-21231,21596),(-21231,34075),(-21900,34075),(-21900,38605))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
@@ -3284,7 +3284,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o19">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:Rect>((-1148,22959), (18027,23409))</a:Rect>
 <a:ListOfPoints>((18027,23184),(-1148,23184))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
@@ -3305,7 +3305,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:TableSymbol Id="o9">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-30607,20850), (-15905,26318))</a:Rect>
 <a:AutoAdjustToText>0</a:AutoAdjustToText>
@@ -3330,7 +3330,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o8">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-8533,18415), (5937,28753))</a:Rect>
 <a:AutoAdjustToText>0</a:AutoAdjustToText>
@@ -3355,7 +3355,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o12">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-8301,2464), (5705,9880))</a:Rect>
 <a:AutoAdjustToText>0</a:AutoAdjustToText>
@@ -3380,7 +3380,7 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o20">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((11565,18417), (24489,26805))</a:Rect>
 <a:AutoAdjustToText>0</a:AutoAdjustToText>
@@ -3406,9 +3406,9 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o17">
-<a:ModificationDate>1428938457</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-27435,36606), (-16365,40605))</a:Rect>
+<a:Rect>((-30486,35872), (-13314,41340))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -3431,9 +3431,9 @@ LABL 0 Arial,8,N</a:FontList>
 </o:TableSymbol>
 <o:ViewSymbol Id="o27">
 <a:CreationDate>1428930063</a:CreationDate>
-<a:ModificationDate>1429096375</a:ModificationDate>
+<a:ModificationDate>1429105543</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-12733,-18555), (10049,-159))</a:Rect>
+<a:Rect>((-12733,-23475), (10049,-159))</a:Rect>
 <a:AutoAdjustToText>0</a:AutoAdjustToText>
 <a:LineColor>12615808</a:LineColor>
 <a:FillColor>16765136</a:FillColor>
@@ -3468,7 +3468,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>BK_CLIENT</a:Code>
 <a:CreationDate>1428657023</a:CreationDate>
 <a:Creator>loic</a:Creator>
-<a:ModificationDate>1428658131</a:ModificationDate>
+<a:ModificationDate>1429105532</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <a:History>ORG {88948F7B-9D1C-4605-AEDD-53F29E165BF3}
 DAT 1428657023</a:History>
@@ -3501,9 +3501,37 @@ DAT 1428657023</a:History>
 <a:Length>200</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
+<o:Column Id="o31">
+<a:ObjectID>C2E7A2E2-4285-4CAE-AB68-FF350FB2A74B</a:ObjectID>
+<a:Name>Délai réponse (heure)</a:Name>
+<a:Code>BK_CLIENT__REP_DEL</a:Code>
+<a:CreationDate>1429105530</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1429105532</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<a:History>ORG {C70F55FE-717C-45EF-BD56-53DBD48359FB}
+DAT 1429105531</a:History>
+<a:DataType>NUMBER(2)</a:DataType>
+<a:Length>2</a:Length>
+<a:Mandatory>1</a:Mandatory>
+</o:Column>
+<o:Column Id="o32">
+<a:ObjectID>74F06729-3DC4-4C5F-A3A5-27DB8277E7C7</a:ObjectID>
+<a:Name>Délai éxécution (jour)</a:Name>
+<a:Code>BK_CLIENT__EXE_DEL</a:Code>
+<a:CreationDate>1429105530</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1429105532</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<a:History>ORG {3B7E13EB-5FDE-4DFE-85AD-21C84BB500DC}
+DAT 1429105531</a:History>
+<a:DataType>NUMBER(2)</a:DataType>
+<a:Length>2</a:Length>
+<a:Mandatory>1</a:Mandatory>
+</o:Column>
 </c:Columns>
 <c:Keys>
-<o:Key Id="o31">
+<o:Key Id="o33">
 <a:ObjectID>A3EEE473-65EB-4938-ACB8-67A62BB02E92</a:ObjectID>
 <a:Name>BK_CLIENT_PK</a:Name>
 <a:Code>BK_CLIENT_PK</a:Code>
@@ -3520,7 +3548,7 @@ INS COLNCOL {3150ECAE-C4EA-4BB7-81D5-66AEB26D51FA}</a:History>
 </o:Key>
 </c:Keys>
 <c:Indexes>
-<o:Index Id="o32">
+<o:Index Id="o34">
 <a:ObjectID>3356D098-10AC-4401-A46C-5052F87BBDDE</a:ObjectID>
 <a:Name>BK_CLIENT_PK</a:Name>
 <a:Code>BK_CLIENT_PK</a:Code>
@@ -3530,10 +3558,10 @@ INS COLNCOL {3150ECAE-C4EA-4BB7-81D5-66AEB26D51FA}</a:History>
 <a:Modifier>loic</a:Modifier>
 <a:Unique>1</a:Unique>
 <c:LinkedObject>
-<o:Key Ref="o31"/>
+<o:Key Ref="o33"/>
 </c:LinkedObject>
 <c:IndexColumns>
-<o:IndexColumn Id="o33">
+<o:IndexColumn Id="o35">
 <a:ObjectID>8D539A7E-A398-4559-99E7-2004AD5BA703</a:ObjectID>
 <a:CreationDate>1428657023</a:CreationDate>
 <a:Creator>loic</a:Creator>
@@ -3547,7 +3575,7 @@ INS COLNCOL {3150ECAE-C4EA-4BB7-81D5-66AEB26D51FA}</a:History>
 </o:Index>
 </c:Indexes>
 <c:PrimaryKey>
-<o:Key Ref="o31"/>
+<o:Key Ref="o33"/>
 </c:PrimaryKey>
 </o:Table>
 <o:Table Id="o22">
@@ -3562,7 +3590,7 @@ INS COLNCOL {3150ECAE-C4EA-4BB7-81D5-66AEB26D51FA}</a:History>
 DAT 1427981571</a:History>
 <a:TotalSavingCurrency/>
 <c:Columns>
-<o:Column Id="o34">
+<o:Column Id="o36">
 <a:ObjectID>C0335EF0-EE02-41A4-AACC-9C7AEB6D53C8</a:ObjectID>
 <a:Name>Id</a:Name>
 <a:Code>BK_USER__ID</a:Code>
@@ -3575,7 +3603,7 @@ DAT 1427981571</a:History>
 <a:DataType>TID</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o35">
+<o:Column Id="o37">
 <a:ObjectID>42E95E0B-ED5D-4AEF-9A68-287D144AEA92</a:ObjectID>
 <a:Name>Client</a:Name>
 <a:Code>BK_CLIENT__ID</a:Code>
@@ -3588,7 +3616,7 @@ DAT 1428658021
 ATT NAME</a:History>
 <a:DataType>TID</a:DataType>
 </o:Column>
-<o:Column Id="o36">
+<o:Column Id="o38">
 <a:ObjectID>CA4D81ED-291E-419C-973F-4EB6E082DEE8</a:ObjectID>
 <a:Name>Email</a:Name>
 <a:Code>BK_USER__MAIL</a:Code>
@@ -3602,7 +3630,7 @@ DAT 1427981571</a:History>
 <a:Length>500</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o37">
+<o:Column Id="o39">
 <a:ObjectID>141D8A8B-9AB5-472A-85AC-C566807736C8</a:ObjectID>
 <a:Name>Password</a:Name>
 <a:Code>BK_USER__PASSWORD</a:Code>
@@ -3616,7 +3644,7 @@ DAT 1427981571</a:History>
 <a:Length>5000</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o38">
+<o:Column Id="o40">
 <a:ObjectID>DBE1D541-114B-41EE-ABFE-F3FE727FF48D</a:ObjectID>
 <a:Name>Nom complet</a:Name>
 <a:Code>BK_USER__NAME</a:Code>
@@ -3632,7 +3660,7 @@ DAT 1427981571</a:History>
 </o:Column>
 </c:Columns>
 <c:Keys>
-<o:Key Id="o39">
+<o:Key Id="o41">
 <a:ObjectID>8E6F3067-0401-4124-8E1D-B05838A13F96</a:ObjectID>
 <a:Name>BK_USER_PK</a:Name>
 <a:Code>BK_USER_PK</a:Code>
@@ -3643,12 +3671,12 @@ DAT 1427981571</a:History>
 <a:History>ORG {A5452ECC-6A9D-4C18-A371-F9958D8228E1}
 DAT 1427981571</a:History>
 <c:Key.Columns>
-<o:Column Ref="o34"/>
+<o:Column Ref="o36"/>
 </c:Key.Columns>
 </o:Key>
 </c:Keys>
 <c:Indexes>
-<o:Index Id="o40">
+<o:Index Id="o42">
 <a:ObjectID>32468495-5863-4AE3-8C13-4597B662C213</a:ObjectID>
 <a:Name>BK_USER_PK</a:Name>
 <a:Code>BK_USER_PK</a:Code>
@@ -3658,22 +3686,22 @@ DAT 1427981571</a:History>
 <a:Modifier>loic</a:Modifier>
 <a:Unique>1</a:Unique>
 <c:LinkedObject>
-<o:Key Ref="o39"/>
+<o:Key Ref="o41"/>
 </c:LinkedObject>
 <c:IndexColumns>
-<o:IndexColumn Id="o41">
+<o:IndexColumn Id="o43">
 <a:ObjectID>1DE15A62-FCB0-465B-BDD4-041630EACABA</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981571</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Column>
-<o:Column Ref="o34"/>
+<o:Column Ref="o36"/>
 </c:Column>
 </o:IndexColumn>
 </c:IndexColumns>
 </o:Index>
-<o:Index Id="o42">
+<o:Index Id="o44">
 <a:ObjectID>39C90CB5-0BBA-4AB2-9B9C-0743591CA4CC</a:ObjectID>
 <a:Name>ASSOCIATION_5_FK</a:Name>
 <a:Code>ASSOCIATION_5_FK</a:Code>
@@ -3685,21 +3713,21 @@ DAT 1427981571</a:History>
 <o:Reference Ref="o18"/>
 </c:LinkedObject>
 <c:IndexColumns>
-<o:IndexColumn Id="o43">
+<o:IndexColumn Id="o45">
 <a:ObjectID>8E10D3BD-539F-4CA9-BEA5-78259606B380</a:ObjectID>
 <a:CreationDate>1428658021</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1428658024</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Column>
-<o:Column Ref="o35"/>
+<o:Column Ref="o37"/>
 </c:Column>
 </o:IndexColumn>
 </c:IndexColumns>
 </o:Index>
 </c:Indexes>
 <c:PrimaryKey>
-<o:Key Ref="o39"/>
+<o:Key Ref="o41"/>
 </c:PrimaryKey>
 </o:Table>
 <o:Table Id="o23">
@@ -3714,7 +3742,7 @@ DAT 1427981571</a:History>
 DAT 1427981571</a:History>
 <a:TotalSavingCurrency/>
 <c:Columns>
-<o:Column Id="o44">
+<o:Column Id="o46">
 <a:ObjectID>CE990D6D-A1AB-4067-AFAE-BFEB6039F50E</a:ObjectID>
 <a:Name>Id</a:Name>
 <a:Code>BK_STORY__ID</a:Code>
@@ -3727,7 +3755,7 @@ DAT 1427981571</a:History>
 <a:DataType>TID</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o45">
+<o:Column Id="o47">
 <a:ObjectID>6D252ACA-84B8-4A3B-A8C3-ECDEFADAF024</a:ObjectID>
 <a:Name>Utilisateur</a:Name>
 <a:Code>BK_USER__ID</a:Code>
@@ -3741,7 +3769,7 @@ ATT NAME</a:History>
 <a:DataType>TID</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o46">
+<o:Column Id="o48">
 <a:ObjectID>065B6820-AF5D-42F9-ABF0-3D644C65EA15</a:ObjectID>
 <a:Name>Produit</a:Name>
 <a:Code>BK_STORY__PROD</a:Code>
@@ -3755,7 +3783,7 @@ DAT 1427981571</a:History>
 <a:Length>500</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o47">
+<o:Column Id="o49">
 <a:ObjectID>A18C2CCF-8B29-46AC-83C8-877200DD4AFE</a:ObjectID>
 <a:Name>Application</a:Name>
 <a:Code>BK_STORY__APP</a:Code>
@@ -3769,7 +3797,7 @@ DAT 1427981571</a:History>
 <a:Length>500</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o48">
+<o:Column Id="o50">
 <a:ObjectID>3E269B1A-DF6D-4DD7-BA10-07BF0BBEAFAF</a:ObjectID>
 <a:Name>Sévérité</a:Name>
 <a:Code>BK_STORY__SEV</a:Code>
@@ -3783,7 +3811,7 @@ DAT 1427981571</a:History>
 <a:Length>100</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o49">
+<o:Column Id="o51">
 <a:ObjectID>745B1EF7-5D0F-42B7-9DA0-081612E87BD5</a:ObjectID>
 <a:Name>Priorité</a:Name>
 <a:Code>BK_STORY__PRIO</a:Code>
@@ -3797,7 +3825,7 @@ DAT 1427981571</a:History>
 <a:Length>100</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o50">
+<o:Column Id="o52">
 <a:ObjectID>AA4766CE-96F9-4A7A-AABB-AD8FF94753D4</a:ObjectID>
 <a:Name>Reproductible</a:Name>
 <a:Code>BK_STORY__REPRO</a:Code>
@@ -3811,7 +3839,7 @@ DAT 1427981571</a:History>
 <a:Length>100</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o51">
+<o:Column Id="o53">
 <a:ObjectID>94D31BE7-7FE8-4C54-AA84-CCE71738712E</a:ObjectID>
 <a:Name>Date création</a:Name>
 <a:Code>BK_STORY__DC</a:Code>
@@ -3824,7 +3852,7 @@ DAT 1428516398</a:History>
 <a:DataType>TDATEHEURE</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o52">
+<o:Column Id="o54">
 <a:ObjectID>71DBF0D1-E4C5-4074-B2A8-FB72B5DBC2BC</a:ObjectID>
 <a:Name>Titre</a:Name>
 <a:Code>BK_STORY__TITLE</a:Code>
@@ -3840,7 +3868,7 @@ DAT 1428516664</a:History>
 </o:Column>
 </c:Columns>
 <c:Keys>
-<o:Key Id="o53">
+<o:Key Id="o55">
 <a:ObjectID>A337E617-6AB8-4E3E-B3AC-DBA20ADFF804</a:ObjectID>
 <a:Name>BK_STORY_PK</a:Name>
 <a:Code>BK_STORY_PK</a:Code>
@@ -3851,12 +3879,12 @@ DAT 1428516664</a:History>
 <a:History>ORG {388ECCA6-6C45-4666-BA15-A4FE1E737CC2}
 DAT 1427981571</a:History>
 <c:Key.Columns>
-<o:Column Ref="o44"/>
+<o:Column Ref="o46"/>
 </c:Key.Columns>
 </o:Key>
 </c:Keys>
 <c:Indexes>
-<o:Index Id="o54">
+<o:Index Id="o56">
 <a:ObjectID>BB4E781D-5A54-4A62-9126-5F585C00C206</a:ObjectID>
 <a:Name>BK_STORY_PK</a:Name>
 <a:Code>BK_STORY_PK</a:Code>
@@ -3866,22 +3894,22 @@ DAT 1427981571</a:History>
 <a:Modifier>loic</a:Modifier>
 <a:Unique>1</a:Unique>
 <c:LinkedObject>
-<o:Key Ref="o53"/>
+<o:Key Ref="o55"/>
 </c:LinkedObject>
 <c:IndexColumns>
-<o:IndexColumn Id="o55">
+<o:IndexColumn Id="o57">
 <a:ObjectID>BB375506-B151-4839-95F4-06E13F2AF513</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981571</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Column>
-<o:Column Ref="o44"/>
+<o:Column Ref="o46"/>
 </c:Column>
 </o:IndexColumn>
 </c:IndexColumns>
 </o:Index>
-<o:Index Id="o56">
+<o:Index Id="o58">
 <a:ObjectID>B3DB6061-854D-4151-BF56-475A3731585E</a:ObjectID>
 <a:Name>BK_USER__BK_STORY__FK_FK</a:Name>
 <a:Code>BK_USER__BK_STORY__FK_FK</a:Code>
@@ -3893,21 +3921,21 @@ DAT 1427981571</a:History>
 <o:Reference Ref="o10"/>
 </c:LinkedObject>
 <c:IndexColumns>
-<o:IndexColumn Id="o57">
+<o:IndexColumn Id="o59">
 <a:ObjectID>AAD99083-4409-412E-B5EE-076B0D8C5235</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981571</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Column>
-<o:Column Ref="o45"/>
+<o:Column Ref="o47"/>
 </c:Column>
 </o:IndexColumn>
 </c:IndexColumns>
 </o:Index>
 </c:Indexes>
 <c:PrimaryKey>
-<o:Key Ref="o53"/>
+<o:Key Ref="o55"/>
 </c:PrimaryKey>
 </o:Table>
 <o:Table Id="o24">
@@ -3922,7 +3950,7 @@ DAT 1427981571</a:History>
 DAT 1427981571</a:History>
 <a:TotalSavingCurrency/>
 <c:Columns>
-<o:Column Id="o58">
+<o:Column Id="o60">
 <a:ObjectID>2D0CBE36-7ED0-4569-9D53-723BC53111FB</a:ObjectID>
 <a:Name>ID</a:Name>
 <a:Code>BK_POST__ID</a:Code>
@@ -3935,7 +3963,7 @@ DAT 1427981571</a:History>
 <a:DataType>TID</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o59">
+<o:Column Id="o61">
 <a:ObjectID>3BF7661A-19D1-4249-93FF-05130CAB9851</a:ObjectID>
 <a:Name>Utilisateur</a:Name>
 <a:Code>BK_USER__ID</a:Code>
@@ -3949,7 +3977,7 @@ ATT NAME</a:History>
 <a:DataType>TID</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o60">
+<o:Column Id="o62">
 <a:ObjectID>2843117D-6379-442B-89CC-BB68FE836323</a:ObjectID>
 <a:Name>Rapport</a:Name>
 <a:Code>BK_STORY__ID</a:Code>
@@ -3963,7 +3991,7 @@ ATT NAME</a:History>
 <a:DataType>TID</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o61">
+<o:Column Id="o63">
 <a:ObjectID>D6EC532F-9DC2-41C1-9084-B190C8515339</a:ObjectID>
 <a:Name>Contenu</a:Name>
 <a:Code>BK_POST__CONTENT</a:Code>
@@ -3976,7 +4004,7 @@ DAT 1427981571</a:History>
 <a:DataType>TTEXT</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o62">
+<o:Column Id="o64">
 <a:ObjectID>96298EAC-69BF-4495-8A45-4C5B26BFE430</a:ObjectID>
 <a:Name>Date création</a:Name>
 <a:Code>BK_POST__DC</a:Code>
@@ -3989,7 +4017,7 @@ DAT 1427981571</a:History>
 <a:DataType>TDATEHEURE</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o63">
+<o:Column Id="o65">
 <a:ObjectID>839BBEA1-5F76-4F02-AA48-0BF078AB065F</a:ObjectID>
 <a:Name>Etat</a:Name>
 <a:Code>BK_POST__STATE</a:Code>
@@ -4005,7 +4033,7 @@ DAT 1427981571</a:History>
 </o:Column>
 </c:Columns>
 <c:Keys>
-<o:Key Id="o64">
+<o:Key Id="o66">
 <a:ObjectID>BB7AF51D-233B-4E4A-AFD8-AF940B642CA7</a:ObjectID>
 <a:Name>BK_POST_PK</a:Name>
 <a:Code>BK_POST_PK</a:Code>
@@ -4016,12 +4044,12 @@ DAT 1427981571</a:History>
 <a:History>ORG {6652CEA7-989B-470A-B30A-F1869D256FD9}
 DAT 1427981571</a:History>
 <c:Key.Columns>
-<o:Column Ref="o58"/>
+<o:Column Ref="o60"/>
 </c:Key.Columns>
 </o:Key>
 </c:Keys>
 <c:Indexes>
-<o:Index Id="o65">
+<o:Index Id="o67">
 <a:ObjectID>3F68248F-AE09-4F6F-B857-DA3B117B5515</a:ObjectID>
 <a:Name>BK_POST_PK</a:Name>
 <a:Code>BK_POST_PK</a:Code>
@@ -4031,35 +4059,11 @@ DAT 1427981571</a:History>
 <a:Modifier>loic</a:Modifier>
 <a:Unique>1</a:Unique>
 <c:LinkedObject>
-<o:Key Ref="o64"/>
-</c:LinkedObject>
-<c:IndexColumns>
-<o:IndexColumn Id="o66">
-<a:ObjectID>90618F7F-5BA4-4534-B10E-FB49695F9728</a:ObjectID>
-<a:CreationDate>1427981571</a:CreationDate>
-<a:Creator>loic</a:Creator>
-<a:ModificationDate>1427981571</a:ModificationDate>
-<a:Modifier>loic</a:Modifier>
-<c:Column>
-<o:Column Ref="o58"/>
-</c:Column>
-</o:IndexColumn>
-</c:IndexColumns>
-</o:Index>
-<o:Index Id="o67">
-<a:ObjectID>9F7E391B-F1C5-4234-815A-671A6A039E39</a:ObjectID>
-<a:Name>BK_STORY__BK_POST__FK_FK</a:Name>
-<a:Code>BK_STORY__BK_POST__FK_FK</a:Code>
-<a:CreationDate>1427981571</a:CreationDate>
-<a:Creator>loic</a:Creator>
-<a:ModificationDate>1427981571</a:ModificationDate>
-<a:Modifier>loic</a:Modifier>
-<c:LinkedObject>
-<o:Reference Ref="o13"/>
+<o:Key Ref="o66"/>
 </c:LinkedObject>
 <c:IndexColumns>
 <o:IndexColumn Id="o68">
-<a:ObjectID>0B486DDA-B28B-4166-9EFE-8E0292FE127F</a:ObjectID>
+<a:ObjectID>90618F7F-5BA4-4534-B10E-FB49695F9728</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981571</a:ModificationDate>
@@ -4071,6 +4075,30 @@ DAT 1427981571</a:History>
 </c:IndexColumns>
 </o:Index>
 <o:Index Id="o69">
+<a:ObjectID>9F7E391B-F1C5-4234-815A-671A6A039E39</a:ObjectID>
+<a:Name>BK_STORY__BK_POST__FK_FK</a:Name>
+<a:Code>BK_STORY__BK_POST__FK_FK</a:Code>
+<a:CreationDate>1427981571</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1427981571</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<c:LinkedObject>
+<o:Reference Ref="o13"/>
+</c:LinkedObject>
+<c:IndexColumns>
+<o:IndexColumn Id="o70">
+<a:ObjectID>0B486DDA-B28B-4166-9EFE-8E0292FE127F</a:ObjectID>
+<a:CreationDate>1427981571</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1427981571</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<c:Column>
+<o:Column Ref="o62"/>
+</c:Column>
+</o:IndexColumn>
+</c:IndexColumns>
+</o:Index>
+<o:Index Id="o71">
 <a:ObjectID>4E2A4BE5-5E20-4736-AEBC-2A704A607E0B</a:ObjectID>
 <a:Name>BK_USER__BK_POST__FK_FK</a:Name>
 <a:Code>BK_USER__BK_POST__FK_FK</a:Code>
@@ -4082,21 +4110,21 @@ DAT 1427981571</a:History>
 <o:Reference Ref="o15"/>
 </c:LinkedObject>
 <c:IndexColumns>
-<o:IndexColumn Id="o70">
+<o:IndexColumn Id="o72">
 <a:ObjectID>5ECF96AD-3505-4A82-A5A3-A6013F3B12D0</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981571</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Column>
-<o:Column Ref="o59"/>
+<o:Column Ref="o61"/>
 </c:Column>
 </o:IndexColumn>
 </c:IndexColumns>
 </o:Index>
 </c:Indexes>
 <c:PrimaryKey>
-<o:Key Ref="o64"/>
+<o:Key Ref="o66"/>
 </c:PrimaryKey>
 </o:Table>
 <o:Table Id="o25">
@@ -4111,7 +4139,7 @@ DAT 1427981571</a:History>
 DAT 1427981571</a:History>
 <a:TotalSavingCurrency/>
 <c:Columns>
-<o:Column Id="o71">
+<o:Column Id="o73">
 <a:ObjectID>BC917A20-E8F4-48DC-AE18-A04F5C9808D9</a:ObjectID>
 <a:Name>Id</a:Name>
 <a:Code>BK_FIO__ID</a:Code>
@@ -4124,7 +4152,7 @@ DAT 1427981571</a:History>
 <a:DataType>TID</a:DataType>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o72">
+<o:Column Id="o74">
 <a:ObjectID>9DEF2729-DFAB-411D-870C-CBFDC9478417</a:ObjectID>
 <a:Name>Rapport</a:Name>
 <a:Code>BK_STORY__ID</a:Code>
@@ -4137,7 +4165,7 @@ DAT 1428678479
 ATT NAME</a:History>
 <a:DataType>TID</a:DataType>
 </o:Column>
-<o:Column Id="o73">
+<o:Column Id="o75">
 <a:ObjectID>A33336D3-29FD-4DD1-8BD3-08CCA6B66F03</a:ObjectID>
 <a:Name>Nom</a:Name>
 <a:Code>BK_FIO__NAME</a:Code>
@@ -4151,7 +4179,7 @@ DAT 1427981571</a:History>
 <a:Length>500</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o74">
+<o:Column Id="o76">
 <a:ObjectID>74ED3318-A1C5-47C9-8D67-00A25D2DC94F</a:ObjectID>
 <a:Name>Extension</a:Name>
 <a:Code>BK_FIO__EXT</a:Code>
@@ -4165,7 +4193,7 @@ DAT 1427981571</a:History>
 <a:Length>10</a:Length>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
-<o:Column Id="o75">
+<o:Column Id="o77">
 <a:ObjectID>6BC88539-1013-4C26-BADD-30BE086CF558</a:ObjectID>
 <a:Name>Contenu</a:Name>
 <a:Code>BK_FIO__CONTENT</a:Code>
@@ -4180,7 +4208,7 @@ DAT 1427981571</a:History>
 </o:Column>
 </c:Columns>
 <c:Keys>
-<o:Key Id="o76">
+<o:Key Id="o78">
 <a:ObjectID>7AFD1FAE-E58B-43C5-A391-C6F6723752FF</a:ObjectID>
 <a:Name>BK_FIO_PK</a:Name>
 <a:Code>BK_FIO_PK</a:Code>
@@ -4191,12 +4219,12 @@ DAT 1427981571</a:History>
 <a:History>ORG {4241C253-A11E-4405-969C-8BDC4144BB22}
 DAT 1427981571</a:History>
 <c:Key.Columns>
-<o:Column Ref="o71"/>
+<o:Column Ref="o73"/>
 </c:Key.Columns>
 </o:Key>
 </c:Keys>
 <c:Indexes>
-<o:Index Id="o77">
+<o:Index Id="o79">
 <a:ObjectID>E98E3F44-CE04-4EC1-BC3B-51D11DE3F2ED</a:ObjectID>
 <a:Name>BK_FIO_PK</a:Name>
 <a:Code>BK_FIO_PK</a:Code>
@@ -4206,22 +4234,22 @@ DAT 1427981571</a:History>
 <a:Modifier>loic</a:Modifier>
 <a:Unique>1</a:Unique>
 <c:LinkedObject>
-<o:Key Ref="o76"/>
+<o:Key Ref="o78"/>
 </c:LinkedObject>
 <c:IndexColumns>
-<o:IndexColumn Id="o78">
+<o:IndexColumn Id="o80">
 <a:ObjectID>5BFF584F-13C4-4F2E-83FF-F1239E3EE906</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981571</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Column>
-<o:Column Ref="o71"/>
+<o:Column Ref="o73"/>
 </c:Column>
 </o:IndexColumn>
 </c:IndexColumns>
 </o:Index>
-<o:Index Id="o79">
+<o:Index Id="o81">
 <a:ObjectID>27BC448A-22AB-423F-A89D-7BB17D38C8A9</a:ObjectID>
 <a:Name>BK_FIO__BK_STORY_FK_FK</a:Name>
 <a:Code>BK_FIO__BK_STORY_FK_FK</a:Code>
@@ -4233,21 +4261,21 @@ DAT 1427981571</a:History>
 <o:Reference Ref="o21"/>
 </c:LinkedObject>
 <c:IndexColumns>
-<o:IndexColumn Id="o80">
+<o:IndexColumn Id="o82">
 <a:ObjectID>123AE692-1CCC-4E68-8F1B-0F670BA9E6E4</a:ObjectID>
 <a:CreationDate>1428678479</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1428678482</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Column>
-<o:Column Ref="o72"/>
+<o:Column Ref="o74"/>
 </c:Column>
 </o:IndexColumn>
 </c:IndexColumns>
 </o:Index>
 </c:Indexes>
 <c:PrimaryKey>
-<o:Key Ref="o76"/>
+<o:Key Ref="o78"/>
 </c:PrimaryKey>
 </o:Table>
 </c:Tables>
@@ -4362,7 +4390,7 @@ from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in (&#39;open&#
 from bk.bk_story</a:TaggedSQLQuery>
 <a:UserDefinedSQL>1</a:UserDefinedSQL>
 <c:Columns>
-<o:ViewColumn Id="o81">
+<o:ViewColumn Id="o83">
 <a:ObjectID>8759BF5D-C035-46A1-81A2-2DFBDC69E47F</a:ObjectID>
 <a:Name>ID</a:Name>
 <a:Code>ID</a:Code>
@@ -4373,7 +4401,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:DataType>TID</a:DataType>
 <a:CustomDataType>TID</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o82">
+<o:ViewColumn Id="o84">
 <a:ObjectID>79D102DD-E2F9-4967-AFA4-93FFDE8F434D</a:ObjectID>
 <a:Name>BK_USER__ID</a:Name>
 <a:Code>BK_USER__ID</a:Code>
@@ -4384,7 +4412,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:DataType>TID</a:DataType>
 <a:CustomDataType>TID</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o83">
+<o:ViewColumn Id="o85">
 <a:ObjectID>EA7BA23D-EDB4-44BC-BF67-46A1303FAC84</a:ObjectID>
 <a:Name>BK_STORY__PROD</a:Name>
 <a:Code>BK_STORY__PROD</a:Code>
@@ -4396,7 +4424,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>500</a:Length>
 <a:CustomDataType>VARCHAR2(500)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o84">
+<o:ViewColumn Id="o86">
 <a:ObjectID>B9EB2696-315C-44D1-9F0A-E3C7EDFBFC4D</a:ObjectID>
 <a:Name>BK_STORY__APP</a:Name>
 <a:Code>BK_STORY__APP</a:Code>
@@ -4408,7 +4436,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>500</a:Length>
 <a:CustomDataType>VARCHAR2(500)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o85">
+<o:ViewColumn Id="o87">
 <a:ObjectID>6A07E7A2-1C34-4AA0-9695-7F1FB00FA676</a:ObjectID>
 <a:Name>BK_STORY__SEV</a:Name>
 <a:Code>BK_STORY__SEV</a:Code>
@@ -4420,7 +4448,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>100</a:Length>
 <a:CustomDataType>VARCHAR2(100)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o86">
+<o:ViewColumn Id="o88">
 <a:ObjectID>8544CFE5-785D-49AC-AEC3-8BF3C6991862</a:ObjectID>
 <a:Name>BK_STORY__PRIO</a:Name>
 <a:Code>BK_STORY__PRIO</a:Code>
@@ -4432,7 +4460,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>100</a:Length>
 <a:CustomDataType>VARCHAR2(100)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o87">
+<o:ViewColumn Id="o89">
 <a:ObjectID>378E76E7-3E80-44FA-9C42-77A7D6736B44</a:ObjectID>
 <a:Name>BK_STORY__REPRO</a:Name>
 <a:Code>BK_STORY__REPRO</a:Code>
@@ -4444,7 +4472,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>100</a:Length>
 <a:CustomDataType>VARCHAR2(100)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o88">
+<o:ViewColumn Id="o90">
 <a:ObjectID>DB2D8474-0FDC-4D1D-A0D4-B55F162031F7</a:ObjectID>
 <a:Name>BK_STORY__DC</a:Name>
 <a:Code>BK_STORY__DC</a:Code>
@@ -4455,7 +4483,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:DataType>TDATEHEURE</a:DataType>
 <a:CustomDataType>TDATEHEURE</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o89">
+<o:ViewColumn Id="o91">
 <a:ObjectID>BD333C96-76A6-46EF-9303-A0B9947C6873</a:ObjectID>
 <a:Name>BK_STORY__TITLE</a:Name>
 <a:Code>BK_STORY__TITLE</a:Code>
@@ -4467,7 +4495,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>500</a:Length>
 <a:CustomDataType>VARCHAR2(500)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o90">
+<o:ViewColumn Id="o92">
 <a:ObjectID>DF48E535-F0A6-4202-9384-E0EF191A0196</a:ObjectID>
 <a:Name>BK_POST__STATE</a:Name>
 <a:Code>BK_POST__STATE</a:Code>
@@ -4479,7 +4507,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>50</a:Length>
 <a:CustomDataType>VARCHAR2(50</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o91">
+<o:ViewColumn Id="o93">
 <a:ObjectID>63803040-4867-4D07-87B3-5C5C2BD32CEE</a:ObjectID>
 <a:Name>BK_POST__DC</a:Name>
 <a:Code>BK_POST__DC</a:Code>
@@ -4490,7 +4518,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:DataType>TDATEHEURE</a:DataType>
 <a:CustomDataType>TDATEHEURE</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o92">
+<o:ViewColumn Id="o94">
 <a:ObjectID>B01061E2-559E-46F3-91DF-ED49C8B503A8</a:ObjectID>
 <a:Name>BK_POST__COUNT</a:Name>
 <a:Code>BK_POST__COUNT</a:Code>
@@ -4502,7 +4530,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>6</a:Length>
 <a:CustomDataType>NUMBER(6)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o93">
+<o:ViewColumn Id="o95">
 <a:ObjectID>F6F4DE7D-A4FD-4D3C-B20D-D12088FDB9DE</a:ObjectID>
 <a:Name>BK_FIO__COUNT</a:Name>
 <a:Code>BK_FIO__COUNT</a:Code>
@@ -4514,7 +4542,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>6</a:Length>
 <a:CustomDataType>NUMBER(6)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o94">
+<o:ViewColumn Id="o96">
 <a:ObjectID>06212C41-2AA1-4C7E-9F89-6F69E1843745</a:ObjectID>
 <a:Name>BK_USER__NAME</a:Name>
 <a:Code>BK_USER__NAME</a:Code>
@@ -4526,7 +4554,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>500</a:Length>
 <a:CustomDataType>VARCHAR2(500)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o95">
+<o:ViewColumn Id="o97">
 <a:ObjectID>2894B98B-B6B0-49A4-A204-9AD95E2E8788</a:ObjectID>
 <a:Name>BK_CLIENT__NAME</a:Name>
 <a:Code>BK_CLIENT__NAME</a:Code>
@@ -4538,7 +4566,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>500</a:Length>
 <a:CustomDataType>VARCHAR2(500)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o96">
+<o:ViewColumn Id="o98">
 <a:ObjectID>90ACA9E7-246E-4DA8-B36E-7E1E5904A237</a:ObjectID>
 <a:Name>RESOLVE_DELAY</a:Name>
 <a:Code>RESOLVE_DELAY</a:Code>
@@ -4550,7 +4578,7 @@ from bk.bk_story</a:TaggedSQLQuery>
 <a:Length>9</a:Length>
 <a:CustomDataType>NUMBER(9)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o97">
+<o:ViewColumn Id="o99">
 <a:ObjectID>40A1F4AB-CC6E-4865-A759-F45FDBCCC74C</a:ObjectID>
 <a:Name>REPLY_DELAY</a:Name>
 <a:Code>REPLY_DELAY</a:Code>
@@ -4586,10 +4614,10 @@ DAT 1428658021</a:History>
 <o:Table Ref="o22"/>
 </c:ChildTable>
 <c:ParentKey>
-<o:Key Ref="o31"/>
+<o:Key Ref="o33"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o98">
+<o:ReferenceJoin Id="o100">
 <a:ObjectID>450B34F7-BFE8-4170-8435-62E44E9CDCA4</a:ObjectID>
 <a:CreationDate>1428658021</a:CreationDate>
 <a:Creator>loic</a:Creator>
@@ -4599,7 +4627,7 @@ DAT 1428658021</a:History>
 <o:Column Ref="o29"/>
 </c:Object1>
 <c:Object2>
-<o:Column Ref="o35"/>
+<o:Column Ref="o37"/>
 </c:Object2>
 </o:ReferenceJoin>
 </c:Joins>
@@ -4624,20 +4652,20 @@ DAT 1428678478</a:History>
 <o:Table Ref="o25"/>
 </c:ChildTable>
 <c:ParentKey>
-<o:Key Ref="o53"/>
+<o:Key Ref="o55"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o99">
+<o:ReferenceJoin Id="o101">
 <a:ObjectID>A942C253-9168-484F-A97E-423CEDC8D172</a:ObjectID>
 <a:CreationDate>1428678478</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1428678482</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Object1>
-<o:Column Ref="o44"/>
+<o:Column Ref="o46"/>
 </c:Object1>
 <c:Object2>
-<o:Column Ref="o72"/>
+<o:Column Ref="o74"/>
 </c:Object2>
 </o:ReferenceJoin>
 </c:Joins>
@@ -4662,20 +4690,20 @@ DAT 1427981571</a:History>
 <o:Table Ref="o23"/>
 </c:ChildTable>
 <c:ParentKey>
-<o:Key Ref="o39"/>
+<o:Key Ref="o41"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o100">
+<o:ReferenceJoin Id="o102">
 <a:ObjectID>65F25B3A-1C8E-414C-BDBF-3C2B22F47DC1</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981571</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Object1>
-<o:Column Ref="o34"/>
+<o:Column Ref="o36"/>
 </c:Object1>
 <c:Object2>
-<o:Column Ref="o45"/>
+<o:Column Ref="o47"/>
 </c:Object2>
 </o:ReferenceJoin>
 </c:Joins>
@@ -4700,20 +4728,20 @@ DAT 1427981571</a:History>
 <o:Table Ref="o24"/>
 </c:ChildTable>
 <c:ParentKey>
-<o:Key Ref="o53"/>
+<o:Key Ref="o55"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o101">
+<o:ReferenceJoin Id="o103">
 <a:ObjectID>D999E410-6E76-4239-8E55-0C793DA71BB8</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981571</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Object1>
-<o:Column Ref="o44"/>
+<o:Column Ref="o46"/>
 </c:Object1>
 <c:Object2>
-<o:Column Ref="o60"/>
+<o:Column Ref="o62"/>
 </c:Object2>
 </o:ReferenceJoin>
 </c:Joins>
@@ -4738,27 +4766,27 @@ DAT 1427981571</a:History>
 <o:Table Ref="o24"/>
 </c:ChildTable>
 <c:ParentKey>
-<o:Key Ref="o39"/>
+<o:Key Ref="o41"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o102">
+<o:ReferenceJoin Id="o104">
 <a:ObjectID>6640B3C5-BCC0-41A8-B002-3732FABC50BE</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981571</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Object1>
-<o:Column Ref="o34"/>
+<o:Column Ref="o36"/>
 </c:Object1>
 <c:Object2>
-<o:Column Ref="o59"/>
+<o:Column Ref="o61"/>
 </c:Object2>
 </o:ReferenceJoin>
 </c:Joins>
 </o:Reference>
 </c:References>
 <c:DefaultGroups>
-<o:Group Id="o103">
+<o:Group Id="o105">
 <a:ObjectID>DF993D8A-4D2E-4CFA-88C8-D9083EBF6C6C</a:ObjectID>
 <a:Name>PUBLIC</a:Name>
 <a:Code>PUBLIC</a:Code>
@@ -4769,7 +4797,7 @@ DAT 1427981571</a:History>
 </o:Group>
 </c:DefaultGroups>
 <c:TargetModels>
-<o:TargetModel Id="o104">
+<o:TargetModel Id="o106">
 <a:ObjectID>55F08E46-A042-48E4-AD20-6C80DD5664C9</a:ObjectID>
 <a:Name>ORACLE Version 11g</a:Name>
 <a:Code>ORA11GR1</a:Code>
@@ -4784,22 +4812,7 @@ DAT 1427981571</a:History>
 <o:Shortcut Ref="o5"/>
 </c:SessionShortcuts>
 </o:TargetModel>
-<o:TargetModel Id="o105">
-<a:ObjectID>BB4C499A-2FA0-43DF-8A9D-9DD653D10548</a:ObjectID>
-<a:Name>BugKiller</a:Name>
-<a:Code>BK</a:Code>
-<a:CreationDate>1427981571</a:CreationDate>
-<a:Creator>loic</a:Creator>
-<a:ModificationDate>1428938262</a:ModificationDate>
-<a:Modifier>loic</a:Modifier>
-<a:TargetModelURL>file:///C|/Users/loic/Documents/GIT/BugKiller/Documents/Modelisation/BugKiller.mcd</a:TargetModelURL>
-<a:TargetModelID>D9DAF6BB-4C58-4DD8-9DE8-C9D9D93B8F55</a:TargetModelID>
-<a:TargetModelClassID>1E597170-9350-11D1-AB3C-0020AF71E433</a:TargetModelClassID>
-<c:SessionShortcuts>
-<o:Shortcut Ref="o4"/>
-</c:SessionShortcuts>
-</o:TargetModel>
-<o:TargetModel Id="o106">
+<o:TargetModel Id="o107">
 <a:ObjectID>664A1844-DC2C-4BCF-9211-D70630A2500B</a:ObjectID>
 <a:Name>BugKiller2</a:Name>
 <a:Code>BK2</a:Code>
@@ -4812,6 +4825,21 @@ DAT 1427981571</a:History>
 <a:TargetModelClassID>CDE44E21-9669-11D1-9914-006097355D9B</a:TargetModelClassID>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o3"/>
+</c:SessionShortcuts>
+</o:TargetModel>
+<o:TargetModel Id="o108">
+<a:ObjectID>17EA4EA7-EF6D-4B0E-B41B-B6EE55F0FE83</a:ObjectID>
+<a:Name>BugKiller</a:Name>
+<a:Code>BK</a:Code>
+<a:CreationDate>1429105532</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1429105532</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<a:TargetModelURL>file:///C|/Users/loic/Documents/GitHub/BugKiller/BugKiller/Documents/Modelisation/BugKiller.mcd</a:TargetModelURL>
+<a:TargetModelID>D9DAF6BB-4C58-4DD8-9DE8-C9D9D93B8F55</a:TargetModelID>
+<a:TargetModelClassID>1E597170-9350-11D1-AB3C-0020AF71E433</a:TargetModelClassID>
+<c:SessionShortcuts>
+<o:Shortcut Ref="o4"/>
 </c:SessionShortcuts>
 </o:TargetModel>
 </c:TargetModels>

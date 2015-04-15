@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{D9DAF6BB-4C58-4DD8-9DE8-C9D9D93B8F55}" Label="" LastModificationDate="1428938451" Name="BugKiller" Objects="81" Symbols="20" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{D9DAF6BB-4C58-4DD8-9DE8-C9D9D93B8F55}" Label="" LastModificationDate="1429105436" Name="BugKiller" Objects="85" Symbols="20" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,7 +12,7 @@
 <a:Code>BK</a:Code>
 <a:CreationDate>1427979700</a:CreationDate>
 <a:Creator>loic</a:Creator>
-<a:ModificationDate>1428938384</a:ModificationDate>
+<a:ModificationDate>1429105436</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <a:PackageOptionsText>[FolderOptions]
 
@@ -1206,7 +1206,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:AssociationLinkSymbol Id="o10">
 <a:CreationDate>1427980208</a:CreationDate>
 <a:ModificationDate>1427981540</a:ModificationDate>
-<a:Rect>((-23105,21446), (-21281,31516))</a:Rect>
+<a:Rect>((-23143,21446), (-21281,31516))</a:Rect>
 <a:ListOfPoints>((-21381,21446),(-21381,31516))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
@@ -1227,7 +1227,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:AssociationLinkSymbol Id="o13">
 <a:CreationDate>1427980275</a:CreationDate>
 <a:ModificationDate>1427981515</a:ModificationDate>
-<a:Rect>((3394,11497), (5218,20200))</a:Rect>
+<a:Rect>((3356,11497), (5218,20200))</a:Rect>
 <a:ListOfPoints>((5118,11497),(5118,20200))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
@@ -1248,7 +1248,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:AssociationLinkSymbol Id="o17">
 <a:CreationDate>1427980275</a:CreationDate>
 <a:ModificationDate>1427981551</a:ModificationDate>
-<a:Rect>((5118,20200), (6842,31516))</a:Rect>
+<a:Rect>((5080,20200), (6880,31516))</a:Rect>
 <a:ListOfPoints>((5118,31516),(5118,20200))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
@@ -1269,7 +1269,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:AssociationLinkSymbol Id="o19">
 <a:CreationDate>1427980286</a:CreationDate>
 <a:ModificationDate>1427981533</a:ModificationDate>
-<a:Rect>((-21381,11375), (-19657,21446))</a:Rect>
+<a:Rect>((-21419,11375), (-19619,21446))</a:Rect>
 <a:ListOfPoints>((-21381,21446),(-21381,11375))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
@@ -1332,8 +1332,8 @@ CARD 0 Arial,8,N</a:FontList>
 <o:AssociationLinkSymbol Id="o27">
 <a:CreationDate>1428658002</a:CreationDate>
 <a:ModificationDate>1428658009</a:ModificationDate>
-<a:Rect>((-46950,22206), (-46857,36982))</a:Rect>
-<a:ListOfPoints>((-46857,36982),(-46857,27201),(-46950,27201),(-46950,22206))</a:ListOfPoints>
+<a:Rect>((-47572,22206), (-45598,37206))</a:Rect>
+<a:ListOfPoints>((-47572,37206),(-47246,27201),(-46950,27201),(-46950,22206))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1540,7 +1540,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:CreationDate>1428656828</a:CreationDate>
 <a:ModificationDate>1428658009</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((-52930,34034), (-37070,38827))</a:Rect>
+<a:Rect>((-55981,33060), (-34019,39801))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1938,7 +1938,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>BK_CLIENT</a:Code>
 <a:CreationDate>1428656828</a:CreationDate>
 <a:Creator>loic</a:Creator>
-<a:ModificationDate>1428658123</a:ModificationDate>
+<a:ModificationDate>1429105436</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <c:Identifiers>
 <o:Identifier Id="o90">
@@ -1978,6 +1978,28 @@ LABL 0 Arial,8,N</a:FontList>
 <a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
 <c:DataItem>
 <o:DataItem Ref="o94"/>
+</c:DataItem>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o95">
+<a:ObjectID>C70F55FE-717C-45EF-BD56-53DBD48359FB</a:ObjectID>
+<a:CreationDate>1429105377</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1429105436</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
+<c:DataItem>
+<o:DataItem Ref="o96"/>
+</c:DataItem>
+</o:EntityAttribute>
+<o:EntityAttribute Id="o97">
+<a:ObjectID>3B7E13EB-5FDE-4DFE-85AD-21C84BB500DC</a:ObjectID>
+<a:CreationDate>1429105377</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1429105436</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<a:BaseAttribute.Mandatory>1</a:BaseAttribute.Mandatory>
+<c:DataItem>
+<o:DataItem Ref="o98"/>
 </c:DataItem>
 </o:EntityAttribute>
 </c:Attributes>
@@ -2026,7 +2048,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Modifier>Champ</a:Modifier>
 <a:DataType>TID</a:DataType>
 </o:DataItem>
-<o:DataItem Id="o95">
+<o:DataItem Id="o99">
 <a:ObjectID>7F1F3EF5-1734-4EBD-8462-25B0D8C4B942</a:ObjectID>
 <a:Name>Contenu</a:Name>
 <a:Code>BK_STORY__CONTENT</a:Code>
@@ -2227,7 +2249,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:DataType>VA200</a:DataType>
 <a:Length>200</a:Length>
 </o:DataItem>
-<o:DataItem Id="o96">
+<o:DataItem Id="o100">
 <a:ObjectID>4375AF23-7136-4D9B-BD2B-03BFDA1B01CE</a:ObjectID>
 <a:Name>Logo</a:Name>
 <a:Code>BK_CLIENT__LOGO</a:Code>
@@ -2237,7 +2259,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Modifier>loic</a:Modifier>
 <a:DataType>TIMAGE</a:DataType>
 </o:DataItem>
-<o:DataItem Id="o97">
+<o:DataItem Id="o101">
 <a:ObjectID>EB43676A-6506-44C9-8F7A-2433C5BE1A14</a:ObjectID>
 <a:Name>Id</a:Name>
 <a:Code>BK_CLIENT_PROJET__ID</a:Code>
@@ -2247,7 +2269,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Modifier>loic</a:Modifier>
 <a:DataType>TID</a:DataType>
 </o:DataItem>
-<o:DataItem Id="o98">
+<o:DataItem Id="o102">
 <a:ObjectID>B570EDB3-0A2A-41B8-9C57-3EB9662D6F7C</a:ObjectID>
 <a:Name>Nom projet</a:Name>
 <a:Code>BK_CLIENT_PROJET__PROJNAME</a:Code>
@@ -2258,7 +2280,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:DataType>VA200</a:DataType>
 <a:Length>200</a:Length>
 </o:DataItem>
-<o:DataItem Id="o99">
+<o:DataItem Id="o103">
 <a:ObjectID>68E6F982-A6A0-40E4-9986-0863FCC52985</a:ObjectID>
 <a:Name>Id</a:Name>
 <a:Code>BK_CLIENT_USER__ID</a:Code>
@@ -2268,7 +2290,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Modifier>loic</a:Modifier>
 <a:DataType>NO</a:DataType>
 </o:DataItem>
-<o:DataItem Id="o100">
+<o:DataItem Id="o104">
 <a:ObjectID>98B4242A-DDEC-4D40-A4BE-8E83453B6121</a:ObjectID>
 <a:Name>ss</a:Name>
 <a:Code>BK_FIO__SS</a:Code>
@@ -2278,6 +2300,28 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Modifier>loic</a:Modifier>
 <a:DataType>N6</a:DataType>
 <a:Length>6</a:Length>
+</o:DataItem>
+<o:DataItem Id="o96">
+<a:ObjectID>A29F3119-1846-4E4D-B5FE-F654CF0BDEEA</a:ObjectID>
+<a:Name>Délai réponse (heure)</a:Name>
+<a:Code>BK_CLIENT__REP_DEL</a:Code>
+<a:CreationDate>1429105377</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1429105436</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<a:DataType>N2</a:DataType>
+<a:Length>2</a:Length>
+</o:DataItem>
+<o:DataItem Id="o98">
+<a:ObjectID>0C18C5DA-BA86-4B74-9BF3-5AE76CE387FE</a:ObjectID>
+<a:Name>Délai éxécution (jour)</a:Name>
+<a:Code>BK_CLIENT__EXE_DEL</a:Code>
+<a:CreationDate>1429105377</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1429105436</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<a:DataType>N2</a:DataType>
+<a:Length>2</a:Length>
 </o:DataItem>
 </c:DataItems>
 <c:Associations>
@@ -2470,7 +2514,7 @@ LABL 0 Arial,8,N</a:FontList>
 </o:AssociationLink>
 </c:AssociationsLinks>
 <c:TargetModels>
-<o:TargetModel Id="o101">
+<o:TargetModel Id="o105">
 <a:ObjectID>C5A2B74F-CF73-4B6A-95AF-5970F855C1E9</a:ObjectID>
 <a:Name>BugKiller</a:Name>
 <a:Code>BK</a:Code>
@@ -2485,7 +2529,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:Shortcut Ref="o3"/>
 </c:SessionShortcuts>
 </o:TargetModel>
-<o:TargetModel Id="o102">
+<o:TargetModel Id="o106">
 <a:ObjectID>CD4EFAD4-7C42-4A38-83F0-CC12A0E63CDD</a:ObjectID>
 <a:Name>BugKiller</a:Name>
 <a:Code>BK</a:Code>
@@ -2493,7 +2537,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Creator>loic</a:Creator>
 <a:ModificationDate>1427981836</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
-<a:TargetModelURL>file:///C|/Users/Champ/Documents/Git/BugKiller/Documents/Modelisation/BugKiller.mpd</a:TargetModelURL>
+<a:TargetModelURL>file:///C|/Users/loic/Documents/GIT/BugKiller/Documents/Modelisation/BugKiller.mpd</a:TargetModelURL>
 <a:TargetModelID>2B7DBC4A-83CE-448F-8898-72FBFA25E2FF</a:TargetModelID>
 <a:TargetModelClassID>CDE44E21-9669-11D1-9914-006097355D9B</a:TargetModelClassID>
 <c:SessionShortcuts>

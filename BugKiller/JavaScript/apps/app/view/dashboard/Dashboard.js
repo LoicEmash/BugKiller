@@ -11,7 +11,9 @@ Ext.define("BugKiller.view.dashboard.Dashboard", {
         'BugKiller.util.Format',
         'BugKiller.Locale',
         'Ext.ux.statusbar.StatusBar',
-        'Ext.grid.Panel'
+        'Ext.grid.Panel',
+        'BugKiller.view.client.List',
+        'BugKiller.view.user.List'
 
     ],
     controller: "dashboard-dashboard",
@@ -61,6 +63,26 @@ Ext.define("BugKiller.view.dashboard.Dashboard", {
                                 height: 48,
                                 text: 'Nouvelle observation',
                                 handler: 'onCreateStoryButtonClick'
+                            },
+                            {
+                                xtype: 'button',
+                                margin: 4,
+                                reference:'btManageClient',
+                                width: 200,
+                                hidden:true,
+                                height: 48,
+                                text: 'Gérer les clients',
+                                handler: 'onManageClientButtonClick'
+                            },
+                             {
+                                xtype: 'button',
+                                margin: 4,
+                                width: 200,
+                                reference:'btManageUser',
+                                hidden:true,
+                                height: 48,
+                                text: 'Gérer les utilisateurs',
+                                handler: 'onManageUserButtonClick'
                             }
                         ]
                     }
@@ -87,6 +109,26 @@ Ext.define("BugKiller.view.dashboard.Dashboard", {
                     storyEditingCancel: 'onStoryEditingCancel',
                     storyEditingSuccess: 'onStoryEditingSuccess'
                 }
+            },
+            {
+                xtype: 'bk-client-list',
+                margin: 16,
+                flex: 1,
+                hidden: true,
+                reference: 'panelClientList',
+                listeners:{
+                    dashboardComeBack : 'onDashboardComeBack'
+                }
+            },
+            {
+                xtype: 'bk-user-list',
+                margin: 16,
+                flex: 1,
+                hidden: true,
+                reference: 'panelUserList' ,
+                listeners:{
+                    dashboardComeBack : 'onDashboardComeBack'
+                }           
             }
 
 

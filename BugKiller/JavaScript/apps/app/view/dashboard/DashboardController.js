@@ -1,71 +1,109 @@
 Ext.define('BugKiller.view.dashboard.DashboardController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.dashboard-dashboard',
-    requires:[
-       
-    ],   
-    onCloseClick : function()
+    requires: [
+    ],
+    init: function ()
     {
-        BugKiller.getApplication().fireEvent('userUnlogged')
+        var btManageClient = this.lookupReference('btManageClient');
+        var btManageUser = this.lookupReference('btManageUser');
+        BugKiller.getApplication().on('userLogged', function () {
+            if (BugKiller.Global.userIsAdmin === true)
+            {
+                btManageClient.show();
+                btManageUser.show();
+            }
+            else
+            {
+                btManageClient.hide();
+                btManageUser.hide();
+            }
+        });
     },
-    onStoryEditingCancel : function()
+    onCloseClick: function ()
     {
-        var panelStoryEdit =this.lookupReference('panelStoryEdit');  
-        var panelStoryList  = this.lookupReference('panelStoryList');
-        var panelStoryCreate  = this.lookupReference('panelStoryCreate');
+        BugKiller.getApplication().fireEvent('userUnlogged');
+    },
+    hideAllPanel: function ()
+    {
+        var panelStoryEdit = this.lookupReference('panelStoryEdit');
+        var panelStoryList = this.lookupReference('panelStoryList');
+        var panelStoryCreate = this.lookupReference('panelStoryCreate');
+        var panelClientList = this.lookupReference('panelClientList');
+        var panelUserList = this.lookupReference('panelUserList');
         panelStoryEdit.hide();
-        panelStoryCreate.hide();
-        panelStoryList.show();
-    },
-    onStoryEditingSuccess : function()
-    {
-        var panelStoryEdit =this.lookupReference('panelStoryEdit');  
-        var panelStoryList  = this.lookupReference('panelStoryList');
-        var panelStoryCreate  = this.lookupReference('panelStoryCreate');
-         var gridStoryList   = this.lookupReference('gridStoryList');          
-        panelStoryEdit.hide();
-        panelStoryCreate.hide();
-        panelStoryList.show();
-       gridStoryList.getController().loadStory();      
-    },
-    onStoryDoubleClick : function(storyRecord)
-    {
-        
-        var panelStoryEdit =this.lookupReference('panelStoryEdit');  
-        var panelStoryList  = this.lookupReference('panelStoryList');
-        var panelStoryCreate  = this.lookupReference('panelStoryCreate');
         panelStoryList.hide();
         panelStoryCreate.hide();
+        panelClientList.hide();
+        panelUserList.hide();
+
+    },
+    onStoryEditingCancel: function ()
+    {
+        this.hideAllPanel();
+        var panelStoryList = this.lookupReference('panelStoryList');
+        panelStoryList.show();
+    },
+    onStoryEditingSuccess: function ()
+    {
+        this.hideAllPanel();
+        var panelStoryList = this.lookupReference('panelStoryList');
+        var gridStoryList = this.lookupReference('gridStoryList');
+
+        panelStoryList.show();
+        gridStoryList.getController().loadStory();
+    },
+    onStoryDoubleClick: function (storyRecord)
+    {
+        this.hideAllPanel();
+        var panelStoryEdit = this.lookupReference('panelStoryEdit');
         panelStoryEdit.show();
-        panelStoryEdit.getController().loadStory(storyRecord.get('id'),storyRecord.get('bkPostState'));
-        
-        
-    },   
-    onCreateStoryButtonClick : function()
+        panelStoryEdit.getController().loadStory(storyRecord.get('id'), storyRecord.get('bkPostState'));
+
+
+    },
+    onCreateStoryButtonClick: function ()
     {
-        var panelStoryList  = this.lookupReference('panelStoryList');
-        var panelStoryCreate  = this.lookupReference('panelStoryCreate');
-        panelStoryList.hide();
+        this.hideAllPanel();
+        var panelStoryCreate = this.lookupReference('panelStoryCreate');
         panelStoryCreate.show();
     },
-    onStoryCreationCancel : function()
+    onStoryCreationCancel: function ()
     {
-        var panelStoryList  = this.lookupReference('panelStoryList');
-        var panelStoryCreate  = this.lookupReference('panelStoryCreate');
+        this.hideAllPanel();
+        var panelStoryList = this.lookupReference('panelStoryList');
         panelStoryList.show();
-        panelStoryCreate.hide();
+
     },
-    onStoryCreationSuccess : function()
+    onStoryCreationSuccess: function ()
     {
-       // console.log('onStoryCreationSuccess');
-        var panelStoryList  = this.lookupReference('panelStoryList');
-        var panelStoryCreate  = this.lookupReference('panelStoryCreate');      
-        var gridStoryList   = this.lookupReference('gridStoryList');   
+        this.hideAllPanel();
+        var panelStoryList = this.lookupReference('panelStoryList');
+        var gridStoryList = this.lookupReference('gridStoryList');
         panelStoryList.show();
-        panelStoryCreate.hide();        
-        gridStoryList.getController().loadStory();      
-      
-        
+        gridStoryList.getController().loadStory();
+
+
+    },
+    onManageClientButtonClick: function ()
+    {
+        this.hideAllPanel();
+        var panelClientList = this.lookupReference('panelClientList');
+        panelClientList.getController().loadData();
+        panelClientList.show();
+
+    },
+    onManageUserButtonClick: function ()
+    {
+        this.hideAllPanel();
+        var panelUserList = this.lookupReference('panelUserList');
+        panelUserList.show();
+    },
+    onDashboardComeBack : function()
+    {
+        this.hideAllPanel();
+        var panelStoryList = this.lookupReference('panelStoryList');
+        panelStoryList.show();
     }
-    
+
 });

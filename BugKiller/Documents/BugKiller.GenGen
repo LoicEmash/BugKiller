@@ -19,6 +19,1280 @@
   </PostgreDeleteCreate>
   <Revisions>
     <Revision>
+      <Number>19</Number>
+      <ModuleSchemas />
+      <MetierSchemas>
+        <DbSchema>
+          <Id>bk__o2</Id>
+          <Rules />
+          <ModuleSchemaDeploy />
+          <ModuleSchemaDeployAll>true</ModuleSchemaDeployAll>
+          <Views>
+            <DbView>
+              <Id>o28</Id>
+              <Name>bk_v_story</Name>
+              <DisplayName>bk_v_story</DisplayName>
+              <Sql>select  
+bk_story.id as id,
+bk_story.bk_user__id as bk_user__id,
+bk_story.prod as bk_story__prod,
+bk_story.app as bk_story__app,
+bk_story.sev as bk_story__sev,
+bk_story.prio as bk_story__prio,
+bk_story.repro as bk_story__repro,
+bk_story.dc as bk_story__dc,
+bk_story.title as bk_story__title,
+(select bk_post.state from bk.bk_post where bk_post.bk_story__id=bk_story.id order by bk_post.id desc limit 1 ) as bk_post__state,
+(select bk_post.dc from bk.bk_post where bk_post.bk_story__id=bk_story.id order by bk_post.id desc limit 1 ) as bk_post__dc,
+(select count(bk_post.id) from bk.bk_post where bk_post.bk_story__id=bk_story.id ) as bk_post__count,
+(select count(bk_fio.id) from bk.bk_fio where bk_fio.bk_story__id=bk_story.id ) as bk_fio__count,
+(select bk_user.name from bk.bk_user where bk_user.id=bk_user__id ) as bk_user__name,
+(select bk_client.nom from bk.bk_client where id=(select bk_user.bk_client__id from bk.bk_user where bk_user.id=bk_user__id ) ) as bk_client__name,
+
+(select extract(epoch  from sum(dd.dc_end - dd.dc_start)) / 3600 from (
+select dc as dc_start,
+
+(select resolve_post_end.dc from
+(
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  resolve_post_end
+
+limit 1 ) as dc_end 
+
+
+from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in ('open','delivery','answer','watch') order by id) dd) as resolve_delay,
+
+(select extract(epoch  from dd.dc_end - dd.dc_start) / 3600 from (
+select dc as dc_start,
+
+(select reply_post_end.dc from
+(
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  reply_post_end
+
+limit 1 ) as dc_end 
+
+from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in ('open','delivery','answer','watch') order by id asc limit 1) dd) as reply_delay
+from bk.bk_story</Sql>
+              <ColumnId>
+                <Id>bk__o83</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o84</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_user__id</Name>
+                <DisplayName>bk_user__id</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o85</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__prod</Name>
+                <DisplayName>bk_story__prod</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o86</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__app</Name>
+                <DisplayName>bk_story__app</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o87</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__sev</Name>
+                <DisplayName>bk_story__sev</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o88</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__prio</Name>
+                <DisplayName>bk_story__prio</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o89</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__repro</Name>
+                <DisplayName>bk_story__repro</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnDateHeure>
+                <Id>bk__o90</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__dc</Name>
+                <DisplayName>bk_story__dc</DisplayName>
+              </ColumnDateHeure>
+              <ColumnText>
+                <Id>bk__o91</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__title</Name>
+                <DisplayName>bk_story__title</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o92</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_post__state</Name>
+                <DisplayName>bk_post__state</DisplayName>
+                <MaxLength>50</MaxLength>
+              </ColumnText>
+              <ColumnDateHeure>
+                <Id>bk__o93</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_post__dc</Name>
+                <DisplayName>bk_post__dc</DisplayName>
+              </ColumnDateHeure>
+              <DbColumnNumeric>
+                <Id>bk__o94</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_post__count</Name>
+                <DisplayName>bk_post__count</DisplayName>
+                <Precision>6</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <DbColumnNumeric>
+                <Id>bk__o95</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_fio__count</Name>
+                <DisplayName>bk_fio__count</DisplayName>
+                <Precision>6</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <ColumnText>
+                <Id>bk__o96</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_user__name</Name>
+                <DisplayName>bk_user__name</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o97</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_client__name</Name>
+                <DisplayName>bk_client__name</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <DbColumnNumeric>
+                <Id>bk__o98</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>resolve_delay</Name>
+                <DisplayName>resolve_delay</DisplayName>
+                <Precision>9</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <DbColumnNumeric>
+                <Id>bk__o99</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>reply_delay</Name>
+                <DisplayName>reply_delay</DisplayName>
+                <Precision>9</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+            </DbView>
+          </Views>
+          <Tables>
+            <DbTable>
+              <Id>bk__o26</Id>
+              <ColumnId>
+                <Id>bk__o29</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o26</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o30</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o26</TableId>
+                <Name>nom</Name>
+                <DisplayName>nom</DisplayName>
+                <MaxLength>200</MaxLength>
+              </ColumnText>
+              <DbColumnNumeric>
+                <Id>bk__o31</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o26</TableId>
+                <Name>rep_del</Name>
+                <DisplayName>délai réponse (heure)</DisplayName>
+                <Precision>2</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <DbColumnNumeric>
+                <Id>bk__o32</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o26</TableId>
+                <Name>exe_del</Name>
+                <DisplayName>délai éxécution (jour)</DisplayName>
+                <Precision>2</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <Name>bk_client</Name>
+              <DisplayName>client</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>bk__o25</Id>
+              <ColumnId>
+                <Id>bk__o73</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o74</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>bk_story__id</Name>
+                <DisplayName>rapport</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o75</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>name</Name>
+                <DisplayName>nom</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o76</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>ext</Name>
+                <DisplayName>extension</DisplayName>
+                <MaxLength>10</MaxLength>
+              </ColumnText>
+              <ColumnFile>
+                <Id>bk__o77</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>content</Name>
+                <DisplayName>contenu</DisplayName>
+              </ColumnFile>
+              <Name>bk_fio</Name>
+              <DisplayName>fichier</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>bk__o24</Id>
+              <ColumnId>
+                <Id>bk__o60</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o61</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>bk_user__id</Name>
+                <DisplayName>utilisateur</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o62</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>bk_story__id</Name>
+                <DisplayName>rapport</DisplayName>
+              </ColumnId>
+              <ColumnLongText>
+                <Id>bk__o63</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>content</Name>
+                <DisplayName>contenu</DisplayName>
+              </ColumnLongText>
+              <ColumnDateHeure>
+                <Id>bk__o64</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>dc</Name>
+                <DisplayName>date création</DisplayName>
+              </ColumnDateHeure>
+              <ColumnText>
+                <Id>bk__o65</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>state</Name>
+                <DisplayName>etat</DisplayName>
+                <MaxLength>50</MaxLength>
+              </ColumnText>
+              <Name>bk_post</Name>
+              <DisplayName>post</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>bk__o23</Id>
+              <ColumnId>
+                <Id>bk__o46</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o47</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>bk_user__id</Name>
+                <DisplayName>utilisateur</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o48</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>prod</Name>
+                <DisplayName>produit</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o49</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>app</Name>
+                <DisplayName>application</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o50</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>sev</Name>
+                <DisplayName>sévérité</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o51</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>prio</Name>
+                <DisplayName>priorité</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o52</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>repro</Name>
+                <DisplayName>reproductible</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnDateHeure>
+                <Id>bk__o53</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>dc</Name>
+                <DisplayName>date création</DisplayName>
+              </ColumnDateHeure>
+              <ColumnText>
+                <Id>bk__o54</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>title</Name>
+                <DisplayName>titre</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <Name>bk_story</Name>
+              <DisplayName>rapport</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>bk__o22</Id>
+              <ColumnId>
+                <Id>bk__o36</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o37</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>bk_client__id</Name>
+                <DisplayName>client</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o38</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>mail</Name>
+                <DisplayName>email</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o39</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>password</Name>
+                <DisplayName>password</DisplayName>
+                <MaxLength>5000</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o40</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>name</Name>
+                <DisplayName>nom complet</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <Name>bk_user</Name>
+              <DisplayName>utilisateurs</DisplayName>
+            </DbTable>
+          </Tables>
+          <DbConstraintPrimaries>
+            <DbConstraintPrimary>
+              <Id>bk__o34</Id>
+              <TableId>bk__o26</TableId>
+              <ColumnIds>
+                <string>bk__o29</string>
+              </ColumnIds>
+              <Name>bk_client_pk</Name>
+              <DisplayName>Clé primaire table client</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>bk__o42</Id>
+              <TableId>bk__o22</TableId>
+              <ColumnIds>
+                <string>bk__o36</string>
+              </ColumnIds>
+              <Name>bk_user_pk</Name>
+              <DisplayName>Clé primaire table utilisateurs</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>bk__o56</Id>
+              <TableId>bk__o23</TableId>
+              <ColumnIds>
+                <string>bk__o46</string>
+              </ColumnIds>
+              <Name>bk_story_pk</Name>
+              <DisplayName>Clé primaire table rapport</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>bk__o67</Id>
+              <TableId>bk__o24</TableId>
+              <ColumnIds>
+                <string>bk__o60</string>
+              </ColumnIds>
+              <Name>bk_post_pk</Name>
+              <DisplayName>Clé primaire table post</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>bk__o79</Id>
+              <TableId>bk__o25</TableId>
+              <ColumnIds>
+                <string>bk__o73</string>
+              </ColumnIds>
+              <Name>bk_fio_pk</Name>
+              <DisplayName>Clé primaire table fichier</DisplayName>
+            </DbConstraintPrimary>
+          </DbConstraintPrimaries>
+          <DbConstraintUniques />
+          <DbConstraintForeigns>
+            <DbConstraintForeign>
+              <Id>bk__o18</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>association_5</Name>
+              <DisplayName>association_5</DisplayName>
+              <ParentTableId>bk__o26</ParentTableId>
+              <ChildTableId>bk__o22</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o100</Id>
+                  <ParentColumnId>bk__o29</ParentColumnId>
+                  <ChildColumnId>bk__o37</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+            <DbConstraintForeign>
+              <Id>bk__o21</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>bk_fio__bk_story_fk</Name>
+              <DisplayName>bk_fio__bk_story_fk</DisplayName>
+              <ParentTableId>bk__o23</ParentTableId>
+              <ChildTableId>bk__o25</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o101</Id>
+                  <ParentColumnId>bk__o46</ParentColumnId>
+                  <ChildColumnId>bk__o74</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+            <DbConstraintForeign>
+              <Id>bk__o10</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>bk_user__bk_story__fk</Name>
+              <DisplayName>bk_user__bk_story__fk</DisplayName>
+              <ParentTableId>bk__o22</ParentTableId>
+              <ChildTableId>bk__o23</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o102</Id>
+                  <ParentColumnId>bk__o36</ParentColumnId>
+                  <ChildColumnId>bk__o47</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+            <DbConstraintForeign>
+              <Id>bk__o13</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>bk_story__bk_post__fk</Name>
+              <DisplayName>bk_story__bk_post__fk</DisplayName>
+              <ParentTableId>bk__o23</ParentTableId>
+              <ChildTableId>bk__o24</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o103</Id>
+                  <ParentColumnId>bk__o46</ParentColumnId>
+                  <ChildColumnId>bk__o62</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+            <DbConstraintForeign>
+              <Id>bk__o15</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>bk_user__bk_post__fk</Name>
+              <DisplayName>bk_user__bk_post__fk</DisplayName>
+              <ParentTableId>bk__o22</ParentTableId>
+              <ChildTableId>bk__o24</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o104</Id>
+                  <ParentColumnId>bk__o36</ParentColumnId>
+                  <ChildColumnId>bk__o61</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+          </DbConstraintForeigns>
+          <Name>bk</Name>
+          <DisplayName>bugkiller</DisplayName>
+          <MajorVersion>1</MajorVersion>
+          <MinorVersion>0</MinorVersion>
+          <RevisionVersion>0</RevisionVersion>
+          <IsModule>false</IsModule>
+        </DbSchema>
+      </MetierSchemas>
+      <ResultSchemas>
+        <DbSchema>
+          <Id>bk__o2</Id>
+          <Rules />
+          <ModuleSchemaDeploy />
+          <ModuleSchemaDeployAll>true</ModuleSchemaDeployAll>
+          <Views>
+            <DbView>
+              <Id>o28</Id>
+              <Name>bk_v_story</Name>
+              <DisplayName>bk_v_story</DisplayName>
+              <Sql>select  
+bk_story.id as id,
+bk_story.bk_user__id as bk_user__id,
+bk_story.prod as bk_story__prod,
+bk_story.app as bk_story__app,
+bk_story.sev as bk_story__sev,
+bk_story.prio as bk_story__prio,
+bk_story.repro as bk_story__repro,
+bk_story.dc as bk_story__dc,
+bk_story.title as bk_story__title,
+(select bk_post.state from bk.bk_post where bk_post.bk_story__id=bk_story.id order by bk_post.id desc limit 1 ) as bk_post__state,
+(select bk_post.dc from bk.bk_post where bk_post.bk_story__id=bk_story.id order by bk_post.id desc limit 1 ) as bk_post__dc,
+(select count(bk_post.id) from bk.bk_post where bk_post.bk_story__id=bk_story.id ) as bk_post__count,
+(select count(bk_fio.id) from bk.bk_fio where bk_fio.bk_story__id=bk_story.id ) as bk_fio__count,
+(select bk_user.name from bk.bk_user where bk_user.id=bk_user__id ) as bk_user__name,
+(select bk_client.nom from bk.bk_client where id=(select bk_user.bk_client__id from bk.bk_user where bk_user.id=bk_user__id ) ) as bk_client__name,
+
+(select extract(epoch  from sum(dd.dc_end - dd.dc_start)) / 3600 from (
+select dc as dc_start,
+
+(select resolve_post_end.dc from
+(
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  resolve_post_end
+
+limit 1 ) as dc_end 
+
+
+from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in ('open','delivery','answer','watch') order by id) dd) as resolve_delay,
+
+(select extract(epoch  from dd.dc_end - dd.dc_start) / 3600 from (
+select dc as dc_start,
+
+(select reply_post_end.dc from
+(
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  reply_post_end
+
+limit 1 ) as dc_end 
+
+from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in ('open','delivery','answer','watch') order by id asc limit 1) dd) as reply_delay
+from bk.bk_story</Sql>
+              <ColumnId>
+                <Id>bk__o83</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o84</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_user__id</Name>
+                <DisplayName>bk_user__id</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o85</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__prod</Name>
+                <DisplayName>bk_story__prod</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o86</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__app</Name>
+                <DisplayName>bk_story__app</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o87</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__sev</Name>
+                <DisplayName>bk_story__sev</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o88</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__prio</Name>
+                <DisplayName>bk_story__prio</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o89</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__repro</Name>
+                <DisplayName>bk_story__repro</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnDateHeure>
+                <Id>bk__o90</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__dc</Name>
+                <DisplayName>bk_story__dc</DisplayName>
+              </ColumnDateHeure>
+              <ColumnText>
+                <Id>bk__o91</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_story__title</Name>
+                <DisplayName>bk_story__title</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o92</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_post__state</Name>
+                <DisplayName>bk_post__state</DisplayName>
+                <MaxLength>50</MaxLength>
+              </ColumnText>
+              <ColumnDateHeure>
+                <Id>bk__o93</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_post__dc</Name>
+                <DisplayName>bk_post__dc</DisplayName>
+              </ColumnDateHeure>
+              <DbColumnNumeric>
+                <Id>bk__o94</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_post__count</Name>
+                <DisplayName>bk_post__count</DisplayName>
+                <Precision>6</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <DbColumnNumeric>
+                <Id>bk__o95</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_fio__count</Name>
+                <DisplayName>bk_fio__count</DisplayName>
+                <Precision>6</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <ColumnText>
+                <Id>bk__o96</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_user__name</Name>
+                <DisplayName>bk_user__name</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o97</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>bk_client__name</Name>
+                <DisplayName>bk_client__name</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <DbColumnNumeric>
+                <Id>bk__o98</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>resolve_delay</Name>
+                <DisplayName>resolve_delay</DisplayName>
+                <Precision>9</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <DbColumnNumeric>
+                <Id>bk__o99</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>o28</TableId>
+                <Name>reply_delay</Name>
+                <DisplayName>reply_delay</DisplayName>
+                <Precision>9</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+            </DbView>
+          </Views>
+          <Tables>
+            <DbTable>
+              <Id>bk__o26</Id>
+              <ColumnId>
+                <Id>bk__o29</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o26</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o30</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o26</TableId>
+                <Name>nom</Name>
+                <DisplayName>nom</DisplayName>
+                <MaxLength>200</MaxLength>
+              </ColumnText>
+              <DbColumnNumeric>
+                <Id>bk__o31</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o26</TableId>
+                <Name>rep_del</Name>
+                <DisplayName>délai réponse (heure)</DisplayName>
+                <Precision>2</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <DbColumnNumeric>
+                <Id>bk__o32</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o26</TableId>
+                <Name>exe_del</Name>
+                <DisplayName>délai éxécution (jour)</DisplayName>
+                <Precision>2</Precision>
+                <Scale>0</Scale>
+              </DbColumnNumeric>
+              <Name>bk_client</Name>
+              <DisplayName>client</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>bk__o25</Id>
+              <ColumnId>
+                <Id>bk__o73</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o74</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>bk_story__id</Name>
+                <DisplayName>rapport</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o75</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>name</Name>
+                <DisplayName>nom</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o76</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>ext</Name>
+                <DisplayName>extension</DisplayName>
+                <MaxLength>10</MaxLength>
+              </ColumnText>
+              <ColumnFile>
+                <Id>bk__o77</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o25</TableId>
+                <Name>content</Name>
+                <DisplayName>contenu</DisplayName>
+              </ColumnFile>
+              <Name>bk_fio</Name>
+              <DisplayName>fichier</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>bk__o24</Id>
+              <ColumnId>
+                <Id>bk__o60</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o61</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>bk_user__id</Name>
+                <DisplayName>utilisateur</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o62</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>bk_story__id</Name>
+                <DisplayName>rapport</DisplayName>
+              </ColumnId>
+              <ColumnLongText>
+                <Id>bk__o63</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>content</Name>
+                <DisplayName>contenu</DisplayName>
+              </ColumnLongText>
+              <ColumnDateHeure>
+                <Id>bk__o64</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>dc</Name>
+                <DisplayName>date création</DisplayName>
+              </ColumnDateHeure>
+              <ColumnText>
+                <Id>bk__o65</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o24</TableId>
+                <Name>state</Name>
+                <DisplayName>etat</DisplayName>
+                <MaxLength>50</MaxLength>
+              </ColumnText>
+              <Name>bk_post</Name>
+              <DisplayName>post</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>bk__o23</Id>
+              <ColumnId>
+                <Id>bk__o46</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o47</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>bk_user__id</Name>
+                <DisplayName>utilisateur</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o48</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>prod</Name>
+                <DisplayName>produit</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o49</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>app</Name>
+                <DisplayName>application</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o50</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>sev</Name>
+                <DisplayName>sévérité</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o51</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>prio</Name>
+                <DisplayName>priorité</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o52</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>repro</Name>
+                <DisplayName>reproductible</DisplayName>
+                <MaxLength>100</MaxLength>
+              </ColumnText>
+              <ColumnDateHeure>
+                <Id>bk__o53</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>dc</Name>
+                <DisplayName>date création</DisplayName>
+              </ColumnDateHeure>
+              <ColumnText>
+                <Id>bk__o54</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o23</TableId>
+                <Name>title</Name>
+                <DisplayName>titre</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <Name>bk_story</Name>
+              <DisplayName>rapport</DisplayName>
+            </DbTable>
+            <DbTable>
+              <Id>bk__o22</Id>
+              <ColumnId>
+                <Id>bk__o36</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>id</Name>
+                <DisplayName>id</DisplayName>
+              </ColumnId>
+              <ColumnId>
+                <Id>bk__o37</Id>
+                <AttachedRuleIds />
+                <AllowNull>true</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>bk_client__id</Name>
+                <DisplayName>client</DisplayName>
+              </ColumnId>
+              <ColumnText>
+                <Id>bk__o38</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>mail</Name>
+                <DisplayName>email</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o39</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>password</Name>
+                <DisplayName>password</DisplayName>
+                <MaxLength>5000</MaxLength>
+              </ColumnText>
+              <ColumnText>
+                <Id>bk__o40</Id>
+                <AttachedRuleIds />
+                <AllowNull>false</AllowNull>
+                <TableId>bk__o22</TableId>
+                <Name>name</Name>
+                <DisplayName>nom complet</DisplayName>
+                <MaxLength>500</MaxLength>
+              </ColumnText>
+              <Name>bk_user</Name>
+              <DisplayName>utilisateurs</DisplayName>
+            </DbTable>
+          </Tables>
+          <DbConstraintPrimaries>
+            <DbConstraintPrimary>
+              <Id>bk__o34</Id>
+              <TableId>bk__o26</TableId>
+              <ColumnIds>
+                <string>bk__o29</string>
+              </ColumnIds>
+              <Name>bk_client_pk</Name>
+              <DisplayName>Clé primaire table client</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>bk__o42</Id>
+              <TableId>bk__o22</TableId>
+              <ColumnIds>
+                <string>bk__o36</string>
+              </ColumnIds>
+              <Name>bk_user_pk</Name>
+              <DisplayName>Clé primaire table utilisateurs</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>bk__o56</Id>
+              <TableId>bk__o23</TableId>
+              <ColumnIds>
+                <string>bk__o46</string>
+              </ColumnIds>
+              <Name>bk_story_pk</Name>
+              <DisplayName>Clé primaire table rapport</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>bk__o67</Id>
+              <TableId>bk__o24</TableId>
+              <ColumnIds>
+                <string>bk__o60</string>
+              </ColumnIds>
+              <Name>bk_post_pk</Name>
+              <DisplayName>Clé primaire table post</DisplayName>
+            </DbConstraintPrimary>
+            <DbConstraintPrimary>
+              <Id>bk__o79</Id>
+              <TableId>bk__o25</TableId>
+              <ColumnIds>
+                <string>bk__o73</string>
+              </ColumnIds>
+              <Name>bk_fio_pk</Name>
+              <DisplayName>Clé primaire table fichier</DisplayName>
+            </DbConstraintPrimary>
+          </DbConstraintPrimaries>
+          <DbConstraintUniques />
+          <DbConstraintForeigns>
+            <DbConstraintForeign>
+              <Id>bk__o18</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>association_5</Name>
+              <DisplayName>association_5</DisplayName>
+              <ParentTableId>bk__o26</ParentTableId>
+              <ChildTableId>bk__o22</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o100</Id>
+                  <ParentColumnId>bk__o29</ParentColumnId>
+                  <ChildColumnId>bk__o37</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+            <DbConstraintForeign>
+              <Id>bk__o21</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>bk_fio__bk_story_fk</Name>
+              <DisplayName>bk_fio__bk_story_fk</DisplayName>
+              <ParentTableId>bk__o23</ParentTableId>
+              <ChildTableId>bk__o25</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o101</Id>
+                  <ParentColumnId>bk__o46</ParentColumnId>
+                  <ChildColumnId>bk__o74</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+            <DbConstraintForeign>
+              <Id>bk__o10</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>bk_user__bk_story__fk</Name>
+              <DisplayName>bk_user__bk_story__fk</DisplayName>
+              <ParentTableId>bk__o22</ParentTableId>
+              <ChildTableId>bk__o23</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o102</Id>
+                  <ParentColumnId>bk__o36</ParentColumnId>
+                  <ChildColumnId>bk__o47</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+            <DbConstraintForeign>
+              <Id>bk__o13</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>bk_story__bk_post__fk</Name>
+              <DisplayName>bk_story__bk_post__fk</DisplayName>
+              <ParentTableId>bk__o23</ParentTableId>
+              <ChildTableId>bk__o24</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o103</Id>
+                  <ParentColumnId>bk__o46</ParentColumnId>
+                  <ChildColumnId>bk__o62</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+            <DbConstraintForeign>
+              <Id>bk__o15</Id>
+              <OnUpdateCascade>true</OnUpdateCascade>
+              <OnDeleteCascade>true</OnDeleteCascade>
+              <Cardinality>0..*</Cardinality>
+              <Name>bk_user__bk_post__fk</Name>
+              <DisplayName>bk_user__bk_post__fk</DisplayName>
+              <ParentTableId>bk__o22</ParentTableId>
+              <ChildTableId>bk__o24</ChildTableId>
+              <Joins>
+                <DbConstraintForeignJoin>
+                  <Id>o104</Id>
+                  <ParentColumnId>bk__o36</ParentColumnId>
+                  <ChildColumnId>bk__o61</ChildColumnId>
+                </DbConstraintForeignJoin>
+              </Joins>
+            </DbConstraintForeign>
+          </DbConstraintForeigns>
+          <Name>bk</Name>
+          <DisplayName>bugkiller</DisplayName>
+          <MajorVersion>1</MajorVersion>
+          <MinorVersion>0</MinorVersion>
+          <RevisionVersion>0</RevisionVersion>
+          <IsModule>false</IsModule>
+        </DbSchema>
+      </ResultSchemas>
+    </Revision>
+    <Revision>
       <Number>18</Number>
       <ModuleSchemas />
       <MetierSchemas>

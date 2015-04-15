@@ -236,9 +236,9 @@ Ext.define("BugKiller.view.story.List", {
                                                 for (var i = 0; i < BugKiller.util.Redmine.clients.length; i++)
                                                 {
                                                     var client = BugKiller.util.Redmine.clients[i];
-                                                    if (client.name === clientName)
+                                                    if (client.get('nom') === clientName)
                                                     {
-                                                        if (value <= client.replyDelay)
+                                                        if (value <= client.get('repDel'))
                                                         {
                                                             metadata.style = "background-color:green;";
                                                         }
@@ -267,9 +267,9 @@ Ext.define("BugKiller.view.story.List", {
                                                 for (var i = 0; i < BugKiller.util.Redmine.clients.length; i++)
                                                 {
                                                     var client = BugKiller.util.Redmine.clients[i];
-                                                    if (client.name === clientName)
+                                                    if (client.get('nom')=== clientName)
                                                     {
-                                                        if (value <= client.executionDelay)
+                                                        if (value <= client.get('exeDel'))
                                                         {
                                                             metadata.style = "background-color:green;";
                                                         }

@@ -46,7 +46,7 @@ namespace MigrationBoosterKiller
                     if (node.Attributes["name"].Value == "client_bt")
                     {
 
-                        writer.WriteLine("insert into bk.bk_client (nom) values ('" + node.FirstChild.InnerText .Replace ("'","''")+ "');");
+                        writer.WriteLine("insert into bk.bk_client (nom,rep_del,exe_del) values ('" + node.FirstChild.InnerText.Replace("'", "''") + "',8,10);");
                     }
                 }
 

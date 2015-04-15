@@ -53,20 +53,10 @@ Ext.define('BugKiller.util.Redmine', {
     },
     loadGroups: function (successCallback, failureCallback)
     {
-        var groupStore = Ext.create('Ext.data.Store', {
-            model: 'BugKiller.model.RedmineGroup',
-            proxy: {
-                type: 'ajax',
-                url: document.egis.redmineUrl + '/groups.json?key=' + document.egis.redmineKey,
-                reader: {
-                    type: 'json',
-                    rootProperty: 'groups',
-                    totalProperty: 'total_count'
-                }
-            },
-            autoLoad: false
-        });
-        groupStore.load({
+      
+       
+       var clientStore = Ext.data.StoreManager.lookup('Client');
+        clientStore.load({
             scope: this,
             callback: function (records, operation, success) {
                 if (operation.wasSuccessful())
@@ -74,24 +64,8 @@ Ext.define('BugKiller.util.Redmine', {
                     for (var i = 0; i < records.length; i++)
                     {
                         var record = records[i];
-                        if (record.data.custom_fields !== undefined)
-                        {
-                            var client = {};
-                            client.name = record.data.name;
-                            for (var j = 0 ; j < record.data.custom_fields.length;j++)
-                            {
-                                var customField = record.data.custom_fields[j];
-                                if (customField.name === 'BugKillerDelaiReponseHeure')
-                                {
-                                    client.replyDelay = customField.value * 1;
-                                }
-                                if (customField.name === 'BugKillerDelaiExecutionJour')
-                                {
-                                    client.executionDelay = customField.value * 24;
-                                }
-                            }
-                            BugKiller.util.Redmine.clients.push(client);
-                        }
+                        BugKiller.util.Redmine.clients.push(record);
+                        
                         
                     }
                     successCallback();

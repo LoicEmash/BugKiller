@@ -24,7 +24,9 @@ CREATE USER bk WITH LOGIN PASSWORD 'bk';
 -- Création de la table bk_client
 CREATE TABLE bk.bk_client (
 	id SERIAL NOT NULL,
-	nom VARCHAR(200) NOT NULL
+	nom VARCHAR(200) NOT NULL,
+	rep_del NUMERIC(2,0) NOT NULL,
+	exe_del NUMERIC(2,0) NOT NULL
 );
 
 -- Création de la table bk_fio
@@ -198,6 +200,8 @@ GRANT bk_role_admin TO bk_user_admin;
 COMMENT ON TABLE bk.bk_client IS 'client';
 COMMENT ON COLUMN bk.bk_client.id IS 'id';
 COMMENT ON COLUMN bk.bk_client.nom IS 'nom';
+COMMENT ON COLUMN bk.bk_client.rep_del IS 'délai réponse (heure)';
+COMMENT ON COLUMN bk.bk_client.exe_del IS 'délai éxécution (jour)';
 COMMENT ON TABLE bk.bk_fio IS 'fichier';
 COMMENT ON COLUMN bk.bk_fio.id IS 'id';
 COMMENT ON COLUMN bk.bk_fio.bk_story__id IS 'rapport';

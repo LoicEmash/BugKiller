@@ -25,6 +25,16 @@ class BkClient
 	*/
 	protected $nom;
 	
+	/**
+	* @ORM\Column(type="integer", name="rep_del", nullable=false)
+	*/
+	protected $repDel;
+	
+	/**
+	* @ORM\Column(type="integer", name="exe_del", nullable=false)
+	*/
+	protected $exeDel;
+	
 	
 	/**
 	*  @ORM\OneToMany(targetEntity="BkUser", mappedBy="bkClient")
@@ -55,11 +65,33 @@ class BkClient
 		$this->nom= $value;
 	}
 	
+	public function getRepDel()
+	{
+		return $this->repDel;
+	}
+	
+	public function setRepDel($value)
+	{
+		$this->repDel= $value;
+	}
+	
+	public function getExeDel()
+	{
+		return $this->exeDel;
+	}
+	
+	public function setExeDel($value)
+	{
+		$this->exeDel= $value;
+	}
+	
 	public function getJson($em)
 	{
 		$json = [];
 		$json["id"] = $this->getId();
 		$json["nom"] = $this->getNom();
+		$json["repDel"] = $this->getRepDel();
+		$json["exeDel"] = $this->getExeDel();
 		return $json;
 	}
 	
@@ -72,6 +104,14 @@ class BkClient
 		if (isset($json["nom"]))
 		{
 			$this->setNom($json["nom"]);
+		}
+		if (isset($json["repDel"]))
+		{
+			$this->setRepDel($json["repDel"]);
+		}
+		if (isset($json["exeDel"]))
+		{
+			$this->setExeDel($json["exeDel"]);
 		}
 	}
 	

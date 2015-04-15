@@ -24,13 +24,13 @@ Ext.define('BugKiller.view.account.AccountController', {
                 message: message
 
             },
-            success: function (response) {
+            success: function () {
                 me.getView().unmask();
                 Ext.Msg.alert('Succès', 'Le demande as été envoyé au support et seras traiter dans les plus bref délai.');
                 me.getView().close();
                 // process server response here
             },
-            failure: function (response, opts) {
+            failure: function () {
                 me.getView().unmask();
                 Ext.Msg.alert('Erreur', 'Impossible d\'envoyer le mail au support.');
                 me.getView().close();
