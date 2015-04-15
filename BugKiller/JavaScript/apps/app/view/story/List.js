@@ -49,7 +49,7 @@ Ext.define("BugKiller.view.story.List", {
                                 store: 'RedmineProduct',
                                 listeners: {
                                     change: 'onComboProductChange',
-                                    keyup: 'onComboProductKeyUp'
+                                    keyup: 'onFilterKeyUp'
                                 }
 
                             },
@@ -68,19 +68,19 @@ Ext.define("BugKiller.view.story.List", {
                                 editable: true,
                                 store: 'RedmineApplication',
                                 listeners: {
-                                    change: 'onComboAppChange',
-                                    keyup: 'onComboAppKeyUp'
+                                    change: 'onComboFilterChange',
+                                    keyup: 'onFilterKeyUp'
                                 }
 
                             },
                             {
                                 xtype: 'combo',
-                                allowBlank: false,
                                 queryMode: 'local',
                                 displayField: 'name',
+                                enableKeyEvents: true,
                                 margin: 4,
                                 maxWidth: 300,
-                                labelWidth: 80,
+                                labelWidth: 60,
                                 reference: 'comboState',
                                 editable: true,
                                 fieldLabel: 'Etat',
@@ -91,11 +91,100 @@ Ext.define("BugKiller.view.story.List", {
                                     ]
                                 }),
                                 listeners: {
-                                    change: 'onComboStateChange',
-                                    keyup: 'onComboStateKeyUp'
+                                    change: 'onComboFilterChange',
+                                    keyup: 'onFilterKeyUp'
                                 }
 
                             },
+                            {
+                                xtype: 'textfield',
+                                enableKeyEvents: true,
+                                maxWidth: 300,
+                                labelWidth: 40,
+                                fieldLabel: 'Id',
+                                reference: 'txtId',
+                                listeners: {
+                                    keyup: 'onFilterKeyUp'
+                                }
+
+                            }, {
+                                xtype: 'combo',                                                         
+                                queryMode: 'local',
+                                displayField: 'name',
+                                margin: 4,
+                                width: 160,
+                                enableKeyEvents: true,
+                                labelWidth: 60,
+                                reference: 'comboSeverity',
+                                editable: true,
+                                fieldLabel: 'Sévérité',
+                                valueField: 'value',
+                                store: Ext.create('Ext.data.Store', {
+                                    fields: ['name', 'value'],
+                                    data: [
+                                        {name: BugKiller.Locale.severityValues.minor, value: 'minor'},
+                                        {name: BugKiller.Locale.severityValues.major, value: 'major'},
+                                        {name: BugKiller.Locale.severityValues.critical, value: 'critical'}
+                                    ]
+                                }),
+                                listeners: {
+                                    change: 'onComboFilterChange',
+                                    keyup: 'onFilterKeyUp'
+                                }
+
+                            },
+                            {
+                                xtype: 'combo',                                
+                                queryMode: 'local',                               
+                                displayField: 'name',
+                                margin: 4,
+                                width: 160,
+                                labelWidth: 60,
+                                editable: true,
+                                enableKeyEvents: true,
+                                fieldLabel: 'Priorité',
+                                valueField: 'value',
+                                reference: 'comboPriority',
+                                store: Ext.create('Ext.data.Store', {
+                                    fields: ['name', 'value'],
+                                    data: [
+                                        {name: BugKiller.Locale.priorityValues.minor, value: 'minor'},
+                                        {name: BugKiller.Locale.priorityValues.major, value: 'major'},
+                                        {name: BugKiller.Locale.priorityValues.critical, value: 'critical'}
+                                    ]
+                                }),
+                                listeners: {
+                                    change: 'onComboFilterChange',
+                                    keyup: 'onFilterKeyUp'
+                                }
+
+                            },
+                            {
+                                xtype: 'combo',                                
+                                queryMode: 'local',                               
+                                reference: 'comboReproductibility',
+                                displayField: 'name',
+                                margin: 4,
+                                enableKeyEvents: true,
+                                width: 160,
+                                labelWidth: 80,
+                                editable: true,
+                                fieldLabel: 'Reproductible',
+                                valueField: 'value',
+                                store: Ext.create('Ext.data.Store', {
+                                    fields: ['name', 'value'],
+                                    data: [
+                                        {name: BugKiller.Locale.reproductibilityValues.yes, value: 'yes'},
+                                        {name: BugKiller.Locale.reproductibilityValues.no, value: 'no'}
+
+                                    ]
+                                }),
+                                listeners: {
+                                    change: 'onComboFilterChange',
+                                    keyup: 'onFilterKeyUp'
+                                }
+
+                            }
                         ]
                     },
                     {

@@ -144,7 +144,7 @@ namespace MigrationBoosterKiller
                         string idNote = node.SelectSingleNode("column[@name='NOTE_BT__NUMERO']").InnerText;
                         //NOTE_BT__NUMERO
                         string stateNumber = node.SelectSingleNode("column[@name='ETAT_BT__NUMERO']").InnerText;
-                        string etat = "unknow";
+                        string etat = "watch";
                         if (stateNumber == "1")
                         { etat = "open"; }
                         else if (stateNumber == "2")
@@ -157,6 +157,9 @@ namespace MigrationBoosterKiller
                         { etat = "resolved"; }
                         else if (stateNumber == "6")
                         { etat = "closed"; }
+                        else {
+                            Console.WriteLine("no state for num " + stateNumber);
+                        }
 
                         writer.WriteLine("insert into bk.bk_post (bk_story__id,bk_user__id,content,state,dc) values (" + idStory + ",(select id from bk.bk_user where lower(mail)=lower('" + mail.Replace("'", "''") + "')),'" + post.Replace("'", "''") + "','" + etat + "',to_date('" + date + "','YYYY-MM-DD HH24:MI:SS'));");
                     }

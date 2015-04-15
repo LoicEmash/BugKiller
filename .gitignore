@@ -1,2 +1,10 @@
 /BugKiller/nbproject/private/
 /BugKiller/PHP/BugKillerService/app/cache/dev
+/GenGen/GenGenApp/bin
+/GenGen/GenGenApp/obj
+/GenGen/GenGenLib/bin
+/GenGen/GenGenLib/obj
+/GenGen/GenGenCmd/bin
+/GenGen/GenGenCmd/obj
+/MigrationBoosterKiller/bin
+/MigrationBoosterKiller/obj

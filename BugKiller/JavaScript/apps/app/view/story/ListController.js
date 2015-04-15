@@ -22,10 +22,10 @@ Ext.define('BugKiller.view.story.ListController', {
         for (var stateValue in BugKiller.Locale.stateValues) {
             if (BugKiller.Locale.stateValues.hasOwnProperty(stateValue)) {
                 stateDatas.push({
-                    name:BugKiller.Locale.stateValues[stateValue],
-                    value :stateValue
+                    name: BugKiller.Locale.stateValues[stateValue],
+                    value: stateValue
                 });
-                
+
             }
         }
         comboState.getStore().loadData(stateDatas);
@@ -73,6 +73,50 @@ Ext.define('BugKiller.view.story.ListController', {
             }, true);
         }
 
+        var txtId = this.lookupReference('txtId');
+        var filterId = txtId.getValue();
+        if (filterId !== null && filterId !== '')
+        {
+            storyStore.addFilter({
+                property: 'id',               
+                value: filterId
+            }, true);
+        }
+        
+        
+        var comboSeverity = this.lookupReference('comboSeverity');
+        var filterSeverity = comboSeverity.getValue();       
+        if (filterSeverity !== null && filterSeverity !== '')
+        {
+            storyStore.addFilter({
+                property: 'bkStorySev',
+                operator: 'like',
+                value: filterSeverity
+            }, true);
+        }
+        
+        
+        var comboPriority = this.lookupReference('comboPriority');
+        var filterPriority = comboPriority.getValue();       
+        if (filterPriority !== null && filterPriority !== '')
+        {
+            storyStore.addFilter({
+                property: 'bkStoryPrio',
+                operator: 'like',
+                value: filterPriority
+            }, true);
+        }
+        
+        var comboReproductibility = this.lookupReference('comboReproductibility');
+        var filterReproductibility = comboReproductibility.getValue();       
+        if (filterReproductibility !== null && filterReproductibility !== '')
+        {
+            storyStore.addFilter({
+                property: 'bkStoryRepro',
+                operator: 'like',
+                value: filterReproductibility
+            }, true);
+        }
 
     },
     loadStory: function ()
@@ -96,7 +140,7 @@ Ext.define('BugKiller.view.story.ListController', {
         store.clearFilter();
         store.addFilter(function (item)
         {
-            
+
 
             if (item.data.parent !== undefined)
             {
@@ -109,36 +153,18 @@ Ext.define('BugKiller.view.story.ListController', {
         });
         this.loadStory();
     },
-    onComboAppChange: function ()
+    onComboFilterChange: function ()
     {
         this.loadStory();
     },
-    onComboProductKeyUp: function (combo, e, eOpts)
+    onFilterKeyUp: function (combo, e, eOpts)
     {
         if (e.getCharCode() === 13)
         {
             this.loadStory();
         }
 
-    },
-    onComboAppKeyUp: function (combo, e, eOpts)
-    {
-        if (e.getCharCode() === 13)
-        {
-            this.loadStory();
-        }
-    },
-    onComboStateChange: function ()
-    {
-        this.loadStory();
-    },
-    onComboStateKeyUp: function ()
-    {
-        if (e.getCharCode() === 13)
-        {
-            this.loadStory();
-        }
     }
-
+   
 
 });
