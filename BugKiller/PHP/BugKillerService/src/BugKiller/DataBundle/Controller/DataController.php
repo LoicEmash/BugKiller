@@ -219,7 +219,11 @@ class DataController extends ContainerAware {
                 $getter =  'get'.$needestParentTables[$i];
                 $parentItem = $item->$getter();
                 $jsonKeyName = strtolower(substr($needestParentTables[$i],0,1)).substr($needestParentTables[$i],1) ;
-                $jsonItem[$jsonKeyName] = $parentItem->getJson($em);                 
+                if ($parentItem !== null)
+                {$jsonItem[$jsonKeyName] = $parentItem->getJson($em);   }
+                else
+                {$jsonItem[$jsonKeyName] = null;}
+                              
              }
              for ($i = 0; $i < count($needestChildTables); $i++) 
              {

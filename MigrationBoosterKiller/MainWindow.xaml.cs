@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,7 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 using System.Xml;
 
 namespace MigrationBoosterKiller
@@ -30,10 +31,13 @@ namespace MigrationBoosterKiller
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string resourcesDir = Path.Combine(baseDir, "Resources");
+
             List<int> storyIds = new List<int>();
             XmlDocument document = new XmlDocument();
-            document.Load(@"C:\Users\loic\Documents\GIT\BugKiller\Documents\emashbug.xml");
-            using (FileStream stream = new FileStream(@"C:\Users\loic\Documents\GIT\BugKiller\Documents\emashbug.sql", FileMode.Create))
+            document.Load(Path.Combine (resourcesDir,"emashbug.xml"));
+            using (FileStream stream = new FileStream(Path.Combine(resourcesDir, "emash_bug.sql"), FileMode.Create))
             {
                 StreamWriter writer = new StreamWriter(stream);
                 XmlNodeList list =   document.SelectNodes("/database/table");
@@ -114,6 +118,14 @@ namespace MigrationBoosterKiller
                         {
                             title = post;
                         }
+                        if (title == "")
+                        {
+                            title = post;
+                        }
+                        if (title.Length > 500)
+                        {
+                            title = title.Substring(0, 450) + "...";
+                        }
                         writer.WriteLine("insert into bk.bk_story (id,bk_user__id,prod,app,sev,prio,repro,dc,title) values (" + id + ",(select id from bk.bk_user where lower(mail)=lower('" + mail.Replace("'", "''") + "')),'" + prod.Replace("'", "''") + "','" + app.Replace("'", "''") + "','" + sev + "','" + prio + "','" + repro + "',to_date('" + date + "','YYYY-MM-DD HH24:MI:SS'),'" + title.Replace("'", "''") + "');");
                         writer.WriteLine("insert into bk.bk_post (bk_story__id,bk_user__id,content,state,dc) values (" + id + ",(select id from bk.bk_user where lower(mail)=lower('" + mail.Replace("'", "''") + "')),'" + post.Replace("'", "''") + "','open',to_date('" + date + "','YYYY-MM-DD HH24:MI:SS'));");
 
@@ -163,6 +175,7 @@ namespace MigrationBoosterKiller
                         string repro = node.SelectSingleNode("column[@name='OBSERVATION_BT__ANOMALIE_REPRODUCTIBLE']").InnerText;
                         string date = node.SelectSingleNode("column[@name='OBSERVATION_BT__DATE_OBSERVATION']").InnerText;
                         string title = node.SelectSingleNode("column[@name='OBSERVATION_BT__RESUME']").InnerText.Replace ("&quot;","'");
+                       
                         string id = node.SelectSingleNode("column[@name='OBSERVATION_BT__NUMERO_OBSERVATION']").InnerText;
                         string post = node.SelectSingleNode("column[@name='OBSERVATION_BT__DESCRIPTION']").InnerText.Replace("&quot;", "'");
                         //OBSERVATION_BT__DESCRIPTION
@@ -170,12 +183,19 @@ namespace MigrationBoosterKiller
                         {
                             title = post;
                         }
+                        if (title.Length > 500)
+                        {
+                            title = title.Substring(0, 450) + "...";
+                        }
                        // writer.WriteLine("insert into bk.bk_story (id,bk_user__id,prod,app,sev,prio,repro,dc,title) values (" + id + ",(select id from bk.bk_user where lower(mail)=lower('" + mail.Replace("'", "''") + "')),'" + prod.Replace("'", "''") + "','" + app.Replace("'", "''") + "','" + sev + "','" + prio + "','" + repro + "',to_date('" + date + "','YYYY-MM-DD HH24:MI:SS'),'" + title.Replace("'", "''") + "');");
                       //  writer.WriteLine("insert into bk.bk_post (bk_story__id,bk_user__id,content,state,dc) values (" + id + ",(select id from bk.bk_user where lower(mail)=lower('" + mail.Replace("'", "''") + "')),'" + post.Replace("'", "''") + "','open',to_date('" + date + "','YYYY-MM-DD HH24:MI:SS'));");
 
                     }
                 }
                 writer.WriteLine("update bk.bk_user set mail='loic.lecuyer@egis.fr',password='70e92d4fbe843ce266bc6f1f2d643526' where mail='l.lecuyer@emash.fr';");
+                writer.WriteLine("update bk.bk_story set bk_user__id = (select id from bk.bk_user where mail='loic.lecuyer@egis.fr') where bk_user__id=(select id from bk.bk_user where mail='loic.lecuyer@emash.fr');");
+                writer.WriteLine("update bk.bk_post set bk_user__id = (select id from bk.bk_user where mail='loic.lecuyer@egis.fr') where bk_user__id=(select id from bk.bk_user where mail='loic.lecuyer@emash.fr');");
+                writer.WriteLine("delete from bk.bk_user where mail='loic.lecuyer@emash.fr';");
                 writer.WriteLine("update bk.bk_story set sev = 'minor' where sev='mineur';");
                 writer.WriteLine("update bk.bk_story set sev = 'minor' where sev='mineure';");
                 writer.WriteLine("update bk.bk_story set sev = 'major' where sev='majeure';");
@@ -184,7 +204,30 @@ namespace MigrationBoosterKiller
                 writer.WriteLine("update bk.bk_story set prio = 'minor' where prio='lente';");
                 writer.WriteLine("update bk.bk_story set prio = 'major' where prio='normale';");
                 writer.WriteLine("update bk.bk_story set prio = 'critical' where prio='urgente';");
-                
+
+
+                writer.WriteLine("update bk.bk_user set bk_client__id=(select id from bk.bk_client where nom='emash') where bk_client__id in (select id from bk.bk_client where nom in ('alj','ASF','CG Gard','emash','EMASH_ASK','sylvain_test','TEST'));");
+                writer.WriteLine("update bk.bk_client set nom='EAMS' where nom='emash';");
+
+                writer.WriteLine("update bk.bk_user set bk_client__id=null where bk_client__id in (select id from bk.bk_client where nom in ('alj','ASF','CG Gard','emash','EMASH_ASK','sylvain_test','TEST'));");
+                writer.WriteLine("delete from bk.bk_client where nom='alj';");
+                writer.WriteLine("delete from bk.bk_client where nom='ASF';");
+                writer.WriteLine("delete from bk.bk_client where nom='CG Gard';");
+                writer.WriteLine("delete from bk.bk_client where nom='emash';");
+                writer.WriteLine("delete from bk.bk_client where nom='EMASH_ASK';");
+                writer.WriteLine("delete from bk.bk_client where nom='sylvain_test';");
+                writer.WriteLine("delete from bk.bk_client where nom='TEST';");
+
+                writer.WriteLine("update bk.bk_user set bk_client__id=(select id from bk.bk_client where name='EGIS') where bk_client__id in (select id from bk.bk_client where nom in ('EGIS','EGIS 71','Egis International'));");
+
+                writer.WriteLine("update bk.bk_user set bk_client__id=(select id from bk.bk_client where name='ASP') where bk_client__id in (select id from bk.bk_client where nom in ('ASP','ASP Maisons-Laffitte'));");
+
+
+                writer.WriteLine("delete from bk.bk_client where nom='EGIS 71';");
+                writer.WriteLine("delete from bk.bk_client where nom='Egis International';");
+                writer.WriteLine("delete from bk.bk_client where nom='ASP Maisons-Laffitte';");
+
+
                 writer.Flush();
 
                 
@@ -192,10 +235,10 @@ namespace MigrationBoosterKiller
 
             }
 
-            using (FileStream stream = new FileStream(@"C:\Users\loic\Documents\GIT\BugKiller\Documents\emashbug_data.sql", FileMode.Create))
+            using (FileStream stream = new FileStream(Path.Combine(resourcesDir, "emash_bug_data.sql"), FileMode.Create))
             {
                 StreamWriter writer = new StreamWriter(stream);
-                string uploadPath = @"C:\Users\loic\Documents\GIT\uploads";
+                string uploadPath = Path.Combine(resourcesDir, "Uploads");
                 String[] files = Directory.GetFiles(uploadPath, "*.*", SearchOption.AllDirectories);
                 foreach (String file in files)
                 {

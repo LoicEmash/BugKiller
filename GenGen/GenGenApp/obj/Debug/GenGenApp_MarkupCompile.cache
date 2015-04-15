@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\loic\Documents\GIT\GenGen\GenGenApp\obj\Debug\
+C:\Users\loic\Documents\GitHub\BugKiller\GenGen\GenGenApp\obj\Debug\
 Egis.GenGenApp
 none
 false
 DEBUG;TRACE
-C:\Users\loic\Documents\GIT\GenGen\GenGenApp\App.xaml
+C:\Users\loic\Documents\GitHub\BugKiller\GenGen\GenGenApp\App.xaml
 3114456002
 
 81984330806
-75500006624
+75-925700355
 Resources\GeneratorTemplates.xaml;Views\MainView.xaml;Views\ProjectView.xaml;
 
 False

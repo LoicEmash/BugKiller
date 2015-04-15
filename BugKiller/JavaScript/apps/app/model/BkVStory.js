@@ -17,6 +17,7 @@ requires : ['BugKiller.model.BkBase','Egis.data.SecureProxy'],
 	{name: 'bkPostCount', type: 'int', allowNull: true},
 	{name: 'bkFioCount', type: 'int', allowNull: true},
 	{name: 'bkUserName', type: 'string', allowNull: true},
+	{name: 'bkClientName', type: 'string', allowNull: true},
 	{name: 'resolveDelay', type: 'int', allowNull: true},
 	{name: 'replyDelay', type: 'int', allowNull: true}
 ]

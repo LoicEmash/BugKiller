@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{2B7DBC4A-83CE-448F-8898-72FBFA25E2FF}" Label="" LastModificationDate="1429014833" Name="BugKiller" Objects="93" Symbols="11" Target="ORACLE Version 11g" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{2B7DBC4A-83CE-448F-8898-72FBFA25E2FF}" Label="" LastModificationDate="1429096362" Name="BugKiller" Objects="94" Symbols="11" Target="ORACLE Version 11g" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" signature="PDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -4258,7 +4258,7 @@ DAT 1427981571</a:History>
 <a:Code>BK_V_STORY</a:Code>
 <a:CreationDate>1428930063</a:CreationDate>
 <a:Creator>loic</a:Creator>
-<a:ModificationDate>1429014833</a:ModificationDate>
+<a:ModificationDate>1429096355</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <a:View.SQLQuery>select  
 bk_story.id as id,
@@ -4275,27 +4275,41 @@ bk_story.title as bk_story__title,
 (select count(bk_post.id) from bk.bk_post where bk_post.bk_story__id=bk_story.id ) as bk_post__count,
 (select count(bk_fio.id) from bk.bk_fio where bk_fio.bk_story__id=bk_story.id ) as bk_fio__count,
 (select bk_user.name from bk.bk_user where bk_user.id=bk_user__id ) as bk_user__name,
+(select bk_client.nom from bk.bk_client where id=(select bk_user.bk_client__id from bk.bk_user where bk_user.id=bk_user__id ) ) as bk_client__name,
 
-(select EXTRACT(EPOCH  from sum(dd.dc_end - dd.dc_start)) / 3600 from (
+(select extract(epoch  from sum(dd.dc_end - dd.dc_start)) / 3600 from (
 select dc as dc_start,
 
+(select resolve_post_end.dc from
 (
-select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1
-) as dc_end
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  resolve_post_end
+
+limit 1 ) as dc_end 
 
 
 from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in (&#39;open&#39;,&#39;delivery&#39;,&#39;answer&#39;,&#39;watch&#39;) order by id) dd) as resolve_delay,
 
-(select EXTRACT(EPOCH  from dd.dc_end - dd.dc_start) / 3600 from (
+(select extract(epoch  from dd.dc_end - dd.dc_start) / 3600 from (
 select dc as dc_start,
 
+(select reply_post_end.dc from
 (
-select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1
-) as dc_end
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  reply_post_end
 
+limit 1 ) as dc_end 
 
 from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in (&#39;open&#39;,&#39;delivery&#39;,&#39;answer&#39;,&#39;watch&#39;) order by id asc limit 1) dd) as reply_delay
-from bk.bk_story order by bk_post__count desc</a:View.SQLQuery>
+from bk.bk_story</a:View.SQLQuery>
 <a:TaggedSQLQuery>select  
 bk_story.id as id,
 bk_story.bk_user__id as bk_user__id,
@@ -4311,27 +4325,41 @@ bk_story.title as bk_story__title,
 (select count(bk_post.id) from bk.bk_post where bk_post.bk_story__id=bk_story.id ) as bk_post__count,
 (select count(bk_fio.id) from bk.bk_fio where bk_fio.bk_story__id=bk_story.id ) as bk_fio__count,
 (select bk_user.name from bk.bk_user where bk_user.id=bk_user__id ) as bk_user__name,
+(select bk_client.nom from bk.bk_client where id=(select bk_user.bk_client__id from bk.bk_user where bk_user.id=bk_user__id ) ) as bk_client__name,
 
-(select EXTRACT(EPOCH  from sum(dd.dc_end - dd.dc_start)) / 3600 from (
+(select extract(epoch  from sum(dd.dc_end - dd.dc_start)) / 3600 from (
 select dc as dc_start,
 
+(select resolve_post_end.dc from
 (
-select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1
-) as dc_end
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  resolve_post_end
+
+limit 1 ) as dc_end 
 
 
 from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in (&#39;open&#39;,&#39;delivery&#39;,&#39;answer&#39;,&#39;watch&#39;) order by id) dd) as resolve_delay,
 
-(select EXTRACT(EPOCH  from dd.dc_end - dd.dc_start) / 3600 from (
+(select extract(epoch  from dd.dc_end - dd.dc_start) / 3600 from (
 select dc as dc_start,
 
+(select reply_post_end.dc from
 (
-select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1
-) as dc_end
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id&gt; bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  reply_post_end
 
+limit 1 ) as dc_end 
 
 from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in (&#39;open&#39;,&#39;delivery&#39;,&#39;answer&#39;,&#39;watch&#39;) order by id asc limit 1) dd) as reply_delay
-from bk.bk_story order by bk_post__count desc</a:TaggedSQLQuery>
+from bk.bk_story</a:TaggedSQLQuery>
 <a:UserDefinedSQL>1</a:UserDefinedSQL>
 <c:Columns>
 <o:ViewColumn Id="o81">
@@ -4500,6 +4528,18 @@ from bk.bk_story order by bk_post__count desc</a:TaggedSQLQuery>
 </o:ViewColumn>
 <o:ViewColumn Id="o95">
 <a:ObjectID>2894B98B-B6B0-49A4-A204-9AD95E2E8788</a:ObjectID>
+<a:Name>BK_CLIENT__NAME</a:Name>
+<a:Code>BK_CLIENT__NAME</a:Code>
+<a:CreationDate>1429014607</a:CreationDate>
+<a:Creator>loic</a:Creator>
+<a:ModificationDate>1429096362</a:ModificationDate>
+<a:Modifier>loic</a:Modifier>
+<a:DataType>VARCHAR2(500)</a:DataType>
+<a:Length>500</a:Length>
+<a:CustomDataType>VARCHAR2(500)</a:CustomDataType>
+</o:ViewColumn>
+<o:ViewColumn Id="o96">
+<a:ObjectID>90ACA9E7-246E-4DA8-B36E-7E1E5904A237</a:ObjectID>
 <a:Name>RESOLVE_DELAY</a:Name>
 <a:Code>RESOLVE_DELAY</a:Code>
 <a:CreationDate>1429014607</a:CreationDate>
@@ -4510,13 +4550,13 @@ from bk.bk_story order by bk_post__count desc</a:TaggedSQLQuery>
 <a:Length>9</a:Length>
 <a:CustomDataType>NUMBER(9)</a:CustomDataType>
 </o:ViewColumn>
-<o:ViewColumn Id="o96">
-<a:ObjectID>90ACA9E7-246E-4DA8-B36E-7E1E5904A237</a:ObjectID>
+<o:ViewColumn Id="o97">
+<a:ObjectID>40A1F4AB-CC6E-4865-A759-F45FDBCCC74C</a:ObjectID>
 <a:Name>REPLY_DELAY</a:Name>
 <a:Code>REPLY_DELAY</a:Code>
-<a:CreationDate>1429014607</a:CreationDate>
+<a:CreationDate>1429096350</a:CreationDate>
 <a:Creator>loic</a:Creator>
-<a:ModificationDate>1429014634</a:ModificationDate>
+<a:ModificationDate>1429096355</a:ModificationDate>
 <a:Modifier>loic</a:Modifier>
 <a:DataType>NUMBER(9)</a:DataType>
 <a:Length>9</a:Length>
@@ -4549,7 +4589,7 @@ DAT 1428658021</a:History>
 <o:Key Ref="o31"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o97">
+<o:ReferenceJoin Id="o98">
 <a:ObjectID>450B34F7-BFE8-4170-8435-62E44E9CDCA4</a:ObjectID>
 <a:CreationDate>1428658021</a:CreationDate>
 <a:Creator>loic</a:Creator>
@@ -4587,7 +4627,7 @@ DAT 1428678478</a:History>
 <o:Key Ref="o53"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o98">
+<o:ReferenceJoin Id="o99">
 <a:ObjectID>A942C253-9168-484F-A97E-423CEDC8D172</a:ObjectID>
 <a:CreationDate>1428678478</a:CreationDate>
 <a:Creator>loic</a:Creator>
@@ -4625,7 +4665,7 @@ DAT 1427981571</a:History>
 <o:Key Ref="o39"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o99">
+<o:ReferenceJoin Id="o100">
 <a:ObjectID>65F25B3A-1C8E-414C-BDBF-3C2B22F47DC1</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
@@ -4663,7 +4703,7 @@ DAT 1427981571</a:History>
 <o:Key Ref="o53"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o100">
+<o:ReferenceJoin Id="o101">
 <a:ObjectID>D999E410-6E76-4239-8E55-0C793DA71BB8</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
@@ -4701,7 +4741,7 @@ DAT 1427981571</a:History>
 <o:Key Ref="o39"/>
 </c:ParentKey>
 <c:Joins>
-<o:ReferenceJoin Id="o101">
+<o:ReferenceJoin Id="o102">
 <a:ObjectID>6640B3C5-BCC0-41A8-B002-3732FABC50BE</a:ObjectID>
 <a:CreationDate>1427981571</a:CreationDate>
 <a:Creator>loic</a:Creator>
@@ -4718,7 +4758,7 @@ DAT 1427981571</a:History>
 </o:Reference>
 </c:References>
 <c:DefaultGroups>
-<o:Group Id="o102">
+<o:Group Id="o103">
 <a:ObjectID>DF993D8A-4D2E-4CFA-88C8-D9083EBF6C6C</a:ObjectID>
 <a:Name>PUBLIC</a:Name>
 <a:Code>PUBLIC</a:Code>
@@ -4729,7 +4769,7 @@ DAT 1427981571</a:History>
 </o:Group>
 </c:DefaultGroups>
 <c:TargetModels>
-<o:TargetModel Id="o103">
+<o:TargetModel Id="o104">
 <a:ObjectID>55F08E46-A042-48E4-AD20-6C80DD5664C9</a:ObjectID>
 <a:Name>ORACLE Version 11g</a:Name>
 <a:Code>ORA11GR1</a:Code>
@@ -4744,7 +4784,7 @@ DAT 1427981571</a:History>
 <o:Shortcut Ref="o5"/>
 </c:SessionShortcuts>
 </o:TargetModel>
-<o:TargetModel Id="o104">
+<o:TargetModel Id="o105">
 <a:ObjectID>BB4C499A-2FA0-43DF-8A9D-9DD653D10548</a:ObjectID>
 <a:Name>BugKiller</a:Name>
 <a:Code>BK</a:Code>
@@ -4759,7 +4799,7 @@ DAT 1427981571</a:History>
 <o:Shortcut Ref="o4"/>
 </c:SessionShortcuts>
 </o:TargetModel>
-<o:TargetModel Id="o105">
+<o:TargetModel Id="o106">
 <a:ObjectID>664A1844-DC2C-4BCF-9211-D70630A2500B</a:ObjectID>
 <a:Name>BugKiller2</a:Name>
 <a:Code>BK2</a:Code>

@@ -85,6 +85,11 @@ class BkVStory
 	protected $bkUserName;
 	
 	/**
+	* @ORM\Column(type="string", name="bk_client__name", nullable=true)
+	*/
+	protected $bkClientName;
+	
+	/**
 	* @ORM\Column(type="integer", name="resolve_delay", nullable=true)
 	*/
 	protected $resolveDelay;
@@ -238,6 +243,16 @@ class BkVStory
 		$this->bkUserName= $value;
 	}
 	
+	public function getBkClientName()
+	{
+		return $this->bkClientName;
+	}
+	
+	public function setBkClientName($value)
+	{
+		$this->bkClientName= $value;
+	}
+	
 	public function getResolveDelay()
 	{
 		return $this->resolveDelay;
@@ -279,6 +294,7 @@ class BkVStory
 		$json["bkPostCount"] = $this->getBkPostCount();
 		$json["bkFioCount"] = $this->getBkFioCount();
 		$json["bkUserName"] = $this->getBkUserName();
+		$json["bkClientName"] = $this->getBkClientName();
 		$json["resolveDelay"] = $this->getResolveDelay();
 		$json["replyDelay"] = $this->getReplyDelay();
 		return $json;

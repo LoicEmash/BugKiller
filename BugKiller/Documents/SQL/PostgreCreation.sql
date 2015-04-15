@@ -58,7 +58,7 @@ CREATE TABLE bk.bk_user (
 );
 
 -- Création de la vue bk_v_story
-create or replace view bk.bk_v_story as create or replace view bk.bk_v_story as select  
+create or replace view bk.bk_v_story as select  
 bk_story.id as id,
 bk_story.bk_user__id as bk_user__id,
 bk_story.prod as bk_story__prod,
@@ -73,13 +73,21 @@ bk_story.title as bk_story__title,
 (select count(bk_post.id) from bk.bk_post where bk_post.bk_story__id=bk_story.id ) as bk_post__count,
 (select count(bk_fio.id) from bk.bk_fio where bk_fio.bk_story__id=bk_story.id ) as bk_fio__count,
 (select bk_user.name from bk.bk_user where bk_user.id=bk_user__id ) as bk_user__name,
+(select bk_client.nom from bk.bk_client where id=(select bk_user.bk_client__id from bk.bk_user where bk_user.id=bk_user__id ) ) as bk_client__name,
 
 (select extract(epoch  from sum(dd.dc_end - dd.dc_start)) / 3600 from (
 select dc as dc_start,
 
+(select resolve_post_end.dc from
 (
-select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id> bk_post.id order by bk_post_next.id asc limit 1
-) as dc_end
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id> bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  resolve_post_end
+
+limit 1 ) as dc_end 
 
 
 from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in ('open','delivery','answer','watch') order by id) dd) as resolve_delay,
@@ -87,13 +95,19 @@ from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in ('open','del
 (select extract(epoch  from dd.dc_end - dd.dc_start) / 3600 from (
 select dc as dc_start,
 
+(select reply_post_end.dc from
 (
-select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id> bk_post.id order by bk_post_next.id asc limit 1
-) as dc_end
+	(
+		(select bk_post_next.dc from bk.bk_post bk_post_next where bk_story__id=bk_story.id and  bk_post_next.id> bk_post.id order by bk_post_next.id asc limit 1) 
+		union 
+		(select current_date as dc) 
+	) 
+)  reply_post_end
 
+limit 1 ) as dc_end 
 
 from bk.bk_post where bk_story__id=bk_story.id and bk_post.state in ('open','delivery','answer','watch') order by id asc limit 1) dd) as reply_delay
-from bk.bk_story order by bk_post__count desc;;
+from bk.bk_story;
 -- Création de la contrainte bk_client_pk de la table bk_client
 ALTER TABLE bk.bk_client ADD CONSTRAINT bk_client_pk PRIMARY KEY (id);
 

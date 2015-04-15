@@ -1,40 +1,81 @@
 Ext.define('BugKiller.util.Redmine', {
     requires: [
         'BugKiller.model.RedmineProject',
-        'BugKiller.model.RedmineMembership'
+        'BugKiller.model.RedmineMembership',
+        'BugKiller.model.RedmineGroup'
     ],
     singleton: true,
     projects: [],
+    groups: [],
     allowedProjects: [],
     allowedProducts: [],
     allowedApplications: [],
     memberships: [],
-    load: function (successCallback,failureCallback)
+    load: function (successCallback, failureCallback)
     {
         BugKiller.util.Redmine.projects = [];
         BugKiller.util.Redmine.memberships = [];
         BugKiller.util.Redmine.allowedProjects = [];
         BugKiller.util.Redmine.allowedProducts = [];
         BugKiller.util.Redmine.allowedApplications = [];
-        BugKiller.util.Redmine.loadProjects(function () {
-            //console.log(BugKiller.util.Redmine.projects);
-            BugKiller.util.Redmine.loadProjectMemberships(0, function () {
-                //console.log(BugKiller.util.Redmine.memberships);
-                BugKiller.util.Redmine.computeAllowedProject();
-                BugKiller.util.Redmine.computeAllowedProducts();
-                BugKiller.util.Redmine.computeAllowedApplications();
-                successCallback();
-                //console.log(BugKiller.util.Redmine.allowedProjects);
-                //console.log(BugKiller.util.Redmine.allowedProducts);
-                //console.log(BugKiller.util.Redmine.allowedApplications);
-            },failureCallback);
-        },failureCallback);
+        BugKiller.util.Redmine.groups = [];
+        BugKiller.util.Redmine.loadGroups(function () {
+            BugKiller.util.Redmine.loadProjects(function () {
+                //console.log(BugKiller.util.Redmine.projects);
+                BugKiller.util.Redmine.loadProjectMemberships(0, function () {
+                    //console.log(BugKiller.util.Redmine.memberships);
+                    BugKiller.util.Redmine.computeAllowedProject();
+                    BugKiller.util.Redmine.computeAllowedProducts();
+                    BugKiller.util.Redmine.computeAllowedApplications();
+                    successCallback();
+                    //console.log(BugKiller.util.Redmine.allowedProjects);
+                    //console.log(BugKiller.util.Redmine.allowedProducts);
+                    //console.log(BugKiller.util.Redmine.allowedApplications);
+                }, failureCallback);
+            }, failureCallback);
+        }, failureCallback);
 
+
+
+
+    },
+    loadGroups: function (successCallback, failureCallback)
+    {
+        var groupStore = Ext.create('Ext.data.Store', {
+            model: 'BugKiller.model.RedmineGroup',
+            proxy: {
+                type: 'ajax',
+                url: document.egis.redmineUrl + '/groups.json?key=' + document.egis.redmineKey,
+                reader: {
+                    type: 'json',
+                    rootProperty: 'groups',
+                    totalProperty: 'total_count'
+                }
+            },
+            autoLoad: false
+        });
+        groupStore.load({
+            scope: this,
+            callback: function (records, operation, success) {
+                if (operation.wasSuccessful())
+                {
+                    for (var i = 0; i < records.length; i++)
+                    {
+                        BugKiller.util.Redmine.groups.push(records[i]);
+                    }
+                    successCallback();
+                }
+                else
+                {
+                    failureCallback();
+                }
+            }
+        });
 
     },
     computeAllowedApplications: function ()
     {
-       for (var i = 0; i < BugKiller.util.Redmine.allowedProjects.length; i++)
+        for (var i = 0; i < BugKiller.util.Redmine.allowedProjects.length; i++)
         {
             var parent = BugKiller.util.Redmine.allowedProjects[i];
             var isParent = false;
@@ -94,6 +135,7 @@ Ext.define('BugKiller.util.Redmine', {
                             isAllowedProject = true;
                             if (membership.data.group !== undefined)
                             {
+                                console.log(membership.data.group);
                                 clients.push(membership.data.group.name);
                             }
                         }
@@ -104,22 +146,22 @@ Ext.define('BugKiller.util.Redmine', {
             {
                 if (BugKiller.Global.userIsAdmin)
                 {
-                     BugKiller.util.Redmine.allowedProjects.push(project);
+                    BugKiller.util.Redmine.allowedProjects.push(project);
                 }
                 else
                 {
-                    if (Ext.Array.contains(clients,BugKiller.Global.userClient))
+                    if (Ext.Array.contains(clients, BugKiller.Global.userClient))
                     {
                         BugKiller.util.Redmine.allowedProjects.push(project);
                     }
                 }
-               
+
             }
         }
 
     },
     //@TODO : Gestion d'un sucess callback et d'un failure callback
-    loadProjectMemberships: function (index, successCallback,failureCallback)
+    loadProjectMemberships: function (index, successCallback, failureCallback)
     {
         if (index < BugKiller.util.Redmine.projects.length)
         {
@@ -147,7 +189,7 @@ Ext.define('BugKiller.util.Redmine', {
                             BugKiller.util.Redmine.memberships.push(records[i]);
                         }
                         index++;
-                        BugKiller.util.Redmine.loadProjectMemberships(index, successCallback,failureCallback);
+                        BugKiller.util.Redmine.loadProjectMemberships(index, successCallback, failureCallback);
                     }
                     else
                     {
@@ -163,7 +205,7 @@ Ext.define('BugKiller.util.Redmine', {
             successCallback();
         }
     },
-    loadProjects: function ( successCallback,failureCallback)
+    loadProjects: function (successCallback, failureCallback)
     {
         var projectStore = Ext.create('Ext.data.Store', {
             model: 'BugKiller.model.RedmineProject',
@@ -179,10 +221,10 @@ Ext.define('BugKiller.util.Redmine', {
             autoLoad: false
         });
 
-        BugKiller.util.Redmine.recurseLoadStore(projectStore, 0, 50, BugKiller.util.Redmine.projects,  successCallback,failureCallback);
+        BugKiller.util.Redmine.recurseLoadStore(projectStore, 0, 50, BugKiller.util.Redmine.projects, successCallback, failureCallback);
     },
     //@TODO : Gestion d'un sucess callback et d'un failure callback
-    recurseLoadStore: function (store, offset, step, recordArray,  successCallback,failureCallback)
+    recurseLoadStore: function (store, offset, step, recordArray, successCallback, failureCallback)
     {
 
         store.load(
