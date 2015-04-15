@@ -48,13 +48,13 @@ Ext.define('BugKiller.view.story.CreateController', {
     updateFirstPostFiles: function (storyId)
     {
         var me = this;
-        console.log('updateFirstPostFiles');
+       // console.log('updateFirstPostFiles');
         var fileList = this.lookupReference('fileList');
         var fileIds = fileList.getFileIds();
-        console.log(fileIds);
+       // console.log(fileIds);
         if (fileIds.length > 0)
         {
-            console.log('updateFirstPostFiles '+fileIds.length+" fichiers");
+         //   console.log('updateFirstPostFiles '+fileIds.length+" fichiers");
             me.getView().mask('Enregistrement des fichiers ...');
            
             var fileStore = Ext.create('Ext.data.Store', {model: 'BugKiller.model.BkFio', remoteFilter: true, remoteSort: true});
@@ -84,7 +84,7 @@ Ext.define('BugKiller.view.story.CreateController', {
         }
         else
         {
-           console.log('updateFirstPostFiles aucun fichiers');
+         //  console.log('updateFirstPostFiles aucun fichiers');
             me.clearViewModel.call(me);
             me.fireViewEvent('storyCreationSuccess');
             me.getView().unmask();
@@ -93,7 +93,7 @@ Ext.define('BugKiller.view.story.CreateController', {
     },
     saveFirstPost: function (storyId)
     {
-        console.log('saveFirstPost');
+       // console.log('saveFirstPost');
         var me = this;
         me.getView().mask('Enregistrement description ...');
         var viewModel = this.getViewModel();
@@ -115,7 +115,7 @@ Ext.define('BugKiller.view.story.CreateController', {
     },
     saveStory: function ()
     {
-        console.log('saveStory');
+       // console.log('saveStory');
         var me = this;
         var viewModel = this.getViewModel();
        

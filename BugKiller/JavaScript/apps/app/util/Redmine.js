@@ -30,8 +30,8 @@ Ext.define('BugKiller.util.Redmine', {
         BugKiller.util.Redmine.allowedApplications = [];
         BugKiller.util.Redmine.clients = [];
         BugKiller.util.Redmine.loadGroups(function () {
-            console.log('clients');
-            console.log(BugKiller.util.Redmine.clients);
+            //console.log('clients');
+           // console.log(BugKiller.util.Redmine.clients);
             BugKiller.util.Redmine.loadProjects(function () {
                 //console.log(BugKiller.util.Redmine.projects);
                 BugKiller.util.Redmine.loadProjectMemberships(0, function () {
@@ -166,7 +166,7 @@ Ext.define('BugKiller.util.Redmine', {
                             isAllowedProject = true;
                             if (membership.data.group !== undefined)
                             {
-                                console.log(membership.data.group);
+                             //   console.log(membership.data.group);
                                 clients.push(membership.data.group.name);
                             }
                         }

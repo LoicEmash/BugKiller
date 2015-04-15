@@ -67,7 +67,7 @@ Ext.define('BugKiller.view.login.LoginController', {
                                 if (records.length === 1)
                                 {
                                     var record = records[0];
-                                    console.log(record);
+                                   // console.log(record);
                                     if (record.getBkClient() !== null)
                                     {
                                         var clientRecord = record.getBkClient();
@@ -118,7 +118,7 @@ Ext.define('BugKiller.view.login.LoginController', {
         var md5Password = BugKiller.util.Crypto.md5(password);
         this.authenticate(mail, md5Password,
                 function (resultMail, resultPassword, resultName, resultId,isAdmin,client) {
-                    console.log(isAdmin);
+                   // console.log(isAdmin);
                     me.fireViewEvent('authenticated', resultMail, resultPassword, resultName, resultId,isAdmin,client);
                     view.enable();
                 },

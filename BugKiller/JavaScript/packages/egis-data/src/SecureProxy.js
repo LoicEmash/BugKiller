@@ -51,18 +51,18 @@ Ext.define('Egis.data.SecureProxy', {
         if (config.needestChildTables !== undefined)
         {
             this.setNeedestChildTables(config.needestChildTables);
-            console.log('setNeedestChildTables');
+            //console.log('setNeedestChildTables');
         }
         if (config.needestParentTables !== undefined)
         {
             this.setNeedestParentTables(config.needestParentTables);
-            console.log('setNeedestParentTables');
+            //console.log('setNeedestParentTables');
         }
         this.extraParams = {
             needestChildTables : this.getNeedestChildTables(),
             needestParentTables: this.getNeedestParentTables()
         };
-        console.log(this.extraParams);
+        //console.log(this.extraParams);
         this.callParent([config]);
     },
     pageParam: false,

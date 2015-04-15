@@ -8,7 +8,7 @@ Ext.define('BugKiller.view.story.ListController', {
     , initViewModel: function ()
     {
         var me = this;
-        console.log('handle userLogged');
+       // console.log('handle userLogged');
         BugKiller.getApplication().on('userLogged', function () {
             me.loadStory.call(me);
 
@@ -35,8 +35,7 @@ Ext.define('BugKiller.view.story.ListController', {
 
 
         var comboProduct = this.lookupReference('comboProduct');
-        var filterProduct = comboProduct.getValue();
-        console.log('filterProduct : ' + filterProduct);
+        var filterProduct = comboProduct.getValue();        
         if (filterProduct !== null && filterProduct !== '')
         {
             storyStore.addFilter({
@@ -49,8 +48,7 @@ Ext.define('BugKiller.view.story.ListController', {
 
 
         var comboApp = this.lookupReference('comboApp');
-        var filterApp = comboApp.getValue();
-        console.log('filterApp : ' + filterApp);
+        var filterApp = comboApp.getValue();       
         if (filterApp !== null && filterApp !== '')
         {
             storyStore.addFilter({
@@ -63,7 +61,7 @@ Ext.define('BugKiller.view.story.ListController', {
 
         var comboState = this.lookupReference('comboState');
         var filterState = comboState.getValue();
-        console.log('filterState : ' + filterState);
+       // console.log('filterState : ' + filterState);
         if (filterState !== null && filterState !== '')
         {
             storyStore.addFilter({
@@ -78,14 +76,14 @@ Ext.define('BugKiller.view.story.ListController', {
         if (filterId !== null && filterId !== '')
         {
             storyStore.addFilter({
-                property: 'id',               
+                property: 'id',
                 value: filterId
             }, true);
         }
-        
-        
+
+
         var comboSeverity = this.lookupReference('comboSeverity');
-        var filterSeverity = comboSeverity.getValue();       
+        var filterSeverity = comboSeverity.getValue();
         if (filterSeverity !== null && filterSeverity !== '')
         {
             storyStore.addFilter({
@@ -94,10 +92,10 @@ Ext.define('BugKiller.view.story.ListController', {
                 value: filterSeverity
             }, true);
         }
-        
-        
+
+
         var comboPriority = this.lookupReference('comboPriority');
-        var filterPriority = comboPriority.getValue();       
+        var filterPriority = comboPriority.getValue();
         if (filterPriority !== null && filterPriority !== '')
         {
             storyStore.addFilter({
@@ -106,9 +104,9 @@ Ext.define('BugKiller.view.story.ListController', {
                 value: filterPriority
             }, true);
         }
-        
+
         var comboReproductibility = this.lookupReference('comboReproductibility');
-        var filterReproductibility = comboReproductibility.getValue();       
+        var filterReproductibility = comboReproductibility.getValue();
         if (filterReproductibility !== null && filterReproductibility !== '')
         {
             storyStore.addFilter({
@@ -121,7 +119,7 @@ Ext.define('BugKiller.view.story.ListController', {
     },
     loadStory: function ()
     {
-        console.log("load story");
+      //  console.log("load story");
         var storyStore = Ext.data.StoreManager.lookup('VStory');
         storyStore.clearFilter(true);
         if (BugKiller.Global.userIsAdmin === false)
@@ -157,14 +155,13 @@ Ext.define('BugKiller.view.story.ListController', {
     {
         this.loadStory();
     },
-    onFilterKeyUp: function (combo, e, eOpts)
+    onFilterKeyUp: function (component, e)
     {
         if (e.getCharCode() === 13)
         {
             this.loadStory();
         }
-
     }
-   
+
 
 });

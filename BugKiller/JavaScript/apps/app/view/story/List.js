@@ -108,7 +108,7 @@ Ext.define("BugKiller.view.story.List", {
                                 }
 
                             }, {
-                                xtype: 'combo',                                                         
+                                xtype: 'combo',
                                 queryMode: 'local',
                                 displayField: 'name',
                                 margin: 4,
@@ -134,8 +134,8 @@ Ext.define("BugKiller.view.story.List", {
 
                             },
                             {
-                                xtype: 'combo',                                
-                                queryMode: 'local',                               
+                                xtype: 'combo',
+                                queryMode: 'local',
                                 displayField: 'name',
                                 margin: 4,
                                 width: 160,
@@ -160,8 +160,8 @@ Ext.define("BugKiller.view.story.List", {
 
                             },
                             {
-                                xtype: 'combo',                                
-                                queryMode: 'local',                               
+                                xtype: 'combo',
+                                queryMode: 'local',
                                 reference: 'comboReproductibility',
                                 displayField: 'name',
                                 margin: 4,
@@ -197,6 +197,7 @@ Ext.define("BugKiller.view.story.List", {
                             {text: 'Id', dataIndex: 'id', width: 60},
                             {text: 'Produit', dataIndex: 'bkStoryProd', minWidth: 120},
                             {text: 'Application', dataIndex: 'bkStoryApp', minWidth: 120},
+                            {text: 'Client', dataIndex: 'bkClientName', minWidth: 120},
                             {text: 'Raporteur', dataIndex: 'bkUserName', minWidth: 120},
                             {text: 'Date de création', dataIndex: 'bkStoryDc', renderer: Ext.util.Format.dateRenderer('d/m/Y H:i'), width: 140},
                             {text: 'Etat', dataIndex: 'bkPostState', renderer: function (val, meta, record, rowIndex) {
@@ -283,6 +284,30 @@ Ext.define("BugKiller.view.story.List", {
 
                                         }},
                         ],
+                        viewConfig: {
+                            listeners: {
+                                render: function (view) {
+                                    view.tip = Ext.create('Ext.tip.ToolTip', {
+                                        // The overall target element.
+                                        target: view.el,
+                                        // Each grid row causes its own seperate show and hide.
+                                        delegate: view.itemSelector,
+                                        // Moving within the row should not hide the tip.
+                                        trackMouse: true,
+                                        // Render immediately so that tip.body can be referenced prior to the first show.
+                                        renderTo: Ext.getBody(),                                       
+                                        html: 'Informations sur le rapport',
+                                        listeners: {
+                                            // Change content dynamically depending on which element triggered the show.
+                                            beforeshow: function (tip) {
+                                                var record = view.getRecord(tip.triggerElement);
+                                                tip.setHtml(record.get('bkStoryTitle'));
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        },
                         dockedItems: [{
                                 xtype: 'pagingtoolbar',
                                 store: 'VStory',

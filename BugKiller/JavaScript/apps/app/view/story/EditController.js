@@ -115,7 +115,7 @@ Ext.define('BugKiller.view.story.EditController', {
     },
     clearViewModel: function ()
     {
-        console.log('clearViewModel');
+       // console.log('clearViewModel');
         var postList = this.lookupReference('postList');
         var viewModel = this.getViewModel();
         viewModel.set('storyId', null);

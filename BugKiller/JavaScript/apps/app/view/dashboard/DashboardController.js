@@ -57,7 +57,7 @@ Ext.define('BugKiller.view.dashboard.DashboardController', {
     },
     onStoryCreationSuccess : function()
     {
-        console.log('onStoryCreationSuccess');
+       // console.log('onStoryCreationSuccess');
         var panelStoryList  = this.lookupReference('panelStoryList');
         var panelStoryCreate  = this.lookupReference('panelStoryCreate');      
         var gridStoryList   = this.lookupReference('gridStoryList');   

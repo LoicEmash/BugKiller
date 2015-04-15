@@ -229,6 +229,7 @@ namespace MigrationBoosterKiller
                 writer.WriteLine("delete from bk.bk_client where nom='EGIS 71';");
                 writer.WriteLine("delete from bk.bk_client where nom='Egis International';");
                 writer.WriteLine("delete from bk.bk_client where nom='ASP Maisons-Laffitte';");
+                writer.WriteLine("update bk.bk_user  set bk_client__id =(select id from bk.bk_client where nom='EGIS' ) where bk_client__id is null;");
 
 
                 writer.Flush();

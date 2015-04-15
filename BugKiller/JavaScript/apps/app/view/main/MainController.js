@@ -67,7 +67,7 @@ Ext.define('BugKiller.view.main.MainController', {
     },
     onRedmineLoadedSuccess: function ()
     {
-        console.log('onRedmineLoadedSuccess');
+      //  console.log('onRedmineLoadedSuccess');
         var storeRedmineProduct = Ext.data.StoreManager.lookup('RedmineProduct');
         storeRedmineProduct.loadData(BugKiller.util.Redmine.allowedProducts);
         var storeRedmineRedmineApplication = Ext.data.StoreManager.lookup('RedmineApplication');
@@ -76,7 +76,7 @@ Ext.define('BugKiller.view.main.MainController', {
     },
     onRedmineLoadedFailure: function ()
     {
-        console.log('onRedmineLoadedFailure');
+      //  console.log('onRedmineLoadedFailure');
     }
 
 
