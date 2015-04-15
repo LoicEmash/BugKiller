@@ -49,7 +49,7 @@ Ext.define("BugKiller.view.story.List", {
                                 store: 'RedmineProduct',
                                 listeners: {
                                     change: 'onComboProductChange',
-                                    keyup:'onComboProductKeyUp'
+                                    keyup: 'onComboProductKeyUp'
                                 }
 
                             },
@@ -69,7 +69,7 @@ Ext.define("BugKiller.view.story.List", {
                                 store: 'RedmineApplication',
                                 listeners: {
                                     change: 'onComboAppChange',
-                                    keyup:'onComboAppKeyUp'
+                                    keyup: 'onComboAppKeyUp'
                                 }
 
                             },
@@ -92,11 +92,10 @@ Ext.define("BugKiller.view.story.List", {
                                 }),
                                 listeners: {
                                     change: 'onComboStateChange',
-                                    keyup:'onComboStateKeyUp'
+                                    keyup: 'onComboStateKeyUp'
                                 }
 
                             },
-
                         ]
                     },
                     {
@@ -133,10 +132,67 @@ Ext.define("BugKiller.view.story.List", {
                             {text: 'Sévérité', dataIndex: 'bkStorySev', renderer: BugKiller.util.Format.keyValueRenderer(BugKiller.Locale.severityValues)},
                             {text: 'Priorité', dataIndex: 'bkStoryPrio', renderer: BugKiller.util.Format.keyValueRenderer(BugKiller.Locale.priorityValues)},
                             {text: 'Reproductible', dataIndex: 'bkStoryRepro', renderer: BugKiller.util.Format.keyValueRenderer(BugKiller.Locale.reproductibilityValues)},
-                             {text: 'Délai réponse', dataIndex: 'replyDelay'},
-                            {text: 'Délai éxécution', dataIndex: 'resolveDelay'},
+                            {text: 'Réponse', dataIndex: 'replyDelay', renderer:
+                                        function (value, metadata, record, rowIndex, colIndex, store)
+                                        {
+                                            var state = record.get('bkPostState');
+                                            if (state === 'open')
+                                            {
+                                                metadata.style = "background-color:orange;";
+                                            }
+                                            else
+                                            {
+                                                var clientName = record.get('bkClientName');
+                                                for (var i = 0; i < BugKiller.util.Redmine.clients.length; i++)
+                                                {
+                                                    var client = BugKiller.util.Redmine.clients[i];
+                                                    if (client.name === clientName)
+                                                    {
+                                                        if (value <= client.replyDelay)
+                                                        {
+                                                            metadata.style = "background-color:green;";
+                                                        }
+                                                        else
+                                                        {
+                                                            metadata.style = "background-color:red;";
+                                                        }
 
+                                                    }
+                                                }
+                                            }
 
+                                        }
+                            },
+                            {text: 'Exécution', dataIndex: 'resolveDelay', renderer:
+                                        function (value, metadata, record, rowIndex, colIndex, store)
+                                        {
+                                            var state = record.get('bkPostState');
+                                            if (state === 'open' || state === 'ask')
+                                            {
+                                                metadata.style = "background-color:orange;";
+                                            }
+                                            else
+                                            {
+                                                var clientName = record.get('bkClientName');
+                                                for (var i = 0; i < BugKiller.util.Redmine.clients.length; i++)
+                                                {
+                                                    var client = BugKiller.util.Redmine.clients[i];
+                                                    if (client.name === clientName)
+                                                    {
+                                                        if (value <= client.executionDelay)
+                                                        {
+                                                            metadata.style = "background-color:green;";
+                                                        }
+                                                        else
+                                                        {
+                                                            metadata.style = "background-color:red;";
+                                                        }
+
+                                                    }
+                                                }
+                                            }
+
+                                        }},
                         ],
                         dockedItems: [{
                                 xtype: 'pagingtoolbar',
