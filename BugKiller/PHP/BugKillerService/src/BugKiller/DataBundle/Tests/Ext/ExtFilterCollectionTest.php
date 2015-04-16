@@ -1,17 +1,34 @@
 <?php
 
-namespace BugKiller\DataBundle\Tests\Controller;
+namespace BugKiller\DataBundle\Tests\Ext;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use BugKiller\DataBundle\Ext;
 
-class DefaultControllerTest extends WebTestCase
-{
-    public function testIndex()
-    {
-        $client = static::createClient();
+class ExtFilterCollectionTest extends WebTestCase {
 
-        $crawler = $client->request('GET', '/hello/Fabien');
-
-        $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testParseRequestFiltersNull() {
+        \BugKiller\DataBundle\Ext\ExtFilterCollection::parseRequestFilters(null);
+    }
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testParseRequestFiltersBadString() {
+        \BugKiller\DataBundle\Ext\ExtFilterCollection::parseRequestFilters("4f4dsfd");
+    }
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testParseRequestFiltersBadJson() {
+        \BugKiller\DataBundle\Ext\ExtFilterCollection::parseRequestFilters("{ gogo:4 }");
+    }
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testParseRequestFiltersBadJsonArray() {
+        \BugKiller\DataBundle\Ext\ExtFilterCollection::parseRequestFilters("[{ property:\"id\",value:4 },{}]");
     }
 }

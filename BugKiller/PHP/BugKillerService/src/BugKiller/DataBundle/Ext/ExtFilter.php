@@ -23,8 +23,18 @@ class ExtFilter {
      * @param string $property Nom de la propriété
      * @param mixed $value Valeur du filtre
      * @param string $operator Opérateur du filtre, itinitalisé à = si non présent 
+     * @todo gérer les opérateurs autorisé en fonction du type de la propriété
      */
     function __construct($property,$value,$operator="=") {
+        //
+        if (!is_string($property))
+        {
+            throw new \InvalidArgumentException("L'argument property n'est pas une chaine texte",200);
+        }
+        if (!is_string($operator))
+        {
+            throw new \InvalidArgumentException("L'argument operator n'est pas une chaine texte",200);
+        }
         $this->property = $property;
         $this->value = $value;
         $this->operator = $operator;
