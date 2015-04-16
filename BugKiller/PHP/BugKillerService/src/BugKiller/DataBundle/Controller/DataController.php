@@ -5,29 +5,56 @@ use BugKiller\DataBundle\Util;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use BugKiller\DataBundle\Ext;
 class DataController extends ContainerAware {
 
+    public function getRequestJson($requestContent)
+    {
+        $data = json_decode($requestContent);
+        $jsonData = get_object_vars($data);
+        return $jsonData;
+    }
+    
+    public function extractId($jsonData)
+    {
+        if (isset($jsonData["id"]))
+        {
+            return $jsonData["id"];
+        }
+        else
+        {
+            return null;
+        }
+    }
+   
+
+    public function createJsonResponse($datas,$success,$total,$message)
+    {
+        $json = [];
+        $json['datas'] = $datas;
+        $json['success'] = $success;
+        $json['total'] = $total;
+        $json['message'] = $message;
+        return $json;
+    }
+    
     public function updateAction($table) {
 
         $request = $this->container->get('request');
+        $em = $this->container->get('doctrine')->getEntityManager();        
         $content = $request->getContent();
-        $data = json_decode($content);
-        $datas = get_object_vars($data);
-        $em = $this->container->get('doctrine')->getEntityManager();
+        $datas =$this->getRequestJson($content);
+        $id = $this->extractId($datas); 
         $repository = $this->container->get('doctrine')->getRepository('BugKillerDataBundle:' . $table);
         $queryBuilder = $repository->createQueryBuilder('tblMain');
-        $queryBuilder->where("tblMain.id = ?0")->setParameters([$datas["id"]]);
+        $queryBuilder->where("tblMain.id = ?0")->setParameters([$id]);
         $query = $queryBuilder->getQuery();
         $items = $query->getResult();
         $item = $items[0];
         $item->setJson($datas,$em);
         $em->persist($item);
         $em->flush();
-        $json = [];
-        $json['datas'] = [$item->getJson($em)];
-        $json['success'] = true;
-        $json['total'] = 1;
-        $json['message'] = 'ok';
+        $json = $this->createJsonResponse([$item->getJson($em)],true,1,"ok");       
         $response = new Response();
         $response->setContent(json_encode($json));
         $response->headers->set('Content-Type', 'application/json');
@@ -38,22 +65,18 @@ class DataController extends ContainerAware {
 
         $request = $this->container->get('request');
         $content = $request->getContent();
-        $data = json_decode($content);
-        $datas = get_object_vars($data);
+        $datas =$this->getRequestJson($content);
+        $id = $this->extractId($datas); 
         $em = $this->container->get('doctrine')->getEntityManager();
         $repository = $this->container->get('doctrine')->getRepository('BugKillerDataBundle:' . $table);
         $queryBuilder = $repository->createQueryBuilder('tblMain');
-        $queryBuilder->where("tblMain.id = ?0")->setParameters([$datas["id"]]);
+        $queryBuilder->where("tblMain.id = ?0")->setParameters([$id]);
         $query = $queryBuilder->getQuery();
         $items = $query->getResult();
         $item = $items[0];       
         $em->remove($item);
         $em->flush();
-        $json = [];
-        $json['datas'] = [];
-        $json['success'] = true;
-        $json['total'] = 0;
-        $json['message'] = 'ok';
+        $json = $this->createJsonResponse([],true,0,"ok");  
         $response = new Response();
         $response->setContent(json_encode($json));
         $response->headers->set('Content-Type', 'application/json');
@@ -65,22 +88,16 @@ class DataController extends ContainerAware {
         $em = $this->container->get('doctrine')->getEntityManager();
         $request = $this->container->get('request');
         $content = $request->getContent();
-        $data = json_decode($content);       
-        $datas = get_object_vars($data);       
+        $datas =$this->getRequestJson($content);      
         if (isset($datas["id"])) {
             unset($datas["id"]);
         }
         $className = "BugKiller\\DataBundle\\Entity\\" . $table;
         $item = new $className();
-        $item->setJson($datas,$em);
-        
+        $item->setJson($datas,$em);        
         $em->persist($item);
         $em->flush();
-        $json = [];
-        $json['datas'] = [$item->getJson($em)];
-        $json['success'] = true;
-        $json['total'] = 1;
-        $json['message'] = 'ok';
+        $json = $this->createJsonResponse([$item->getJson($em)],true,1,"ok");         
         $response = new Response();
         $response->setContent(json_encode($json));
         $response->headers->set('Content-Type', 'application/json');
@@ -90,6 +107,7 @@ class DataController extends ContainerAware {
     public function readAction($table) {
         $request = $this->container->get('request');
         $filterParameter = $request->query->get('filter');
+        $filterCollection =  \BugKiller\DataBundle\Ext\ExtFilterCollection::parseRequestFilters($filterParameter);
         $idParameter = $request->query->get('id');
         $sorterParameter = $request->query->get('sort');
         $pageParameter = $request->query->get('page');
@@ -130,7 +148,7 @@ class DataController extends ContainerAware {
         }
         
         $em = $this->container->get('doctrine')->getEntityManager();
-          $queryBuilder = $em->createQueryBuilder();
+        $queryBuilder = $em->createQueryBuilder();
         
         
         
