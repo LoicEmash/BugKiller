@@ -50,9 +50,9 @@
         -->
 
     <sources>
-        <source src="ext/source" match="*.js"/>
+        <source src="ext/source/util" match="*.js"/>
         <!--<source src="ext" match="Ext*.js"/>-->
-        <source src="sample.js" />
+      
     </sources>
     <tags>
         <tag name="author" title="Author"/>

@@ -1,8 +1,6 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * @class BugKiller.util.Crypto A description of BugKiller.util.Crypto
+ * */
 Ext.define('BugKiller.util.Crypto', {
     singleton: true,
     md5: function (clearString)
