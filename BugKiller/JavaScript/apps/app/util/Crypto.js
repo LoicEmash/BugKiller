@@ -7,6 +7,22 @@ Ext.define('BugKiller.util.Crypto', {
     singleton: true,
     md5: function (clearString)
     {
+        if (clearString === undefined)
+        {
+            throw "Le paramètre clearString ne peut pas être undefined";
+        }
+        if (clearString === null)
+        {
+            throw "Le paramètre clearString ne peut pas être null";
+        }
+        if (typeof clearString !== 'string')
+        {
+            throw "Le paramètre clearString doit être une chaine";
+        }
+        if (clearString.length < 1)
+        {
+            throw "Le paramètre clearString doit être une chaine de longueur minimum 1";
+        }
         function safe_add(x, y) {
             var lsw = (x & 0xFFFF) + (y & 0xFFFF),
                     msw = (x >> 16) + (y >> 16) + (lsw >> 16);
