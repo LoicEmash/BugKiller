@@ -26,7 +26,8 @@
         "sensio/generator-bundle": "~2.3",
 		"dompdf/dompdf": "~0.6",
         "phpdocumentor/template-zend": "1.3.2",
-        "phpdocumentor/phpdocumentor": "dev-master"
+        "phpdocumentor/phpdocumentor": "dev-master",
+		"phpunit/phpunit": "3.7.*"
         
        
       
