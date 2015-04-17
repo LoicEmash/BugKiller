@@ -6,11 +6,13 @@ describe('BugKiller.util.Crypto', function () {
     describe('md5', function () {
 
         var instance = ExtSpec.ClassManager.create('BugKiller.util.Crypto');
+        
         it("should throw an exception for undefined clearString parameter", function () {
             expect(function () {
                instance.md5();
             }).toThrow("Le paramètre clearString ne peut pas être undefined");
         });
+        
         it("should throw an exception for null clearString parameter", function () {
             expect(function () {
                instance.md5(null);
@@ -33,5 +35,6 @@ describe('BugKiller.util.Crypto', function () {
             var hash = instance.md5("gtk7gg");
             expect(hash).toEqual("70e92d4fbe843ce266bc6f1f2d643526");
         });
+        
     });
 });
