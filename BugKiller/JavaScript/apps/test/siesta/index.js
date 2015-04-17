@@ -10,12 +10,14 @@ Harness.configure({
 
         // version of ExtJS used by your application
         '../../../ext/build/ext-all-debug.js',
-        '../../app/util/Crypto.js'
+        '../../app/util/Crypto.js',
+        '../../app/util/Format.js'
         //'../yourproject-all.js'
     ]
 });
 
 Harness.start(
-    'app/util/Crypto.js'
+    'app/util/Crypto.js',
+    'app/util/Format.js'
    // '020_basic.t.js'
 );
