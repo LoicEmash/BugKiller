@@ -22,8 +22,14 @@ class ExtPagination {
      * @param int $limit Nombre maximal d'enregistrement de la pagination 
      */
     function __construct($start, $limit) {
-        $this->start = $start;
-        $this->limit = $limit;
+        if (!is_numeric($start)) 
+        {throw new \InvalidArgumentException("La valeur du paramètre start de la pagination n'est pas un entier", 200);}
+        
+        if (!is_numeric($limit)) 
+        {throw new \InvalidArgumentException("La valeur du paramètre start de la pagination n'est pas un entier", 200);}
+        
+        $this->start = parseInt($start);
+        $this->limit = parseInt($limit);
     }
     /**
      * Renvoie les résultat de la pagination ou ceux de la requête si la pgination n'est pas active
