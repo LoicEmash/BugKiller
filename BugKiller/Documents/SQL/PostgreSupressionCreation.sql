@@ -1,4 +1,4 @@
-﻿-- Supression des utilisateurs du schéma bk
+-- Supression des utilisateurs du schéma bk
 DROP USER bk_user_consult;
 DROP USER bk_user_admin;
 

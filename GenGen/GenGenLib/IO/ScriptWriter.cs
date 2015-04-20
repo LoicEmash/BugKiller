@@ -27,7 +27,7 @@ namespace Egis.GenGenLib.IO
         {
             this._stream = new FileStream(fileName, FileMode.Create);
             if (isUtf8)
-            { this._writer = new StreamWriter(this._stream, System.Text.Encoding.UTF8); }
+            { this._writer = new StreamWriter(this._stream, new System.Text.UTF8Encoding(false)); }
             else { this._writer = new StreamWriter(this._stream); }
             this._identChar = indentChar;
             this._bracketOpen = bracketOpen;

@@ -1,4 +1,4 @@
-﻿-- Création des utilisateurs du schéma bk
+-- Création des utilisateurs du schéma bk
 CREATE USER bk_user_consult WITH LOGIN PASSWORD 'bk_user_consult';
 CREATE USER bk_user_admin WITH LOGIN PASSWORD 'bk_user_admin';
 
