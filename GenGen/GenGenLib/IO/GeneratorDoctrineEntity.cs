@@ -32,7 +32,7 @@ namespace Egis.GenGenLib.IO
                     string fileName = dbTable.Name.ToCamelCase() + ".php";
 
                     string filePath = Path.Combine(this.Directory, fileName);
-                    using (ScriptWriter writer = new ScriptWriter(filePath, false))
+                    using (ScriptWriter writer = new ScriptWriter(filePath, "//",true,"    ","{","}"))
                     {
                         writer.WriteLine("<?php");
                         writer.WriteLine("");
@@ -211,7 +211,7 @@ namespace Egis.GenGenLib.IO
                     string fileName = dbView.Name.ToCamelCase() + ".php";
 
                     string filePath = Path.Combine(this.Directory, fileName);
-                    using (ScriptWriter writer = new ScriptWriter(filePath, false))
+                    using (ScriptWriter writer = new ScriptWriter(filePath, "//", true, "    ", "{", "}"))
                     {
                         writer.WriteLine("<?php");
                         writer.WriteLine("");

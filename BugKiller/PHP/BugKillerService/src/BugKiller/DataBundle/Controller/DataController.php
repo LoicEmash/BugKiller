@@ -1,8 +1,10 @@
 <?php
 
 namespace BugKiller\DataBundle\Controller;
+
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Response;
+
 /**
  * DataController
  * Definition de la classe DataController utilisée pour toutes les donnée
@@ -27,14 +29,14 @@ class DataController extends ContainerAware {
 
         // Récupération de la requête
         $request = $this->container->get('request');
-       
+
         // Conversion du contenu brut en tableau JSon
         $content = $request->getContent();
         $datas = $this->getRequestJson($content);
-        
+
         // Extraction de l'indentifiant
         $id = $this->extractId($datas);
-        
+
         // Création de la requête DQL pour récupéré l'entité
         $em = $this->container->get('doctrine')->getEntityManager();
         $repository = $this->container->get('doctrine')->getRepository('BugKillerDataBundle:' . $table);
@@ -43,12 +45,12 @@ class DataController extends ContainerAware {
         $query = $queryBuilder->getQuery();
         $items = $query->getResult();
         $item = $items[0];
-        
+
         // mise à jour de l'entité
         $item->setJson($datas, $em);
         $em->persist($item);
         $em->flush();
-        
+
         // Renvoie de la réponse
         $response = $this->createJsonResponse([$item->getJson($em)], true, 1, "ok");
         return $response;
@@ -65,14 +67,14 @@ class DataController extends ContainerAware {
 
         // Récupération de la requête
         $request = $this->container->get('request');
-        
+
         // Conversion du contenu brut en tableau JSon
         $content = $request->getContent();
         $datas = $this->getRequestJson($content);
-        
+
         // Extraction de l'indentifiant
         $id = $this->extractId($datas);
-        
+
         // Création de la requête DQL pour récupéré l'entité
         $em = $this->container->get('doctrine')->getEntityManager();
         $repository = $this->container->get('doctrine')->getRepository('BugKillerDataBundle:' . $table);
@@ -81,11 +83,11 @@ class DataController extends ContainerAware {
         $query = $queryBuilder->getQuery();
         $items = $query->getResult();
         $item = $items[0];
-        
+
         // Supression de l'entité
         $em->remove($item);
         $em->flush();
-        
+
         // Renvoie de la réponse
         $response = $this->createJsonResponse([], true, 0, "ok");
         return $response;
@@ -99,29 +101,29 @@ class DataController extends ContainerAware {
      * @return Response symfony
      * @todo Gestion d'erreurs
      */
-    public function createAction($table) {        
+    public function createAction($table) {
         // Récupération de la requête
         $request = $this->container->get('request');
-        
+
         // Conversion du contenu brut en tableau JSon
         $content = $request->getContent();
         $datas = $this->getRequestJson($content);
-        
+
         // suopression du paramètre id sil il est présent pour s'assurer que ce seras la sequence qui seras utilisé
         if (isset($datas["id"])) {
             unset($datas["id"]);
         }
-        
+
         // Création de l'entité
         $className = "BugKiller\\DataBundle\\Entity\\" . $table;
         $em = $this->container->get('doctrine')->getEntityManager();
         $item = new $className();
         $item->setJson($datas, $em);
-        
+
         // Sauvegarde de l'entité
         $em->persist($item);
         $em->flush();
-        
+
         // Renvoie de la réponse
         $response = $this->createJsonResponse([$item->getJson($em)], true, 1, "ok");
         return $response;
@@ -140,9 +142,12 @@ class DataController extends ContainerAware {
         $request = $this->container->get('request');
 
         // Parsing des filtres ExtJs
+        $filterCollection = new \BugKiller\DataBundle\Ext\ExtFilterCollection();
         $filterParameter = $request->query->get('filter');
-        $filterCollection = \BugKiller\DataBundle\Ext\ExtFilterCollection::parseRequestFilters($filterParameter);
-
+        if ($filterParameter !== null) {
+            $filterCollection = \BugKiller\DataBundle\Ext\ExtFilterCollection::parseRequestFilters($filterParameter);
+        }
+        
         // Si un paramètres id est fournit on ajout un filtre sur l'id
         $idParameter = $request->query->get('id');
         if ($idParameter !== null) {
@@ -151,7 +156,11 @@ class DataController extends ContainerAware {
 
         // Parsing des tries ExtJs
         $sorterParameter = $request->query->get('sort');
-        $sorterCollection = \BugKiller\DataBundle\Ext\ExtSorterCollection::parseRequestSorters($sorterParameter);
+        $sorterCollection = new \BugKiller\DataBundle\Ext\ExtSorterCollection();
+        if ($sorterParameter !== null) {
+            $sorterCollection = \BugKiller\DataBundle\Ext\ExtSorterCollection::parseRequestSorters($sorterParameter);
+        }
+
 
         // Parsing des table parent à ajouté à la requête
         $needestParentTable = $request->query->get('needestParentTables');
@@ -172,7 +181,10 @@ class DataController extends ContainerAware {
         $queryBuilder->select('tblMain')->from("BugKiller\DataBundle\Entity\\" . $table, 'tblMain');
 
         // Application des filtres
-        $filterCollection->applyFilters($queryBuilder, 'tblMain');
+        if ($filterCollection !== null) {
+            $filterCollection->applyFilters($queryBuilder, 'tblMain');
+        }
+
 
         // Application des tries
         $sorterCollection->applySorters($queryBuilder, 'tblMain');
@@ -235,6 +247,7 @@ class DataController extends ContainerAware {
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
+
     /**
      * Lit les données des entitées dans un tableau JSon
      * @param EntityManager $em donnée Gestionnaire des entitées
@@ -254,6 +267,7 @@ class DataController extends ContainerAware {
         }
         return $datas;
     }
+
     /**
      * Lit les données parente d'une entité et les affecte à l'objet Json
      * @param EntityManager $em donnée Gestionnaire des entitées
@@ -273,6 +287,7 @@ class DataController extends ContainerAware {
             }
         }
     }
+
     /**
      * Lit les données enfants d'une entité et les affecte à l'objet Json
      * @param EntityManager $em donnée Gestionnaire des entitées
@@ -293,6 +308,7 @@ class DataController extends ContainerAware {
             $jsonItem[$jsonKeyName] = $childJsons;
         }
     }
+
     /**
      * Transforme un chaine représantant des entitées néssécaire un tableau
      * @param String $needestTables Chaine de caractères contenant une liste d'entité spéaré par des pipe (|)

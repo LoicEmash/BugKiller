@@ -9,9 +9,10 @@ Ext.define('BugKiller.util.Format', {
         {
             throw "Le paramètre keyValues ne peut pas être null";
         }
-        if (keyValues.constructor !== Array)
+        console.log(keyValues.constructor);
+        if (typeof keyValues !== 'object')
         {
-            throw "Le paramètre keyValues doit être un tableau";
+            throw "Le paramètre keyValues doit être un objet";
         }
        return function (value)
        {           

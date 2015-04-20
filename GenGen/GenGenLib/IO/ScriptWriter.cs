@@ -16,14 +16,14 @@ namespace Egis.GenGenLib.IO
             get { return _identLevel; }
             set { _identLevel = value; }
         }
-        private char _identChar = '\t';     
+        private string _identChar = "\t";     
         private String _bracketOpen = "{";
         private String _bracketClose = "}";
         private String _commentPrefix = "// ";
         private FileStream _stream;
         private StreamWriter _writer;
-        
-        public ScriptWriter(string fileName,string commentPrefix = "// ", bool isUtf8 = true, char indentChar = '\t', String bracketOpen = "{", String bracketClose = "}")
+
+        public ScriptWriter(string fileName, string commentPrefix = "// ", bool isUtf8 = true, string indentChar = "\t", String bracketOpen = "{", String bracketClose = "}")
         {
             this._stream = new FileStream(fileName, FileMode.Create);
             if (isUtf8)
@@ -43,28 +43,40 @@ namespace Egis.GenGenLib.IO
         }
         public void WriteLine(string content)
         {
-            this._writer.WriteLine(new string(_identChar, _identLevel) + content);
+            this._writer.WriteLine(Indent() + content);
         }
 
         public void WriteComment(string content)
         {
-            this._writer.WriteLine(new string(_identChar, _identLevel) + this._commentPrefix + content);
+            this._writer.WriteLine(Indent() + this._commentPrefix + content);
         }
         public String CurrentTabIndetString
         {
             get
-            { return new string(_identChar, _identLevel); }
+            { return Indent( ); }
         }
         public void WriteOpen()
         {
-            this._writer.WriteLine(new string(_identChar, _identLevel) + _bracketOpen);
+            this._writer.WriteLine(Indent( )+ _bracketOpen);
             _identLevel++;
         }
+
+        public string Indent()
+        {
+            StringBuilder sb = new StringBuilder();
+            for (uint i = 0; i < this._identLevel; i++)
+            { sb.Append(_identChar); }
+
+            return sb.ToString();
+        }  
+
+
+
         public void WriteClose()
         {
             
             _identLevel--;
-            this._writer.WriteLine(new string(_identChar, _identLevel) + _bracketClose);
+            this._writer.WriteLine(Indent ()+ _bracketClose);
         }
 
         

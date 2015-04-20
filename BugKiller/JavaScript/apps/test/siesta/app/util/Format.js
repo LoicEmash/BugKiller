@@ -18,7 +18,7 @@ StartTest(function (t) {
     t.throwsOk(function () {
         BugKiller.util.Format.keyValueRenderer(true);
     }, 
-    "Le paramètre keyValues doit être un tableau", "Un paramètre keyValues non tableau leve une exception");
+    "Le paramètre keyValues doit être un objet", "Un paramètre keyValues non objet leve une exception");
     
      
     t.done();   // Optional, marks the correct exit point from the test

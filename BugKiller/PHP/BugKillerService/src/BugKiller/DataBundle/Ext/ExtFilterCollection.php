@@ -29,6 +29,7 @@ class ExtFilterCollection {
      */
     public static function parseRequestFilters($filterString) {
         $filters = new ExtFilterCollection();
+       
         $filterArray = json_decode($filterString);
         if ($filterArray === true) {
             throw new \InvalidArgumentException("L'argument filterString n'est pas une chaine JSon valide", 200);
