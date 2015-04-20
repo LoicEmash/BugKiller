@@ -13,7 +13,7 @@ StartTest(function (t) {
     t.throwsOk(function () {
          BugKiller.util.Format.keyValueRenderer(null);
     }, 
-    "Le paramètre keyValues ne peut pas être nugll", "Un paramètre keyValues null leve une exception");
+    "Le paramètre keyValues ne peut pas être null", "Un paramètre keyValues null leve une exception");
     
     t.throwsOk(function () {
         BugKiller.util.Format.keyValueRenderer(true);
